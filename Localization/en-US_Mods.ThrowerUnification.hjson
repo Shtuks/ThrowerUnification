@@ -1,0 +1,77 @@
+DamageClasses: {
+	UnitedModdedThrower: {
+		DisplayName: {
+			0: thrower damage
+			1: rogue damage
+			2: malevolent damage
+			3: kinetic damage
+			Thrower: thrower damage
+			Rogue: rogue damage
+			Malevolent: malevolent damage
+			Kinetic: kinetic damage
+			thrower: thrower damage
+			rogue: rogue damage
+			malevolent: malevolent damage
+			kinetic: kinetic damage
+		}
+	}
+}
+
+Configs: {
+	ThrowerModConfig: {
+		DisplayName: Thrower Mod Config
+
+		Headers: {
+			General: General Header
+			ColoredDamageType: Colored Damage Type
+		}
+
+		Vanilla: {
+			Label: Vanilla
+			Tooltip: ""
+		}
+
+		Calamity: {
+			Label: Calamity
+			Tooltip: ""
+		}
+
+		Vitality: {
+			Label: Vitality
+			Tooltip: ""
+		}
+
+		SacredTools: {
+			Label: Sacred Tools
+			Tooltip: ""
+		}
+
+		TooltipOverride: {
+			Label: Class Name & Tooltips Override
+			Tooltip: ""
+		}
+
+		R: {
+			Label: R
+			Tooltip: ""
+		}
+
+		G: {
+			Label: G
+			Tooltip: ""
+		}
+
+		B: {
+			Label: B
+			Tooltip: ""
+		}
+	}
+
+	TooltipOverrideStyle: {
+		Tooltip: ""
+		Thrower.Label: Thrower
+		Rogue.Label: Rogue
+		Malevolent.Label: Malevolent
+		Kinetic.Label: Kinetic
+	}
+}

@@ -1,0 +1,13 @@
+This mod merges few modded throwers into one class.
+
+Current supported classes:
+1. Thrower (Thorium or any other mod that uses vanilla thrower)
+2. Rogue (Calamity and it's addons)
+3. Revenant (Kinetic damage from Shadows of Abaddon)
+4. Blood Hunter (Vitality)
+
+This mod is highly configurable. You can toggle only specific classes merge, tooltip overrides, color for Colored Damage Types support.
+If you playing with mod that also merges throwers make sure to turn off their thrower merge if possible.
+This mod DOES NOT add stealth strikes for non-Calamity weapons so it is recomended to use mods like WHummus' Calamity/Thorium Balancing that add stealth strikes for other mods.
+
+Discord Server: https://discord.gg/frUcz2dQAy

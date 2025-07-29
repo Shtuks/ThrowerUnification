@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<!-- Import tModLoader mod properties -->
+	<Import Project="..\tModLoader.targets" />
+
+	<!-- General -->
+	<PropertyGroup>
+		
+	</PropertyGroup>
+	<ItemGroup>
+	  <Reference Include="CalamityMod">
+	    <HintPath>..\ModAssemblies\CalamityMod_v2.0.5.dll</HintPath>
+	  </Reference>
+	  <Reference Include="SacredTools">
+	    <HintPath>..\SoABardHealer\lib\SacredTools.dll</HintPath>
+	  </Reference>
+	  <Reference Include="ThoriumMod">
+	    <HintPath>..\ModAssemblies\ThoriumMod_v1.7.2.4.dll</HintPath>
+	  </Reference>
+	  <Reference Include="VitalityMod">
+	    <HintPath>..\..\ModReader\VitalityMod\VitalityMod.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
+	<!-- References -->
+
+</Project>
