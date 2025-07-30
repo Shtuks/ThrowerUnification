@@ -2,7 +2,7 @@
 using Terraria.ModLoader;
 using ThrowerUnification.Core;
 
-namespace ThrowerUnification.Common.CrossmodToUMT
+namespace ThrowerUnification.Core.UnitedModdedThrowerClass
 {
     [ExtendsFromMod(ModCompatibility.SacredTools.Name)]
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]

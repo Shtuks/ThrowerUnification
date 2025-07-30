@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework;
 using Terraria.Localization;
 using Steamworks;
 using Terraria;
-using ThrowerUnification.Common.CrossmodToUMT;
 
 namespace ThrowerUnification.Core.UnitedModdedThrowerClass
 {
