@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Terraria.ModLoader;
 
-namespace ThrowerUnification
+namespace ThrowerUnification.Core
 {
     internal abstract class CrossModHandler : ILoadable
     {

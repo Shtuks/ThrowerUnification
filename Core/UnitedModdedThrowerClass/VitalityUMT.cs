@@ -1,7 +1,8 @@
 ﻿using Terraria.ModLoader;
+using ThrowerUnification.Core;
 using VitalityMod.BloodHunter;
 
-namespace ThrowerUnification
+namespace ThrowerUnification.Core.UnitedModdedThrowerClass
 {
     [ExtendsFromMod(ModCompatibility.Vitality.Name)]
     [JITWhenModsEnabled(ModCompatibility.Vitality.Name)]

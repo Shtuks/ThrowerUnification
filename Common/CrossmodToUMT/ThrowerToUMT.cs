@@ -1,7 +1,8 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
+using ThrowerUnification.Core.UnitedModdedThrowerClass;
 
-namespace ThrowerUnification
+namespace ThrowerUnification.Common.CrossmodToUMT
 {
     public class ThrowingToUMT : GlobalItem
     {

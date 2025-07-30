@@ -1,7 +1,8 @@
 ﻿using SacredTools.Content.DamageClasses;
 using Terraria.ModLoader;
+using ThrowerUnification.Core;
 
-namespace ThrowerUnification
+namespace ThrowerUnification.Common.CrossmodToUMT
 {
     [ExtendsFromMod(ModCompatibility.SacredTools.Name)]
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]

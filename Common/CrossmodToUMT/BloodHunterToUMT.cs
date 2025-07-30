@@ -1,8 +1,10 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
+using ThrowerUnification.Core;
+using ThrowerUnification.Core.UnitedModdedThrowerClass;
 using VitalityMod.BloodHunter;
 
-namespace ThrowerUnification
+namespace ThrowerUnification.Common.CrossmodToUMT
 {
     [ExtendsFromMod(ModCompatibility.Vitality.Name)]
     [JITWhenModsEnabled(ModCompatibility.Vitality.Name)]

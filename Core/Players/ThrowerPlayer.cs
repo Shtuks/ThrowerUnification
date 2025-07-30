@@ -1,9 +1,12 @@
 ﻿using CalamityMod.CalPlayer;
 using Terraria;
 using Terraria.ModLoader;
+using ThrowerUnification.Core;
+using ThrowerUnification.Core.UnitedModdedThrowerClass;
 
-namespace ThrowerUnification
+namespace ThrowerUnification.Core.Players
 {
+    //Akira
     [ExtendsFromMod(ModCompatibility.Calamity.Name)]
     [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
     public class ThrowerPlayer : ModPlayer

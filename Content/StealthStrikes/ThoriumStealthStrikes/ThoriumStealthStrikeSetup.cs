@@ -1,0 +1,827 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+using CalamityMod.CalPlayer;
+using Microsoft.Xna.Framework;
+using Terraria.DataStructures;
+using Terraria;
+using Terraria.ModLoader;
+using ThrowerUnification.Core;
+using ThrowerUnification.Content.Projectiles.StealthPro;
+using Terraria.Localization;
+using ThoriumMod.Items.BossLich;
+using ThoriumMod.Items.Icy;
+using ThoriumMod.Items.ThrownItems;
+using ThoriumMod.Items.Donate;
+using ThoriumMod.Items.BossThePrimordials.Aqua;
+using ThoriumMod.Items.Lodestone;
+using ThoriumMod.Items.Valadium;
+
+namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
+{
+    //Akira & Wardrobe Hummus
+    public enum StealthStrikeType
+    {
+        None,
+        CactusNeedle,
+        IcyTomahawk,
+        ZephyrsRuin,
+        ClockworkBomb,
+        SoulBomb,
+        PlayingCard,
+        WhiteDwarfCutter,
+        Soulslasher,
+        CaptainsPoignard,
+        SoftServeSunderer,
+        TerraKnife,
+        TerraKnife2,
+        ShadeShuriken,
+        GelGlove,
+        TidalWave,
+        LodestoneJavelin,
+        ValadiumAxe,
+        ChlorophyteTomahawk,
+        FireAxe,
+    }
+    [ExtendsFromMod(ModCompatibility.Thorium.Name, ModCompatibility.Calamity.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Thorium.Name, ModCompatibility.Calamity.Name)]
+    public class ThoriumStealthStrikeSetup : GlobalItem
+    {
+        //Don't load the stealth strikes if Infernal or Hummus' mod is enabled to prevent overlap or duplication.
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ThrowerModConfig.Instance.StealthStrikes && !(ModCompatibility.InfernalEclipse.Loaded || ModCompatibility.WHummusMultiModBalancing.Loaded);
+        }
+
+        public override bool InstancePerEntity => true;
+
+        public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            var calPlayer = player.GetModPlayer<CalamityPlayer>();
+
+            // ===================== ICY TOMAHAWK =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Icy Tomahawk")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    Vector2[] velocities = {
+                        velocity * 0.33f,
+                        velocity * 0.66f,
+                        velocity,
+                        velocity * 1.33f,
+                    };
+
+                    foreach (Vector2 v in velocities)
+                    {
+                        int projID = Projectile.NewProjectile(
+                            source,
+                            position,
+                            v,
+                            type,
+                            damage,
+                            knockback,
+                            player.whoAmI
+                        );
+
+                        if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                        {
+                            stealthGlobal.SetupAsStealthStrike(StealthStrikeType.IcyTomahawk);
+                        }
+                    }
+
+                    return false;
+                }
+            }
+
+            // ===================== CACTUS NEEDLE =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Cactus Needle")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    float spread = MathHelper.ToRadians(5f);
+
+                    for (int i = -1; i <= 1; i++) // 3 projectiles: left, center, right
+                    {
+                        float rotation = spread * i;
+                        Vector2 newVelocity = velocity.RotatedBy(rotation);
+
+                        int projID = Projectile.NewProjectile(
+                            source,
+                            position,
+                            newVelocity,
+                            type,
+                            damage,
+                            knockback,
+                            player.whoAmI
+                        );
+
+                        if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                        {
+                            stealthGlobal.SetupAsStealthStrike(StealthStrikeType.CactusNeedle);
+                        }
+                    }
+
+                    return false;
+                }
+            }
+
+            // ===================== GEL GLOVE =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Gel Glove")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    int projID = Projectile.NewProjectile(
+                        source,
+                        position,
+                        velocity,
+                        type,
+                        damage,
+                        knockback,
+                        player.whoAmI
+                    );
+
+                    if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                    {
+                        stealthGlobal.SetupAsStealthStrike(StealthStrikeType.GelGlove);
+                    }
+
+                    return false; // Prevent default projectile since we spawned our own
+                }
+            }
+
+            // ===================== ZEPHYR'S RUIN =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumRework" && item.Name == "Zephyr's Ruin")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    velocity *= 1.75f;
+                    damage = (int)(damage * 2f);
+
+                    int projID = Projectile.NewProjectile(
+                        source,
+                        position,
+                        velocity,
+                        type,
+                        damage,
+                        knockback,
+                        player.whoAmI
+                    );
+
+                    if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                    {
+                        stealthGlobal.SetupAsStealthStrike(StealthStrikeType.ZephyrsRuin);
+                    }
+
+                    return false;
+                }
+            }
+
+            // ===================== CAPTAIN'S POIGNARD =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Captain's Poignard")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    int projID = Projectile.NewProjectile(
+                        source,
+                        position,
+                        velocity,
+                        type,
+                        damage,
+                        knockback,
+                        player.whoAmI
+                    );
+
+                    if (Main.projectile.IndexInRange(projID) &&
+                        Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                    {
+                        stealthGlobal.SetupAsStealthStrike(StealthStrikeType.CaptainsPoignard);
+                    }
+
+                    return false; // prevent original spawn, we spawned manually
+                }
+            }
+
+            // ===================== LODESTONE JAVELIN =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Lodestone Javelin")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    int projID = Projectile.NewProjectile(
+                        source,
+                        position,
+                        velocity,
+                        type,
+                        damage,
+                        knockback,
+                        player.whoAmI
+                    );
+
+                    if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                    {
+                        stealthGlobal.SetupAsStealthStrike(StealthStrikeType.LodestoneJavelin);
+                    }
+
+                    return false; // Prevent default behavior
+                }
+            }
+
+
+            // ===================== VALADIUM BATTLE AXE =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Valadium Throwing Axe")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    int projID = Projectile.NewProjectile(
+                        source,
+                        position,
+                        velocity,
+                        type,
+                        damage,
+                        knockback,
+                        player.whoAmI
+                    );
+
+                    if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                    {
+                        stealthGlobal.SetupAsStealthStrike(StealthStrikeType.ValadiumAxe);
+                    }
+
+                    return false; // Prevent default behavior
+                }
+            }
+
+            // ===================== CLOCKWORK BOMB =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Clockwork Bomb")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    int projID = Projectile.NewProjectile(
+                        source,
+                        position,
+                        velocity,
+                        type,
+                        damage,
+                        knockback,
+                        player.whoAmI
+                    );
+
+                    if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                    {
+                        stealthGlobal.SetupAsStealthStrike(StealthStrikeType.ClockworkBomb);
+                    }
+
+                    return false;
+                }
+            }
+
+            // ===================== CHLOROPHYTE TOMAHAWK =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Chlorophyte Tomahawk")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    velocity *= 0.75f;
+                    damage = (int)(damage * 1f);
+
+                    int projID = Projectile.NewProjectile(
+                        source,
+                        position,
+                        velocity,
+                        type,
+                        damage,
+                        knockback,
+                        player.whoAmI
+                    );
+
+                    if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                    {
+                        stealthGlobal.SetupAsStealthStrike(StealthStrikeType.ChlorophyteTomahawk);
+                    }
+
+                    return false;
+                }
+            }
+
+            // ===================== SOUL BOMB =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Soul Bomb")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    int projID = Projectile.NewProjectile(
+                        source,
+                        position,
+                        velocity,
+                        type,
+                        damage,
+                        knockback,
+                        player.whoAmI
+                    );
+
+                    if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                    {
+                        stealthGlobal.SetupAsStealthStrike(StealthStrikeType.SoulBomb);
+                    }
+
+                    return false;
+                }
+            }
+
+            // ===================== PLAYING CARD =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Playing Card")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    int count = 5;
+                    float spread = MathHelper.ToRadians(10f);
+                    float baseAngle = velocity.ToRotation();
+                    float startAngle = baseAngle - spread / 2f;
+
+                    if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod) &&
+                        thoriumMod.TryFind("MagicCardPro", out ModProjectile modProj))
+                    {
+                        int projType = modProj.Type;
+
+                        for (int i = 0; i < count; i++)
+                        {
+                            float rotation = MathHelper.ToRadians(15f) * (i - 1.5f);
+                            Vector2 rotatedVelocity = velocity.RotatedBy(rotation);
+
+                            int adjustedDamage = (int)Math.Round(damage * 1.15);
+
+                            int projID = Projectile.NewProjectile(
+                                source,
+                                position,
+                                rotatedVelocity,
+                                projType,
+                                adjustedDamage,
+                                knockback,
+                                player.whoAmI,
+                                4,
+                                1f // force explosive version
+                            );
+
+                            if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                            {
+                                stealthGlobal.SetupAsStealthStrike(StealthStrikeType.PlayingCard);
+                            }
+                        }
+
+                        return false;
+                    }
+                }
+            }
+
+            // ===================== SHADE SHURIKEN =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Shade Shuriken")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium) &&
+                        thorium.TryFind("ShadeShuriken", out ModProjectile modProj))
+                    {
+                        int projType = modProj.Type;
+
+                        int projID = Projectile.NewProjectile(
+                            source,
+                            position,
+                            velocity * 1.0f, // Faster
+                            projType,
+                            (int)(damage * 1.0f), // Stronger
+                            knockback,
+                            player.whoAmI
+                        );
+
+                        if (Main.projectile.IndexInRange(projID) &&
+                            Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                        {
+                            stealthGlobal.SetupAsStealthStrike(StealthStrikeType.ShadeShuriken);
+                        }
+                    }
+
+                    return false;
+                }
+            }
+
+            // ===================== SOULSLASHER =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Soulslasher")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod) &&
+                        thoriumMod.TryFind("SoulslasherPro", out ModProjectile modProj))
+                    {
+                        int projType = modProj.Type;
+
+                        int projID = Projectile.NewProjectile(
+                            source,
+                            position,
+                            velocity,
+                            projType,
+                            damage,
+                            knockback,
+                            player.whoAmI
+                        );
+
+                        if (Main.projectile.IndexInRange(projID) &&
+                            Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                        {
+                            stealthGlobal.SetupAsStealthStrike(StealthStrikeType.Soulslasher);
+                        }
+
+                        return false; // Prevent default projectile
+                    }
+                }
+            }
+
+            // ===================== SOFT SERVE SUNDERER =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Soft Serve Sunderer")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    int projID = Projectile.NewProjectile(
+                        source,
+                        position,
+                        velocity,
+                        type,
+                        damage,
+                        knockback,
+                        player.whoAmI
+                    );
+
+                    if (Main.projectile.IndexInRange(projID) &&
+                        Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                    {
+                        stealthGlobal.SetupAsStealthStrike(StealthStrikeType.SoftServeSunderer);
+                    }
+
+                    return false;
+                }
+            }
+
+            // ===================== WHITE DWARF CUTTER =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "White Dwarf Cutter")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    // Fire the main kunai
+                    int projID = Projectile.NewProjectile(
+                        source,
+                        position,
+                        velocity,
+                        type,
+                        damage,
+                        knockback,
+                        player.whoAmI
+                    );
+
+                    if (Main.projectile.IndexInRange(projID) &&
+                        Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                    {
+                        stealthGlobal.SetupAsStealthStrike(StealthStrikeType.WhiteDwarfCutter);
+                    }
+
+                    // Spawn the two angled kunai
+                    if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium) &&
+                        thorium.TryFind("WhiteDwarfKunaiPro2", out ModProjectile sideProjMod))
+                    {
+                        int sideProjType = sideProjMod.Type;
+
+                        Vector2 velocityUp = velocity.RotatedBy(MathHelper.ToRadians(5f));
+                        Vector2 velocityDown = velocity.RotatedBy(MathHelper.ToRadians(-5f));
+
+                        int upProjID = Projectile.NewProjectile(source, position, velocityUp, sideProjType, damage, knockback, player.whoAmI);
+                        int downProjID = Projectile.NewProjectile(source, position, velocityDown, sideProjType, damage, knockback, player.whoAmI);
+
+                        if (Main.projectile.IndexInRange(upProjID) &&
+                            Main.projectile[upProjID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles upStealthGlobal))
+                        {
+                            upStealthGlobal.SetupAsStealthStrike(StealthStrikeType.WhiteDwarfCutter);
+                        }
+
+                        if (Main.projectile.IndexInRange(downProjID) &&
+                            Main.projectile[downProjID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles downStealthGlobal))
+                        {
+                            downStealthGlobal.SetupAsStealthStrike(StealthStrikeType.WhiteDwarfCutter);
+                        }
+                    }
+
+                    return false;
+                }
+            }
+
+            // ===================== TERRA KNIFE =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Terra Knife")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    ModLoader.TryGetMod("ThoriumMod", out Mod thorium);
+                    thorium.TryFind("TerraKnifePro", out ModProjectile mainPro);
+                    thorium.TryFind("TerraKnifePro2", out ModProjectile sidePro);
+
+                    int projID = Projectile.NewProjectile(
+                        source,
+                        position,
+                        velocity,
+                        sidePro.Type,
+                        (int)(damage * 0.8),
+                        knockback,
+                        player.whoAmI
+                    );
+
+                    if (Main.projectile.IndexInRange(projID) &&
+                        Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                    {
+                        stealthGlobal.SetupAsStealthStrike(StealthStrikeType.TerraKnife);
+                    }
+
+                    int sideProjType = mainPro.Type;
+
+                    Vector2 velocityUp = velocity.RotatedBy(MathHelper.ToRadians(5f));
+                    Vector2 velocityDown = velocity.RotatedBy(MathHelper.ToRadians(-5f));
+
+                    int upProjID = Projectile.NewProjectile(source, position, velocityUp, sideProjType, damage, knockback, player.whoAmI);
+                    int downProjID = Projectile.NewProjectile(source, position, velocityDown, sideProjType, damage, knockback, player.whoAmI);
+
+                    if (Main.projectile.IndexInRange(upProjID) &&
+                        Main.projectile[upProjID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles upStealthGlobal))
+                    {
+                        upStealthGlobal.SetupAsStealthStrike(StealthStrikeType.TerraKnife2);
+                    }
+
+                    if (Main.projectile.IndexInRange(downProjID) &&
+                        Main.projectile[downProjID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles downStealthGlobal))
+                    {
+                        downStealthGlobal.SetupAsStealthStrike(StealthStrikeType.TerraKnife2);
+                    }
+
+                    return false;
+                }
+            }
+
+            // ===================== TIDAL WAVE =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Tidal Wave")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    int projID = Projectile.NewProjectile(
+                        source,
+                        position,
+                        velocity,
+                        type,
+                        damage,
+                        knockback,
+                        player.whoAmI
+                    );
+
+                    Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<TidalWaveWhirlpool>(), damage / 2, knockback, player.whoAmI);
+
+                    if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                    {
+                        stealthGlobal.SetupAsStealthStrike(StealthStrikeType.TidalWave);
+                    }
+
+                    return false;
+                }
+            }
+
+            // ===================== FIRE AXE =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Fire Axe")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    int projID = Projectile.NewProjectile(
+                        source,
+                        position,
+                        (velocity * 1.5f),
+                        type,
+                        (int)(damage * 1f),
+                        knockback,
+                        player.whoAmI
+                    );
+
+                    if (Main.projectile.IndexInRange(projID) &&
+                        Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                    {
+                        stealthGlobal.SetupAsStealthStrike(StealthStrikeType.FireAxe);
+                    }
+
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        //EXHAUSTION REMOVAL
+        public override void SetDefaults(Item item)
+        {
+            if (!ModLoader.TryGetMod("ThoriumMod", out Mod thorium)) return;
+
+            //TERRA KNIFE
+            if (item.type == thorium.Find<ModItem>("TerraKnife").Type)
+            {
+                TrySetIsThrowerNon(item, false);
+            }
+
+            //GEL GLOVE 
+            if (item.type == thorium.Find<ModItem>("GelGlove").Type)
+            {
+                TrySetIsThrowerNon(item, false);
+            }
+
+            //TIDAL WAVE
+            if (item.type == thorium.Find<ModItem>("TidalWave").Type)
+            {
+                TrySetIsThrowerNon(item, false);
+            }
+
+            //FIRE AXE
+            if (item.type == thorium.Find<ModItem>("FireAxe").Type)
+            {
+                TrySetIsThrowerNon(item, false);
+            }
+        }
+
+        private void TrySetIsThrowerNon(Item item, bool active)
+        {
+            try
+            {
+                if (item.ModItem == null)
+                {
+                    Main.NewText("No ModItem attached");
+                    return;
+                }
+
+                Type modItemType = item.ModItem.GetType();
+
+                // Try field first
+                FieldInfo field = modItemType.GetField("isThrowerNon", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                if (field != null)
+                {
+                    field.SetValue(item.ModItem, active);
+                    //Main.NewText($"[Field] Set healAmount of {item.Name} to {newCost}");
+                    return;
+                }
+
+                // Then try property
+                PropertyInfo prop = modItemType.GetProperty("isThrowerNon", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                if (prop != null && prop.CanWrite)
+                {
+                    prop.SetValue(item.ModItem, active);
+                    return;
+                }
+
+                //Main.NewText("healAmount not found on ModItem.");
+            }
+            catch (Exception)
+            {
+                //Main.NewText($"Error setting healAmount: {ex.Message}");
+            }
+        }
+
+        public void AddStealthTooltip(List<TooltipLine> tooltips, string stealthTooltip)
+        {
+            int maxTooltipIndex = -1;
+            int maxNumber = -1;
+
+            // Find the TooltipLine with the highest TooltipX name
+            for (int i = 0; i < tooltips.Count; i++)
+            {
+                if (tooltips[i].Mod == "Terraria" && tooltips[i].Name.StartsWith("Tooltip"))
+                {
+                    // Try parse the number after "Tooltip"
+                    if (int.TryParse(tooltips[i].Name.Substring(7), out int num) && num > maxNumber)
+                    {
+                        maxNumber = num;
+                        maxTooltipIndex = i;
+                    }
+                }
+            }
+
+            // If found, append or set the stealthTooltip
+            if (maxTooltipIndex != -1)
+            {
+                TooltipLine tooltip = tooltips[maxTooltipIndex];
+                if (!string.IsNullOrEmpty(tooltip.Text))
+                    tooltip.Text = $"{tooltip.Text}\n{stealthTooltip}";
+                else
+                    tooltip.Text = stealthTooltip;
+            }
+        }
+
+        public void FullTooltipOveride(List<TooltipLine> tooltips, string stealthTooltip)
+        {
+            for (int index = 0; index < tooltips.Count; ++index)
+            {
+                if (tooltips[index].Mod == "Terraria")
+                {
+                    if (tooltips[index].Name == "Tooltip0")
+                    {
+                        TooltipLine tooltip = tooltips[index];
+                        tooltip.Text = $"{stealthTooltip}";
+                    }
+                    else if (tooltips[index].Name.Contains("Tooltip"))
+                    {
+                        tooltips[index].Hide();
+                    }
+                }
+            }
+        }
+
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            if (item.type == ModContent.ItemType<CactusNeedle>())
+            {
+                AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.CactusNeedle"));
+            }
+
+            if (item.type == ModContent.ItemType<IcyTomahawk>())
+            {
+                AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.IcyTomahawk"));
+            }
+
+            if (ModLoader.TryGetMod("ThoriumRework", out Mod thorRework))
+            {
+                if (item.type == thorRework.Find<ModItem>("ZephyrsRuin").Type)
+                    AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.ZephyrRuin"));
+            }
+
+            if (item.type == ModContent.ItemType<ClockWorkBomb>())
+            {
+                AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.ClockworkBomb"));
+            }
+
+            if (item.type == ModContent.ItemType<SoulBomb>())
+            {
+                AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.SoulBomb"));
+            }
+
+            if (item.type == ModContent.ItemType<MagicCard>())
+            {
+                AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.PlayingCard"));
+            }
+
+            if (item.type == ModContent.ItemType<Soulslasher>())
+            {
+                AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.Soulslasher"));
+            }
+
+            if (item.type == ModContent.ItemType<WhiteDwarfKunai>())
+            {
+                AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.WhiteDwarfCutter"));
+            }
+
+            if (item.type == ModContent.ItemType<CaptainsPoniard>())
+            {
+                AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.CaptainsPoignard"));
+            }
+
+            if (item.type == ModContent.ItemType<SoftServeSunderer>())
+            {
+                AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.SoftServeSunderer"));
+            }
+
+            if (item.type == ModContent.ItemType<BugenkaiShuriken>())
+            {
+                AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.ShadeShuriken"));
+            }
+
+            if (item.type == ModContent.ItemType<LodestoneJavelin>())
+            {
+                AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.LodestoneJav"));
+            }
+
+            if (item.type == ModContent.ItemType<ValadiumBattleAxe>())
+            {
+                AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.ValadiumThrowingAxe"));
+            }
+
+            if (item.type == ModContent.ItemType<ChlorophyteTomahawk>())
+            {
+                AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.ChlorophyteTomahawk"));
+            }
+
+            if (item.type == ModContent.ItemType<TerraKnife>())
+            {
+                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.TerraKnife"));
+            }
+
+            if (item.type == ModContent.ItemType<TidalWave>())
+            {
+                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.TidalWave"));
+            }
+
+            if (item.type == ModContent.ItemType<GelGlove>())
+            {
+                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.GelGlove"));
+            }
+
+            if (item.type == ModContent.ItemType<FireAxe>())
+            {
+                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.FireAxe"));
+            }
+        }
+    }
+}

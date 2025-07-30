@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace ThrowerUnification
+namespace ThrowerUnification.Core
 {
     internal sealed class ColoredDamageTypesSupport : CrossModHandler
     {

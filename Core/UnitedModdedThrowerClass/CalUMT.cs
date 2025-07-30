@@ -1,7 +1,8 @@
 ﻿using CalamityMod;
 using Terraria.ModLoader;
+using ThrowerUnification.Core;
 
-namespace ThrowerUnification
+namespace ThrowerUnification.Core.UnitedModdedThrowerClass
 {
     [ExtendsFromMod(ModCompatibility.Calamity.Name)]
     [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]

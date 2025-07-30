@@ -1,3 +1,43 @@
+ThoriumStealthStrike: {
+	CactusNeedle: Stealth strikes throw out needles in a tight fan of 3
+	IcyTomahawk: Stealth strikes throw out 4 tomahawks of different speeds that last longer and pierce more
+	ZephyrRuin: Stealth strikes throw a stronger spear that always crits
+	ClockworkBomb: Stealth strikes create a larger field that lasts longer
+	SoulBomb: Stealth strikes release a burst of homing souls on detonation
+	PlayingCard: Stealth strikes throw 5 homing cards that are always explosive
+	Soulslasher: Stealth strikes will also aggressively home after hitting an enemy
+	WhiteDwarfCutter: During a stealth strike each hit creates Ivory flares that damage for 0.1% of the target's max HP
+	CaptainsPoignard: Stealth strikes throw a burst of 6 daggers and gives the player increased attack speed for 10 seconds
+	SoftServeSunderer: Stealth strikes summon a rain of cones from above the hit enemy
+	ShadeShuriken: Stealth strikes throw a larger, faster shuriken that has increased pierce
+	LodestoneJav: Stealth strikes cause earth to erupt from the struck enemy, inflicting sunder
+	ValadiumThrowingAxe: Stealth strikes on first hit will create a ring of axes to fly at the struck enemy
+	ChlorophyteTomahawk: Stealth strikes will last longer, have more pierce and generate homing spores throughout it's duration
+	FireAxe:
+		'''
+		'Best to avoid chasms with this thing...'
+		Stealth strikes summon a spectral axe of flames to cleave hit enemies
+		'''
+	TerraKnife:
+		'''
+		Left click to quickly throw terra daggers
+		Right click to throw an impaling terra knife, which constantly damages your chosen target
+		Both the daggers and the knife are thrown on a stealth strike, with the knife summoning a barrage of slashes on hit
+		'''
+	GelGlove:
+		'''
+		Throws out a ball of gel that bounces against surfaces
+		Can be charged to increase in damage, bounce amount, and size
+		Stealth strikes shoot out shurikens at nearby enemies as they travel
+		'''
+	TidalWave:
+		'''
+		'Sweep away your foes with the fury of the tide...'
+		Throws out a massive aquatic shuriken that releases miniature waves
+		Stealth strikes spawn a damaging tidal wave that follows the shuriken and pulls enemies in
+		'''
+}
+
 DamageClasses: {
 	UnitedModdedThrower: {
 		DisplayName: {
@@ -28,27 +68,27 @@ Configs: {
 
 		Vanilla: {
 			Label: Vanilla
-			Tooltip: ""
+			Tooltip: Toggles the class unification merge for any mod that uses the vanilla thrower class damage. This mainly includes Thorium mod.
 		}
 
 		Calamity: {
 			Label: Calamity
-			Tooltip: ""
+			Tooltip: Toggles the class unification merge for the Rogue class from Calamity mod.
 		}
 
 		Vitality: {
 			Label: Vitality
-			Tooltip: ""
+			Tooltip: Toggles the class unification merge for the Blood Hunter class from Vitality mod.
 		}
 
 		SacredTools: {
-			Label: Sacred Tools
-			Tooltip: ""
+			Label: Shadows of Abaddon
+			Tooltip: Toggles the class unification merge for the Revenant class from Shadows of Abaddon.
 		}
 
 		TooltipOverride: {
 			Label: Class Name & Tooltips Override
-			Tooltip: ""
+			Tooltip: Lets you adjust the name of the class to any of the supported classes.
 		}
 
 		R: {
@@ -65,6 +105,15 @@ Configs: {
 			Label: B
 			Tooltip: ""
 		}
+
+		StealthStrikes: {
+			Label: Stealth Strikes
+			Tooltip:
+				'''
+				Toggles the non-Calamity stealth strikes added by this mod.
+				This setting does nothing if Calamity is not enabled
+				'''
+		}
 	}
 
 	TooltipOverrideStyle: {
@@ -74,4 +123,10 @@ Configs: {
 		Malevolent.Label: Malevolent
 		Kinetic.Label: Kinetic
 	}
+}
+
+Projectiles: {
+	FireAxeStealthPro.DisplayName: Fire Axe Stealth Pro
+	RogueSpectreBlast.DisplayName: Rogue Spectre Blast
+	TidalWaveWhirlpool.DisplayName: Tidal Wave Whirlpool
 }

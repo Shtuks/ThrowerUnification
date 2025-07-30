@@ -1,8 +1,10 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 using CalamityMod;
+using ThrowerUnification.Core;
+using ThrowerUnification.Core.UnitedModdedThrowerClass;
 
-namespace ThrowerUnification
+namespace ThrowerUnification.Common.CrossmodToUMT
 {
     [ExtendsFromMod(ModCompatibility.Calamity.Name)]
     [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]

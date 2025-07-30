@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace ThrowerUnification
+namespace ThrowerUnification.Common.CrossmodToUMT
 {
     public class ThrowerMergeTooltips : GlobalItem
     {
