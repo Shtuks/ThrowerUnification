@@ -53,7 +53,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
         //Don't load the stealth strikes if Infernal or Hummus' mod is enabled to prevent overlap or duplication.
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ThrowerModConfig.Instance.StealthStrikes && !(ModCompatibility.InfernalEclipse.Loaded || ModCompatibility.WHummusMultiModBalancing.Loaded);
+            return ThrowerModConfig.Instance.StealthStrikes;
         }
 
         public override bool InstancePerEntity => true;

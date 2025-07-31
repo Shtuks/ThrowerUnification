@@ -34,24 +34,4 @@ public static class ModCompatibility
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
     }
-
-    //OTHER MAJOR UMT MERGE MODS
-    public static class CSE
-    {
-        public const string Name = "ssm";
-        public static bool Loaded => ModLoader.HasMod(Name);
-        public static Mod Mod => ModLoader.GetMod(Name);
-    }
-    public static class InfernalEclipse
-    {
-        public const string Name = "InfernalEclipseAPI";
-        public static bool Loaded => ModLoader.HasMod(Name);
-        public static Mod Mod => ModLoader.GetMod(Name);
-    }
-    public static class WHummusMultiModBalancing
-    {
-        public const string Name = "WHummusMultiModBalancing";
-        public static bool Loaded => ModLoader.HasMod(Name);
-        public static Mod Mod => ModLoader.GetMod(Name);
-    }
 }

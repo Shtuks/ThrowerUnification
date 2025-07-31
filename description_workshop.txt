@@ -1,4 +1,4 @@
-This mod merges few modded throwers into one class.
+This mod merges few modded throwers into one class, and is developed for and maintained by the teams behind [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3329620648&searchtext=community] Community Souls Expansion[/url] & [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686] Infernal Eclipse of Ragnarok[/url], & [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3452171528&searchtext=tpackbuilder] WHummus' Calamity/Thorium Balancing[/url].
 
 Currently supported classes:
 [list]
@@ -11,7 +11,6 @@ Currently supported classes:
 This mod also adds custom stealth stikes for some non-Calamity thrower weapons, with more being added in the future.
 
 This mod is highly configurable. You can toggle only a specific class' merge, the tooltip overrides, if non-Calamity weapons have custom stealth strikes, and the color for Colored Damage Types support.
-This mod checks for and overrides the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3329620648&searchtext=community] Community Souls Expansion[/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686] Infernal Eclipse of Ragnarok[/url], & [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3452171528&searchtext=tpackbuilder] WHummus' Calamity/Thorium Balancing[/url] thrower merge, so you can use this mod with them without issues.
 If you playing with any other mod that also merges throwers, it is recommended off their thrower merge if possible.
 
 NOTE: This mod doesn't balance the classes together. If you are looking for balance changes, it is recommended to use [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3452171528&searchtext=tpackbuilder] WHummus' Calamity/Thorium Balancing[/url] in conjunction with this mod if you are playing with both Calamity & Thorium enabled.

@@ -88,27 +88,4 @@ namespace ThrowerUnification.Core.UnitedModdedThrowerClass
             return false;
         }
     }
-
-    public class CustomRogueStealthStrikeGlobalProjectile : GlobalProjectile
-    {
-        public override void OnSpawn(Projectile projectile, IEntitySource source)
-        {
-            // Check if the projectile belongs to your custom damage class or is a Shuriken
-            if (projectile.DamageType == UnitedModdedThrower.Instance || projectile.type == ProjectileID.Shuriken)
-            {
-                Player player = Main.player[projectile.owner];
-                CalamityPlayer calPlayer = player.GetModPlayer<CalamityPlayer>();
-
-                if (calPlayer.StealthStrikeAvailable())
-                {
-                    CalamityGlobalProjectile modProj = projectile.GetGlobalProjectile<CalamityGlobalProjectile>();
-                    if (modProj != null)
-                    {
-                        modProj.stealthStrike = true;
-                    }
-                }
-            }
-        }
-
-    }
 }

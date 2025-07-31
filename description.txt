@@ -1,4 +1,4 @@
-This mod merges few modded throwers into one class.
+This mod merges few modded throwers into one class, and is developed for and maintained by the teams behind the Community Souls Expansion, Infernal Eclipse of Ragnarok, & WHummus' Calamity/Thorium Balancing.
 
 Currently supported classes:
 1. Thrower (Thorium or any other mod that uses vanilla thrower)
@@ -9,7 +9,6 @@ Currently supported classes:
 This mod also adds custom stealth stikes for some non-Calamity thrower weapons, with more being added in the future.
 
 This mod is highly configurable. You can toggle only a specific class' merge, the tooltip overrides, if non-Calamity weapons have custom stealth strikes, and the color for Colored Damage Types support.
-This mod checks for and overrides the Community Souls Expansion, Infernal Eclipse of Ragnarok, & WHummus' Calamity/Thorium Balancing thrower merge, so you can use this mod with them without issues.
 If you playing with any other mod that also merges throwers, it is recommended off their thrower merge if possible.
 
 NOTE: This mod doesn't balance the classes together. If you are looking for balance changes, it is recommended to use WHummus' Calamity/Thorium Balancing in conjunction with this mod if you are playing with both Calamity & Thorium enabled.
