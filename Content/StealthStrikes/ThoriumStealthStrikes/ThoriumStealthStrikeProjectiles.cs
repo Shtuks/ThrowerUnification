@@ -17,6 +17,7 @@ using Terraria;
 using Terraria.ModLoader;
 using ThrowerUnification.Content.Projectiles.StealthPro;
 using ThrowerUnification.Core;
+using ThrowerUnification.Core.UnitedModdedThrowerClass;
 
 namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
 {
@@ -105,7 +106,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                 {
                     if (parentStealth.cameFromLodestoneStealth)
                     {
-                        projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+                        projectile.DamageType = ModContent.GetInstance<UnitedModdedThrower>();
                         cameFromLodestoneStealth = true;
                         return;
                     }
@@ -329,7 +330,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                             spawnedStealth.cameFromLodestoneStealth = true;
                         }
 
-                        newProj.DamageType = ModContent.GetInstance<RogueDamageClass>();
+                        newProj.DamageType = ModContent.GetInstance<UnitedModdedThrower>();
 
                         newProj.localAI[0] = 45f;
 
@@ -379,7 +380,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                                 axeStealth.cameFromValadiumStealth = true;
                             }
 
-                            newAxe.DamageType = ModContent.GetInstance<RogueDamageClass>();
+                            newAxe.DamageType = ModContent.GetInstance<UnitedModdedThrower>();
 
                             // **Apply local immunity immediately here:**
                             newAxe.usesLocalNPCImmunity = true;
@@ -462,7 +463,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             if (entity.type == ModContent.ProjectileType<TerratomereSlash>())
             {
                 if (entity.ai[0] == 1)
-                    entity.DamageType = ModContent.GetInstance<RogueDamageClass>();
+                    entity.DamageType = ModContent.GetInstance<UnitedModdedThrower>();
             }
 
             //DAMAGE OVERRIDE FOR SHURIKEN DURING STEALTH STRIKE
