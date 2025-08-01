@@ -16,3 +16,7 @@ If you playing with any other mod that also merges throwers, it is recommended o
 NOTE: This mod doesn't balance the classes together. If you are looking for balance changes, it is recommended to use [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3452171528&searchtext=tpackbuilder] WHummus' Calamity/Thorium Balancing[/url] in conjunction with this mod if you are playing with both Calamity & Thorium enabled.
 
 Discord Server: https://discord.gg/frUcz2dQAy
+
+Coding: StarlightCat, Akira, WardrobeHummus
+Sprites: Akira, Tyr
+Localization: Pudd1ng (Simplified Chinese)

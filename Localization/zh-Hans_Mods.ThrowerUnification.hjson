@@ -1,20 +1,20 @@
 ﻿//DefaultStealthStrikeTooltip: Stealth strikes have +75% damage and +75% velocity.
 
 ThoriumStealthStrike: {
-	CactusNeedle: Stealth strikes throw out needles in a tight fan of 3
-	IcyTomahawk: Stealth strikes throw out 4 tomahawks of different speeds that last longer and pierce more
-	ZephyrRuin: Stealth strikes throw a stronger spear that always crits
-	ClockworkBomb: Stealth strikes create a larger field that lasts longer
-	SoulBomb: Stealth strikes release a burst of homing souls on detonation
-	PlayingCard: Stealth strikes throw 5 homing cards that are always explosive
-	Soulslasher: Stealth strikes will also aggressively home after hitting an enemy
-	WhiteDwarfCutter: During a stealth strike each hit creates Ivory flares that damage for 0.1% of the target's max HP
-	CaptainsPoignard: Stealth strikes throw a burst of 6 daggers and gives the player increased attack speed for 10 seconds
-	SoftServeSunderer: Stealth strikes summon a rain of cones from above the hit enemy
-	ShadeShuriken: Stealth strikes throw a larger, faster shuriken that has increased pierce
-	//LodestoneJav: Stealth strikes cause earth to erupt from the struck enemy, inflicting sunder
-	//ValadiumThrowingAxe: Stealth strikes on first hit will create a ring of axes to fly at the struck enemy
-	//ChlorophyteTomahawk: Stealth strikes will last longer, have more pierce and generate homing spores throughout it's duration
+	CactusNeedle: 潜伏攻击会发射出3个为一束的针刺
+	IcyTomahawk: 潜伏攻击会发射4个速度不同的投斧，投斧会存在更久且穿透更强
+	ZephyrRuin: 潜伏攻击会发射更强大且必定暴击的投矛
+	ClockworkBomb: 潜伏攻击会产生更大且持续时间更久的立场
+	SoulBomb: 潜伏攻击在引爆时释放一阵追踪的灵魂
+	PlayingCard: 潜伏攻击会发射出5张爆炸性的追踪卡片
+	Soulslasher: 潜伏攻击命中敌人后会继续追踪攻击
+	WhiteDwarfCutter: 潜伏攻击的每次命中都会产生伤害为目标最大生命值0.1%的白色闪光
+	CaptainsPoignard: 潜伏攻击会一次性发射6把匕首，并使你的攻速增加10秒
+	SoftServeSunderer: 潜伏攻击会在被击中的敌人的上方释放锥刺雨
+	ShadeShuriken: 潜伏攻击会发射一枚更大更快且穿透更强的手里剑
+	LodestoneJav: 潜伏攻击会使被击中的敌怪释放土壤喷发，并造成剥离减益
+	ValadiumThrowingAxe: 潜伏攻击在首次命中时，会在目标周围召唤一圈战斧飞向被击中的敌人
+	ChlorophyteTomahawk: 潜伏攻击持续时间更长，穿透更强，并在持续期间内持续生成追踪的孢子
 	//FireAxe:
 		//'''
 		//'Best to avoid chasms with this thing...'
