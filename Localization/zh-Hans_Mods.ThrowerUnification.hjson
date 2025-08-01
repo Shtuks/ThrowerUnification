@@ -1,4 +1,4 @@
-DefaultStealthStrikeTooltip: Stealth strikes have +75% damage and +75% velocity.
+﻿//DefaultStealthStrikeTooltip: Stealth strikes have +75% damage and +75% velocity.
 
 ThoriumStealthStrike: {
 	CactusNeedle: Stealth strikes throw out needles in a tight fan of 3
@@ -12,34 +12,35 @@ ThoriumStealthStrike: {
 	CaptainsPoignard: Stealth strikes throw a burst of 6 daggers and gives the player increased attack speed for 10 seconds
 	SoftServeSunderer: Stealth strikes summon a rain of cones from above the hit enemy
 	ShadeShuriken: Stealth strikes throw a larger, faster shuriken that has increased pierce
-	LodestoneJav: Stealth strikes cause earth to erupt from the struck enemy, inflicting sunder
-	ValadiumThrowingAxe: Stealth strikes on first hit will create a ring of axes to fly at the struck enemy
-	ChlorophyteTomahawk: Stealth strikes will last longer, have more pierce and generate homing spores throughout it's duration
-	FireAxe:
-		'''
-		'Best to avoid chasms with this thing...'
-		Stealth strikes summon a spectral axe of flames to cleave hit enemies
-		'''
+	//LodestoneJav: Stealth strikes cause earth to erupt from the struck enemy, inflicting sunder
+	//ValadiumThrowingAxe: Stealth strikes on first hit will create a ring of axes to fly at the struck enemy
+	//ChlorophyteTomahawk: Stealth strikes will last longer, have more pierce and generate homing spores throughout it's duration
+	//FireAxe:
+		//'''
+		//'Best to avoid chasms with this thing...'
+		//Stealth strikes summon a spectral axe of flames to cleave hit enemies
+		//'''
 	TerraKnife:
 		'''
-		Left click to quickly throw terra daggers
-		Right click to throw an impaling terra knife, which constantly damages your chosen target
-		Both the daggers and the knife are thrown on a stealth strike, with the knife summoning a barrage of slashes on hit
+		左键快速扔出泰拉匕首
+		右键扔出一把穿刺泰拉小刀，持续伤害选中的目标
+		潜伏攻击会同时投掷匕首和小刀，小刀在命中目标时发起一连串斩击
 		'''
 	GelGlove:
 		'''
-		Throws out a ball of gel that bounces against surfaces
-		Can be charged to increase in damage, bounce amount, and size
-		Stealth strikes shoot out shurikens at nearby enemies as they travel
+		扔出可以在表面反弹的凝胶球
+		可以通过蓄力来增加伤害，反弹次数和大小
+		潜伏攻击在飞行过程中向附近敌人发射手里剑
 		'''
 	TidalWave:
 		'''
-		'Sweep away your foes with the fury of the tide...'
-		Throws out a massive aquatic shuriken that releases miniature waves
-		Stealth strikes spawn a damaging tidal wave that follows the shuriken and pulls enemies in
+		“以潮汐之怒扫除你的敌人……”
+		扔出一个大型水之手里剑，会释放微型海波
+		潜伏攻击会产生一道可以聚拢附近敌怪的伤害性浪潮
 		'''
 }
 
+/*
 DamageClasses: {
 	UnitedModdedThrower: {
 		DisplayName: {
@@ -132,3 +133,4 @@ Projectiles: {
 	RogueSpectreBlast.DisplayName: Rogue Spectre Blast
 	TidalWaveWhirlpool.DisplayName: Tidal Wave Whirlpool
 }
+*/
