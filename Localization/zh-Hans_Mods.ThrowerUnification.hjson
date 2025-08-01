@@ -1,4 +1,4 @@
-﻿//DefaultStealthStrikeTooltip: Stealth strikes have +75% damage and +75% velocity.
+// DefaultStealthStrikeTooltip: Stealth strikes have +75% damage and +75% velocity.
 
 ThoriumStealthStrike: {
 	CactusNeedle: 潜伏攻击会发射出3个为一束的针刺
@@ -15,11 +15,11 @@ ThoriumStealthStrike: {
 	LodestoneJav: 潜伏攻击会使被击中的敌怪释放土壤喷发，并造成剥离减益
 	ValadiumThrowingAxe: 潜伏攻击在首次命中时，会在目标周围召唤一圈战斧飞向被击中的敌人
 	ChlorophyteTomahawk: 潜伏攻击持续时间更长，穿透更强，并在持续期间内持续生成追踪的孢子
-	//FireAxe:
-		//'''
-		//'Best to avoid chasms with this thing...'
-		//Stealth strikes summon a spectral axe of flames to cleave hit enemies
-		//'''
+	FireAxe:
+		'''
+		“最好用这个东西来避免裂隙……”
+		潜伏攻击会召唤出一把幽灵火焰战斧劈砍命中的敌怪
+		'''
 	TerraKnife:
 		'''
 		左键快速扔出泰拉匕首
@@ -40,58 +40,57 @@ ThoriumStealthStrike: {
 		'''
 }
 
-/*
 DamageClasses: {
 	UnitedModdedThrower: {
 		DisplayName: {
-			0: thrower damage
-			1: rogue damage
-			2: malevolent damage
-			3: kinetic damage
-			Thrower: thrower damage
-			Rogue: rogue damage
-			Malevolent: malevolent damage
-			Kinetic: kinetic damage
-			thrower: thrower damage
-			rogue: rogue damage
-			malevolent: malevolent damage
-			kinetic: kinetic damage
+			0: 投手伤害
+			1: 盗贼伤害
+			2: 恶念伤害
+			3: 动能伤害
+			Thrower: 投手伤害
+			Rogue: 盗贼伤害
+			Malevolent: 恶念伤害
+			Kinetic: 动能伤害
+			thrower: 投手伤害
+			rogue: 盗贼伤害
+			malevolent: 恶念伤害
+			kinetic: 动能伤害
 		}
 	}
 }
 
 Configs: {
 	ThrowerModConfig: {
-		DisplayName: Thrower Mod Config
+		DisplayName: 投手模组配置文件
 
 		Headers: {
-			General: General Header
-			ColoredDamageType: Colored Damage Type
+			General: 通用标题
+			ColoredDamageType: 伤害类型染色
 		}
 
 		Vanilla: {
-			Label: Vanilla
-			Tooltip: Toggles the class unification merge for any mod that uses the vanilla thrower class damage. This mainly includes Thorium mod.
+			Label: 原版
+			Tooltip: 开关对所有使用原版投掷者职业伤害机制的模组的职业合并功能（主要包括瑟银模组）
 		}
 
 		Calamity: {
-			Label: Calamity
-			Tooltip: Toggles the class unification merge for the Rogue class from Calamity mod.
+			Label: 灾厄
+			Tooltip: 开关对灾厄模组中盗贼职业的合并功能
 		}
 
 		Vitality: {
-			Label: Vitality
-			Tooltip: Toggles the class unification merge for the Blood Hunter class from Vitality mod.
+			Label: 万灵
+			Tooltip: 开关对万灵模组中血族猎人职业的合并功能
 		}
 
 		SacredTools: {
-			Label: Shadows of Abaddon
-			Tooltip: Toggles the class unification merge for the Revenant class from Shadows of Abaddon.
+			Label: 亚巴顿之影（原圣域）
+			Tooltip: 开关对亚巴顿之影模组中复生者职业的合并功能
 		}
 
 		TooltipOverride: {
-			Label: Class Name & Tooltips Override
-			Tooltip: Lets you adjust the name of the class to any of the supported classes.
+			Label: 职业名称&物品信息覆盖
+			Tooltip: 允许你将职业伤害的名称修改成任意一种受支持的职业伤害名称
 		}
 
 		R: {
@@ -110,27 +109,26 @@ Configs: {
 		}
 
 		StealthStrikes: {
-			Label: Stealth Strikes
+			Label: 潜伏攻击
 			Tooltip:
 				'''
-				Toggles the non-Calamity stealth strikes added by this mod.
-				This setting does nothing if Calamity is not enabled
+				开关非灾厄投手武器的潜伏攻击
+				此选项在未启用灾厄模组时无效
 				'''
 		}
 	}
 
 	TooltipOverrideStyle: {
 		Tooltip: ""
-		Thrower.Label: Thrower
-		Rogue.Label: Rogue
-		Malevolent.Label: Malevolent
-		Kinetic.Label: Kinetic
+		Thrower.Label: 投手
+		Rogue.Label: 盗贼
+		Malevolent.Label: 恶念
+		Kinetic.Label: 动能
 	}
 }
 
 Projectiles: {
-	FireAxeStealthPro.DisplayName: Fire Axe Stealth Pro
-	RogueSpectreBlast.DisplayName: Rogue Spectre Blast
-	TidalWaveWhirlpool.DisplayName: Tidal Wave Whirlpool
+	FireAxeStealthPro.DisplayName: 消防斧绝赞潜伏中
+	RogueSpectreBlast.DisplayName: 幽影冲击
+	TidalWaveWhirlpool.DisplayName: 海潮涡流
 }
-*/

@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|n:\\documents\\my games\\terraria\\tmodloader\\modsources\\throwerunification\\localization\\en-us_mods.throwerunification.hjson||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|solutionrelative:localization\\en-us_mods.throwerunification.hjson||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|n:\\documents\\my games\\terraria\\tmodloader\\modsources\\throwerunification\\localization\\zh-hans_mods.throwerunification.hjson||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|solutionrelative:localization\\zh-hans_mods.throwerunification.hjson||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|n:\\documents\\my games\\terraria\\tmodloader\\modsources\\throwerunification\\build.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|solutionrelative:build.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|n:\\documents\\my games\\terraria\\tmodloader\\modsources\\throwerunification\\description_workshop.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -19,8 +19,8 @@
       "RelativeMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|solutionrelative:description.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|n:\\documents\\my games\\terraria\\tmodloader\\modsources\\throwerunification\\build.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|solutionrelative:build.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|n:\\documents\\my games\\terraria\\tmodloader\\modsources\\throwerunification\\localization\\en-us_mods.throwerunification.hjson||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|solutionrelative:localization\\en-us_mods.throwerunification.hjson||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|n:\\documents\\my games\\terraria\\tmodloader\\modsources\\throwerunification\\core\\modcompatibility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -102,7 +102,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -126,15 +126,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "description_workshop.txt",
-              "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\description_workshop.txt",
-              "RelativeDocumentMoniker": "description_workshop.txt",
-              "ToolTip": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\description_workshop.txt",
-              "RelativeToolTip": "description_workshop.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-07-30T08:34:13.672Z",
+              "DocumentIndex": 4,
+              "Title": "en-US_Mods.ThrowerUnification.hjson",
+              "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Localization\\en-US_Mods.ThrowerUnification.hjson",
+              "RelativeDocumentMoniker": "Localization\\en-US_Mods.ThrowerUnification.hjson",
+              "ToolTip": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Localization\\en-US_Mods.ThrowerUnification.hjson",
+              "RelativeToolTip": "Localization\\en-US_Mods.ThrowerUnification.hjson",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-07-30T08:59:32.126Z",
               "EditorCaption": ""
             },
             {
@@ -165,28 +165,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "zh-Hans_Mods.ThrowerUnification.hjson",
               "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Localization\\zh-Hans_Mods.ThrowerUnification.hjson",
               "RelativeDocumentMoniker": "Localization\\zh-Hans_Mods.ThrowerUnification.hjson",
               "ToolTip": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Localization\\zh-Hans_Mods.ThrowerUnification.hjson",
               "RelativeToolTip": "Localization\\zh-Hans_Mods.ThrowerUnification.hjson",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-07-31T23:21:31.498Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "en-US_Mods.ThrowerUnification.hjson",
-              "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Localization\\en-US_Mods.ThrowerUnification.hjson",
-              "RelativeDocumentMoniker": "Localization\\en-US_Mods.ThrowerUnification.hjson",
-              "ToolTip": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Localization\\en-US_Mods.ThrowerUnification.hjson",
-              "RelativeToolTip": "Localization\\en-US_Mods.ThrowerUnification.hjson",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-07-30T08:59:32.126Z",
               "EditorCaption": ""
             },
             {
@@ -201,6 +188,36 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-30T08:31:41.011Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "build.txt",
+              "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\build.txt",
+              "RelativeDocumentMoniker": "build.txt",
+              "ToolTip": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\build.txt",
+              "RelativeToolTip": "build.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-07-30T08:25:44.569Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "description_workshop.txt",
+              "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\description_workshop.txt",
+              "RelativeDocumentMoniker": "description_workshop.txt",
+              "ToolTip": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\description_workshop.txt",
+              "RelativeToolTip": "description_workshop.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-07-30T08:34:13.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
@@ -239,23 +256,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-30T08:32:32.071Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "build.txt",
-              "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\build.txt",
-              "RelativeDocumentMoniker": "build.txt",
-              "ToolTip": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\build.txt",
-              "RelativeToolTip": "build.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-07-30T08:25:44.569Z",
               "EditorCaption": ""
             },
             {
