@@ -147,7 +147,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
         //SPRITE STUFF
         public override bool PreDraw(Projectile projectile, ref Color lightColor)
         {
-            if (!isStealthStrike && stealthType != StealthStrikeType.PlayingCard)
+            if (!isStealthStrike || stealthType != StealthStrikeType.PlayingCard)
                 return true;
 
             if (projectile.ModProjectile != null && projectile.ModProjectile.Mod.Name == "ThoriumMod")
@@ -614,16 +614,23 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
 
                         int shurikenType = ProjectileID.Shuriken;
 
-                        Projectile.NewProjectile(
-                            projectile.GetSource_FromThis(),
-                            projectile.Center,
-                            shootVelocity,
-                            shurikenType,
-                            projectile.damage - projectile.damage / 4,
-                            projectile.knockBack,
-                            projectile.owner,
-                            7 //uses an ai slot to tell the game to switch the damage type (see above)
+                        int projID = Projectile.NewProjectile(
+                        projectile.GetSource_FromThis(),
+                        projectile.Center,
+                        shootVelocity,
+                        shurikenType,
+                        projectile.damage - projectile.damage / 4,
+                        projectile.knockBack,
+                        projectile.owner,
+                        7 // ai param
                         );
+
+                        if (Main.projectile.IndexInRange(projID))
+                        {
+                            Projectile newProj = Main.projectile[projID];
+                            newProj.DamageType = ModContent.GetInstance<UnitedModdedThrower>();
+                        }
+
                     }
                 }
                 else
@@ -942,8 +949,10 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
         }
     }
 
-    public class SoftServeSundererGlobal : GlobalProjectile
+    public class StealthGlobalProjectile : GlobalProjectile
     {
+        public override bool InstancePerEntity => true;
+
         private static int thoriumSoftServeType = -1;
 
         public override void AI(Projectile projectile)
