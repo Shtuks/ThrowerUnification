@@ -21,6 +21,8 @@ namespace ThrowerUnification.Content.StealthStrikes
     [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
     public class DefaultStealthStrike : GlobalItem
     {
+        public override bool InstancePerEntity => true;
+
         public override bool IsLoadingEnabled(Mod mod)
         {
             return ThrowerModConfig.Instance.StealthStrikes;

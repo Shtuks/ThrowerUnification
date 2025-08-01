@@ -523,6 +523,16 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                         projectile.timeLeft = 240;
                 }
 
+                //CHLOROPHYTE TOMAHAWK PEN AND LIFE CHANGES
+                if (stealthType == StealthStrikeType.ChlorophyteTomahawk)
+                {
+                    if (projectile.penetrate < 10 || projectile.penetrate == -1)
+                        projectile.penetrate = 10;
+
+                    if (projectile.timeLeft < 420)
+                        projectile.timeLeft = 420;
+                }
+
                 //CLOCKWORK SIZE AND LIFETIME CHANGES
                 if (stealthType == StealthStrikeType.ClockworkBomb)
                 {
