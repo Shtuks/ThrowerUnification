@@ -4,3 +4,4 @@ version = 0.3
 weakReferences = VitalityMod, CalamityMod, ThoriumMod, SacredTools, ssm
 sortAfter = VitalityMod, CalamityMod, ThoriumMod, SacredTools, CalamityBardHealer, RagnarokMod, SOTS, SOTSBardHealer
 homepage = https://discord.gg/frUcz2dQAy
+steamid64 = 76561198012345678, 76561198065899099, 76561199775622108
