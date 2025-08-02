@@ -35,11 +35,18 @@ namespace ThrowerUnification.Core.Players
 
             bool isFromAllowedMod = isModded && isMergedRogue;
 
+            bool isThoriumNonConsumable = isModded && modName == "ThoriumMod" && !item.consumable;
+
             // Vanilla items (no ModItem) that use rogue damage
             bool isVanillaRogue = !isModded && isMergedRogue;
 
             if (isNotCalamityAndConsumableRogue || isFromAllowedMod || isVanillaRogue)
             {
+                if (isThoriumNonConsumable)
+                {
+                    return;
+                }
+
                 Player player = Main.LocalPlayer;
                 var calPlayer = player.GetModPlayer<CalamityPlayer>();
 

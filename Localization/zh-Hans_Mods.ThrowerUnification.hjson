@@ -1,4 +1,6 @@
 // DefaultStealthStrikeTooltip: Stealth strikes have +75% damage and +75% velocity.
+// DefaultStealthStrikeTooltipDamage: Stealth strikes have +75% damage.
+// DefaultStealthStrikeTooltipVelocity: Stealth strikes have +75% velocity.
 
 ThoriumStealthStrike: {
 	CactusNeedle: 潜伏攻击会发射出3个为一束的针刺
