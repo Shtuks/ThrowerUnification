@@ -147,7 +147,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
         //SPRITE STUFF
         public override bool PreDraw(Projectile projectile, ref Color lightColor)
         {
-            if (!isStealthStrike || stealthType != StealthStrikeType.PlayingCard)
+            if (!isStealthStrike || (stealthType != StealthStrikeType.PlayingCard && stealthType != StealthStrikeType.ClockworkBomb))
                 return true;
 
             if (projectile.ModProjectile != null && projectile.ModProjectile.Mod.Name == "ThoriumMod")

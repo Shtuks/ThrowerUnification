@@ -72,7 +72,25 @@ namespace ThrowerUnification.Content.StealthStrikes
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             if (item.Name == "Captain's Poignard")
+            {
+                AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.DefaultStealthStrikeTooltipDamage"));
                 return;
+            }
+
+            string[] preventDamageBoostItems =
+            {
+                "Clockwork Bomb",
+                "Soul Bomb",
+                "Soulslasher",
+                "Soft Serve Sunderer",
+                "Shade Shuriken"
+            };
+
+            if (preventDamageBoostItems.Contains(item.Name))
+            {
+                AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.DefaultStealthStrikeTooltipVelocity"));
+                return;
+            }
 
             bool isModded = item.ModItem != null;
             string modName = isModded ? item.ModItem.Mod.Name : null;
