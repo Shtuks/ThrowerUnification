@@ -38,13 +38,21 @@ namespace ThrowerUnification.Common.CrossmodToUMT
                         val1 = "Rogue";
                         val2 = "rogue";
                     }
+                    if (ThrowerModConfig.Instance.TooltipOverride == TooltipOverrideStyle.Custom)
+                    {
+                        val1 = ThrowerModConfig.Instance.CustomTooltipOverride;
+                        val2 = ThrowerModConfig.Instance.CustomTooltipOverride.ToLower();
+                    }
 
+                    //This only works for english.... is there a way around this maybe?
                     tooltips[i].Text = Regex.Replace(tooltips[i].Text, "thrower", val2);
+                    tooltips[i].Text = Regex.Replace(tooltips[i].Text, "throwing", val2); //some mods say "throwing" instead of thrower.
                     tooltips[i].Text = Regex.Replace(tooltips[i].Text, "kinetic", val2);
                     tooltips[i].Text = Regex.Replace(tooltips[i].Text, "malevolent", val2);
                     tooltips[i].Text = Regex.Replace(tooltips[i].Text, "rogue", val2);
 
                     tooltips[i].Text = Regex.Replace(tooltips[i].Text, "Thrower", val1);
+                    tooltips[i].Text = Regex.Replace(tooltips[i].Text, "Throwing", val1);
                     tooltips[i].Text = Regex.Replace(tooltips[i].Text, "Kinetic", val1);
                     tooltips[i].Text = Regex.Replace(tooltips[i].Text, "Rogue", val1);
                     tooltips[i].Text = Regex.Replace(tooltips[i].Text, "Malevolent", val1);

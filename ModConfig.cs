@@ -41,6 +41,11 @@ namespace ThrowerUnification
         [DefaultValue(TooltipOverrideStyle.Thrower)]
         public TooltipOverrideStyle TooltipOverride { get; set; }
 
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue("")]
+        public string CustomTooltipOverride { get; set; }
+
         [Header("ColoredDamageType")]
 
         [ReloadRequired]
@@ -63,6 +68,7 @@ namespace ThrowerUnification
         Thrower,
         Rogue,
         Malevolent,
-        Kinetic
+        Kinetic,
+        Custom
     }
 }

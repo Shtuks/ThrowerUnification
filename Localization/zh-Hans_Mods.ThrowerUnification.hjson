@@ -61,6 +61,8 @@ DamageClasses: {
 	}
 }
 
+CustomName: "{0}伤害"
+
 Configs: {
 	ThrowerModConfig: {
 		DisplayName: 投手模组配置文件
@@ -92,7 +94,7 @@ Configs: {
 
 		TooltipOverride: {
 			Label: 职业名称&物品信息覆盖
-			Tooltip: 允许你将职业伤害的名称修改成任意一种受支持的职业伤害名称
+			// Tooltip: Lets you adjust the name of the class to any of the supported classes, or the custom name set below.
 		}
 
 		R: {
@@ -118,6 +120,15 @@ Configs: {
 				此选项在未启用灾厄模组时无效
 				'''
 		}
+
+		CustomTooltipOverride: {
+			Label: Custom Tooltip Override
+			Tooltip:
+				'''
+				Allows you to enter a custom name for the united thrower class.
+				Enter the deseried class name with proper capitalization (i.e. Thrower)
+				'''
+		}
 	}
 
 	TooltipOverrideStyle: {
@@ -126,6 +137,7 @@ Configs: {
 		Rogue.Label: 盗贼
 		Malevolent.Label: 恶念
 		Kinetic.Label: 动能
+		// Custom.Label: Custom
 	}
 }
 

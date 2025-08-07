@@ -61,6 +61,8 @@ DamageClasses: {
 	}
 }
 
+CustomName: "{0} damage"
+
 Configs: {
 	ThrowerModConfig: {
 		DisplayName: Thrower Mod Config
@@ -92,7 +94,7 @@ Configs: {
 
 		TooltipOverride: {
 			Label: Class Name & Tooltips Override
-			Tooltip: Lets you adjust the name of the class to any of the supported classes.
+			Tooltip: Lets you adjust the name of the class to any of the supported classes, or the custom name set below.
 		}
 
 		R: {
@@ -118,6 +120,15 @@ Configs: {
 				This setting does nothing if Calamity is not enabled
 				'''
 		}
+
+		CustomTooltipOverride: {
+			Label: Custom Tooltip Override
+			Tooltip:
+				'''
+				Allows you to enter a custom name for the united thrower class.
+				Enter the deseried class name with proper capitalization (i.e. Thrower)
+				'''
+		}
 	}
 
 	TooltipOverrideStyle: {
@@ -126,6 +137,7 @@ Configs: {
 		Rogue.Label: Rogue
 		Malevolent.Label: Malevolent
 		Kinetic.Label: Kinetic
+		Custom.Label: Custom
 	}
 }
 

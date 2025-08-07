@@ -7,6 +7,7 @@ using CalamityMod.CalPlayer;
 using CalamityMod.Projectiles;
 using Terraria.DataStructures;
 using Terraria.ID;
+using System.Collections.Generic;
 
 namespace ThrowerUnification.Core.UnitedModdedThrowerClass
 {
@@ -86,6 +87,20 @@ namespace ThrowerUnification.Core.UnitedModdedThrowerClass
             }
 
             return false;
+        }
+    }
+    partial class CustomDamageDisplayName : GlobalItem
+    {
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            foreach (TooltipLine tooltip in tooltips)
+            {
+                if (tooltip.Text.Contains("Mods.ThrowerUnification.DamageClasses.UnitedModdedThrower.DisplayName.Custom"))
+                {
+                    int damage = Main.LocalPlayer.GetWeaponDamage(item);
+                    tooltip.Text = $"{damage} {(Language.GetTextValue("Mods.ThrowerUnification.CustomName", ThrowerModConfig.Instance.CustomTooltipOverride)).ToLower()}";
+                }
+            }
         }
     }
 }
