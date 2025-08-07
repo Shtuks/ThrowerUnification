@@ -13,7 +13,7 @@ This mod also adds custom stealth stikes for some non-Calamity thrower weapons, 
 This mod is highly configurable. You can toggle only a specific class' merge, the tooltip overrides, if non-Calamity weapons have custom stealth strikes, and the color for Colored Damage Types support.
 If you playing with any other mod that also merges throwers, it is recommended off their thrower merge if possible.
 
-NOTE: This mod doesn't balance the classes together. If you are looking for balance changes, it is recommended to use [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3452171528&searchtext=tpackbuilder] WHummus' Calamity/Thorium Balancing[/url] in conjunction with this mod if you are playing with both Calamity & Thorium enabled.
+NOTE: This mod doesn't balance the classes together. If you are looking for balance changes, it is recommended to use [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3452171528&searchtext=tpackbuilder] WHummus' Calamity/Thorium Balancing[/url], as well as other cross-mod balancing mods such as [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3114886209&searchtext=ragnarok] Ragnarok[/url] in conjunction with this mod if you are playing with both Calamity & Thorium enabled.
 
 Discord Server: https://discord.gg/frUcz2dQAy
 

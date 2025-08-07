@@ -7,20 +7,28 @@
       "RelativeMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|solutionrelative:localization\\zh-hans_mods.throwerunification.hjson||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|n:\\documents\\my games\\terraria\\tmodloader\\modsources\\throwerunification\\localization\\en-us_mods.throwerunification.hjson||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|solutionrelative:localization\\en-us_mods.throwerunification.hjson||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|n:\\documents\\my games\\terraria\\tmodloader\\modsources\\throwerunification\\content\\stealthstrikes\\thoriumstealthstrikes\\thoriumstealthstrikesetup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|solutionrelative:content\\stealthstrikes\\thoriumstealthstrikes\\thoriumstealthstrikesetup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|n:\\documents\\my games\\terraria\\tmodloader\\modsources\\throwerunification\\content\\stealthstrikes\\thoriumstealthstrikes\\thoriumstealthstrikeprojectiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|solutionrelative:content\\stealthstrikes\\thoriumstealthstrikes\\thoriumstealthstrikeprojectiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|n:\\documents\\my games\\terraria\\tmodloader\\modsources\\throwerunification\\description_workshop.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|solutionrelative:description_workshop.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|n:\\documents\\my games\\terraria\\tmodloader\\modsources\\throwerunification\\build.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|solutionrelative:build.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|n:\\documents\\my games\\terraria\\tmodloader\\modsources\\throwerunification\\description.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|solutionrelative:description.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|n:\\documents\\my games\\terraria\\tmodloader\\modsources\\throwerunification\\localization\\en-us_mods.throwerunification.hjson||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|solutionrelative:localization\\en-us_mods.throwerunification.hjson||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|n:\\documents\\my games\\terraria\\tmodloader\\modsources\\throwerunification\\description_workshop.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|solutionrelative:description_workshop.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|n:\\documents\\my games\\terraria\\tmodloader\\modsources\\throwerunification\\core\\modcompatibility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -49,14 +57,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|n:\\documents\\my games\\terraria\\tmodloader\\modsources\\throwerunification\\content\\projectiles\\stealthpro\\tidalwavewhirlpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|solutionrelative:content\\projectiles\\stealthpro\\tidalwavewhirlpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|n:\\documents\\my games\\terraria\\tmodloader\\modsources\\throwerunification\\content\\stealthstrikes\\thoriumstealthstrikes\\thoriumstealthstrikesetup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|solutionrelative:content\\stealthstrikes\\thoriumstealthstrikes\\thoriumstealthstrikesetup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|n:\\documents\\my games\\terraria\\tmodloader\\modsources\\throwerunification\\content\\stealthstrikes\\thoriumstealthstrikes\\thoriumstealthstrikeprojectiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|solutionrelative:content\\stealthstrikes\\thoriumstealthstrikes\\thoriumstealthstrikeprojectiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E03A2DBC-34F2-4E0A-B254-3DFCABDD1F7E}|ThrowerUnification.csproj|n:\\documents\\my games\\terraria\\tmodloader\\modsources\\throwerunification\\content\\stealthstrikes\\umtstealthstrikesetup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -126,59 +126,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "en-US_Mods.ThrowerUnification.hjson",
-              "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Localization\\en-US_Mods.ThrowerUnification.hjson",
-              "RelativeDocumentMoniker": "Localization\\en-US_Mods.ThrowerUnification.hjson",
-              "ToolTip": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Localization\\en-US_Mods.ThrowerUnification.hjson",
-              "RelativeToolTip": "Localization\\en-US_Mods.ThrowerUnification.hjson",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-07-30T08:59:32.126Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "description.txt",
-              "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\description.txt",
-              "RelativeDocumentMoniker": "description.txt",
-              "ToolTip": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\description.txt",
-              "RelativeToolTip": "description.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAADOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-07-30T08:41:17.392Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "zh-Hans_Mods.ThrowerUnification.hjson",
-              "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Localization\\zh-Hans_Mods.ThrowerUnification.hjson",
-              "RelativeDocumentMoniker": "Localization\\zh-Hans_Mods.ThrowerUnification.hjson",
-              "ToolTip": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Localization\\zh-Hans_Mods.ThrowerUnification.hjson",
-              "RelativeToolTip": "Localization\\zh-Hans_Mods.ThrowerUnification.hjson",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-07-31T23:21:31.498Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UnitedModdedThrower.cs",
-              "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Core\\UnitedModdedThrowerClass\\UnitedModdedThrower.cs",
-              "RelativeDocumentMoniker": "Core\\UnitedModdedThrowerClass\\UnitedModdedThrower.cs",
-              "ToolTip": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Core\\UnitedModdedThrowerClass\\UnitedModdedThrower.cs",
-              "RelativeToolTip": "Core\\UnitedModdedThrowerClass\\UnitedModdedThrower.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAcwDgAAABKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-30T08:31:41.011Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "build.txt",
               "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\build.txt",
               "RelativeDocumentMoniker": "build.txt",
@@ -191,13 +139,52 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ThoriumStealthStrikeSetup.cs",
+              "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Content\\StealthStrikes\\ThoriumStealthStrikes\\ThoriumStealthStrikeSetup.cs",
+              "RelativeDocumentMoniker": "Content\\StealthStrikes\\ThoriumStealthStrikes\\ThoriumStealthStrikeSetup.cs",
+              "ToolTip": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Content\\StealthStrikes\\ThoriumStealthStrikes\\ThoriumStealthStrikeSetup.cs",
+              "RelativeToolTip": "Content\\StealthStrikes\\ThoriumStealthStrikes\\ThoriumStealthStrikeSetup.cs",
+              "ViewState": "AgIAALoCAAAAAAAAAAAcwNQCAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T08:55:09.165Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "zh-Hans_Mods.ThrowerUnification.hjson",
+              "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Localization\\zh-Hans_Mods.ThrowerUnification.hjson",
+              "RelativeDocumentMoniker": "Localization\\zh-Hans_Mods.ThrowerUnification.hjson",
+              "ToolTip": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Localization\\zh-Hans_Mods.ThrowerUnification.hjson",
+              "RelativeToolTip": "Localization\\zh-Hans_Mods.ThrowerUnification.hjson",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-07-31T23:21:31.498Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "description.txt",
+              "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\description.txt",
+              "RelativeDocumentMoniker": "description.txt",
+              "ToolTip": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\description.txt",
+              "RelativeToolTip": "description.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAADOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-07-30T08:41:17.392Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
               "Title": "description_workshop.txt",
               "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\description_workshop.txt",
               "RelativeDocumentMoniker": "description_workshop.txt",
               "ToolTip": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\description_workshop.txt",
               "RelativeToolTip": "description_workshop.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAADzAQAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
               "WhenOpened": "2025-07-30T08:34:13.672Z",
               "EditorCaption": ""
@@ -208,7 +195,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
+              "Title": "ThoriumStealthStrikeProjectiles.cs",
+              "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Content\\StealthStrikes\\ThoriumStealthStrikes\\ThoriumStealthStrikeProjectiles.cs",
+              "RelativeDocumentMoniker": "Content\\StealthStrikes\\ThoriumStealthStrikes\\ThoriumStealthStrikeProjectiles.cs",
+              "ToolTip": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Content\\StealthStrikes\\ThoriumStealthStrikes\\ThoriumStealthStrikeProjectiles.cs",
+              "RelativeToolTip": "Content\\StealthStrikes\\ThoriumStealthStrikes\\ThoriumStealthStrikeProjectiles.cs",
+              "ViewState": "AgIAALoDAAAAAAAAAAAmwBsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T09:10:29.792Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "en-US_Mods.ThrowerUnification.hjson",
+              "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Localization\\en-US_Mods.ThrowerUnification.hjson",
+              "RelativeDocumentMoniker": "Localization\\en-US_Mods.ThrowerUnification.hjson",
+              "ToolTip": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Localization\\en-US_Mods.ThrowerUnification.hjson",
+              "RelativeToolTip": "Localization\\en-US_Mods.ThrowerUnification.hjson",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-07-30T08:59:32.126Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UnitedModdedThrower.cs",
+              "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Core\\UnitedModdedThrowerClass\\UnitedModdedThrower.cs",
+              "RelativeDocumentMoniker": "Core\\UnitedModdedThrowerClass\\UnitedModdedThrower.cs",
+              "ToolTip": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Core\\UnitedModdedThrowerClass\\UnitedModdedThrower.cs",
+              "RelativeToolTip": "Core\\UnitedModdedThrowerClass\\UnitedModdedThrower.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAcwDgAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T08:31:41.011Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "ModCompatibility.cs",
               "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Core\\ModCompatibility.cs",
               "RelativeDocumentMoniker": "Core\\ModCompatibility.cs",
@@ -221,7 +247,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "CrossmodHandler.cs",
               "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Core\\CrossmodHandler.cs",
               "RelativeDocumentMoniker": "Core\\CrossmodHandler.cs",
@@ -234,7 +260,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "ModConfig.cs",
               "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\ModConfig.cs",
               "RelativeDocumentMoniker": "ModConfig.cs",
@@ -247,7 +273,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "ThrowerMergeTooltips.cs",
               "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Common\\CrossmodToUMT\\ThrowerMergeTooltips.cs",
               "RelativeDocumentMoniker": "Common\\CrossmodToUMT\\ThrowerMergeTooltips.cs",
@@ -260,7 +286,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "DefaultStealthStrike.cs",
               "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Content\\StealthStrikes\\DefaultStealthStrike.cs",
               "RelativeDocumentMoniker": "Content\\StealthStrikes\\DefaultStealthStrike.cs",
@@ -269,32 +295,6 @@
               "ViewState": "AgIAAD4AAAAAAAAAAAAcwFwAAAB4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-31T22:01:39.041Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ThoriumStealthStrikeSetup.cs",
-              "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Content\\StealthStrikes\\ThoriumStealthStrikes\\ThoriumStealthStrikeSetup.cs",
-              "RelativeDocumentMoniker": "Content\\StealthStrikes\\ThoriumStealthStrikes\\ThoriumStealthStrikeSetup.cs",
-              "ToolTip": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Content\\StealthStrikes\\ThoriumStealthStrikes\\ThoriumStealthStrikeSetup.cs",
-              "RelativeToolTip": "Content\\StealthStrikes\\ThoriumStealthStrikes\\ThoriumStealthStrikeSetup.cs",
-              "ViewState": "AgIAAMMCAAAAAAAAAAAcwOACAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-30T08:55:09.165Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "ThoriumStealthStrikeProjectiles.cs",
-              "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Content\\StealthStrikes\\ThoriumStealthStrikes\\ThoriumStealthStrikeProjectiles.cs",
-              "RelativeDocumentMoniker": "Content\\StealthStrikes\\ThoriumStealthStrikes\\ThoriumStealthStrikeProjectiles.cs",
-              "ToolTip": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Content\\StealthStrikes\\ThoriumStealthStrikes\\ThoriumStealthStrikeProjectiles.cs",
-              "RelativeToolTip": "Content\\StealthStrikes\\ThoriumStealthStrikes\\ThoriumStealthStrikeProjectiles.cs",
-              "ViewState": "AgIAANEDAAAAAAAAAAAuwBsAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-30T09:10:29.792Z",
               "EditorCaption": ""
             },
             {
@@ -325,7 +325,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "TidalWaveWhirlpool.cs",
               "DocumentMoniker": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\Content\\Projectiles\\StealthPro\\TidalWaveWhirlpool.cs",
               "RelativeDocumentMoniker": "Content\\Projectiles\\StealthPro\\TidalWaveWhirlpool.cs",
