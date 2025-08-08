@@ -94,7 +94,7 @@ Configs: {
 
 		TooltipOverride: {
 			Label: 职业名称&物品信息覆盖
-			// Tooltip: Lets you adjust the name of the class to any of the supported classes, or the custom name set below.
+			Tooltip: 允许你调整伤害类型的名称，可以使用任意一种受支持的名称，或者是自定义名称
 		}
 
 		R: {
@@ -122,11 +122,11 @@ Configs: {
 		}
 
 		CustomTooltipOverride: {
-			Label: Custom Tooltip Override
+			Label: 自定义物品信息调整
 			Tooltip:
 				'''
-				Allows you to enter a custom name for the united thrower class.
-				Enter the deseried class name with proper capitalization (i.e. Thrower)
+				允许你为融合后的投手职业使用自定义名称
+				输入你想使用的职业伤害名称
 				'''
 		}
 	}
@@ -137,7 +137,7 @@ Configs: {
 		Rogue.Label: 盗贼
 		Malevolent.Label: 恶念
 		Kinetic.Label: 动能
-		// Custom.Label: Custom
+		Custom.Label: 自定义
 	}
 }
 
