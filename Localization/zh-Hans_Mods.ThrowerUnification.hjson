@@ -84,12 +84,12 @@ Configs: {
 
 		Vitality: {
 			Label: 万灵
-			Tooltip: 开关对万灵模组中血族猎人职业的合并功能
+			Tooltip: 开关对万灵模组中鲜血猎人职业的合并功能
 		}
 
 		SacredTools: {
 			Label: 亚巴顿之影（原圣域）
-			Tooltip: 开关对亚巴顿之影模组中复生者职业的合并功能
+			Tooltip: 开关对亚巴顿之影模组中刺客职业的合并功能
 		}
 
 		TooltipOverride: {

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ThrowerUnification")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f7f7a9aab8fc9eeae3e52780c768f89ea678dc71")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0229b98c660fc347ed923a5eb1f85d04a68988a3")]
 [assembly: System.Reflection.AssemblyProductAttribute("ThrowerUnification")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ThrowerUnification")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

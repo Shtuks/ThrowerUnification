@@ -14,6 +14,9 @@
 	  <Reference Include="InfernalEclipseAPI">
 	    <HintPath>..\ModAssemblies\InfernalEclipseAPI_v0.8.1.1.dll</HintPath>
 	  </Reference>
+	  <Reference Include="RagnarokMod">
+	    <HintPath>..\ModAssemblies\RagnarokMod_v1.4.4.dll</HintPath>
+	  </Reference>
 	  <Reference Include="SacredTools">
 	    <HintPath>..\SoABardHealer\lib\SacredTools.dll</HintPath>
 	  </Reference>
