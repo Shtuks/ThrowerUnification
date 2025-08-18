@@ -1,6 +1,6 @@
 ﻿using Terraria.ModLoader;
 
-namespace ThrowerUnification.Core;
+namespace ThrowerUnification;
 
 public static class ModCompatibility
 {
@@ -25,6 +25,12 @@ public static class ModCompatibility
     public static class Vitality
     {
         public const string Name = "VitalityMod";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
+    public static class Ragnarok
+    {
+        public const string Name = "RagnarokMod";
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
     }
