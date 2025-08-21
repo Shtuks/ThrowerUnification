@@ -1,6 +1,8 @@
 DefaultStealthStrikeTooltip: Скрытые атаки наносят на +75% больше урона и имеют +75% к скорости снаряда.
 DefaultStealthStrikeTooltipDamage: I colpi furtivi infliggenu +75% di danni in piщ.
 DefaultStealthStrikeTooltipVelocity: L'attacchi furtivi anu una velocitа di +75%.
+// CrumblingStrikeTooltip: Stealth strikes deal increased damage and inflict crumbling for 5 seconds
+// CrunchStrikeTooltip: Stealth strikes deal increased damage and inflict armor crunch for 5 seconds
 
 ThoriumStealthStrike: {
 	CactusNeedle: Скрытые атаки выбрасывают иглы в виде веера из 3 штук

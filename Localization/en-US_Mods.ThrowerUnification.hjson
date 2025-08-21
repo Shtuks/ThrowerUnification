@@ -1,6 +1,8 @@
-DefaultStealthStrikeTooltip: Stealth strikes have +75% damage and +75% velocity.
-DefaultStealthStrikeTooltipDamage: Stealth strikes have +75% damage.
-DefaultStealthStrikeTooltipVelocity: Stealth strikes have +75% velocity.
+DefaultStealthStrikeTooltip: Stealth strikes deal increased damage and fly faster
+DefaultStealthStrikeTooltipDamage: Stealth strikes have +75% damage
+DefaultStealthStrikeTooltipVelocity: Stealth strikes have +75% velocity
+CrumblingStrikeTooltip: Stealth strikes deal increased damage and inflict crumbling for 5 seconds
+CrunchStrikeTooltip: Stealth strikes deal increased damage and inflict armor crunch for 5 seconds
 
 ThoriumStealthStrike: {
 	CactusNeedle: Stealth strikes throw out needles in a tight fan of 3

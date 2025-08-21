@@ -1,6 +1,8 @@
 DefaultStealthStrikeTooltip: 潜伏攻击增加75%伤害和75%速度
 DefaultStealthStrikeTooltipDamage: 潜伏攻击增加75%伤害
 DefaultStealthStrikeTooltipVelocity: 潜伏攻击增加75%速度
+// CrumblingStrikeTooltip: Stealth strikes deal increased damage and inflict crumbling for 5 seconds
+// CrunchStrikeTooltip: Stealth strikes deal increased damage and inflict armor crunch for 5 seconds
 
 ThoriumStealthStrike: {
 	CactusNeedle: 潜伏攻击会发射出3个为一束的针刺
