@@ -18,6 +18,8 @@ using Terraria.ModLoader;
 using ThrowerUnification.Content.Projectiles.StealthPro;
 using ThrowerUnification.Core;
 using ThrowerUnification.Core.UnitedModdedThrowerClass;
+using CalamityMod.Balancing;
+using CalamityMod.Projectiles;
 
 namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
 {
@@ -28,8 +30,10 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ThrowerModConfig.Instance.StealthStrikes;
+            // Only load if CalamityMod is present AND stealth strikes are enabled in your config
+            return ModLoader.TryGetMod("CalamityMod", out _) && ThrowerModConfig.Instance.StealthStrikes;
         }
+
         public override bool InstancePerEntity => true;
 
         public bool isStealthStrike = false;
@@ -48,6 +52,10 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
 
         // GEL GLOVE specific variables
         private int gelGloveShurikenTimer = 0;
+
+        // DRACULA FANG VARIABLES
+        const int DraculaFangLifeStealCap = 20; // default from Calamity, usually 20
+        const float DraculaFangLifeStealRange = 800f; // example, match BalancingConstants.LifeStealRange
 
         public void SetupAsStealthStrike(StealthStrikeType type)
         {
@@ -147,7 +155,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
         //SPRITE STUFF
         public override bool PreDraw(Projectile projectile, ref Color lightColor)
         {
-            if (!isStealthStrike || (stealthType != StealthStrikeType.PlayingCard && stealthType != StealthStrikeType.ClockworkBomb))
+            if (!isStealthStrike || (stealthType != StealthStrikeType.PlayingCard && stealthType != StealthStrikeType.ClockworkBomb && stealthType != StealthStrikeType.WackWrench))
                 return true;
 
             if (projectile.ModProjectile != null && projectile.ModProjectile.Mod.Name == "ThoriumMod")
@@ -161,7 +169,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                 Vector2 origin = sourceRectangle.Size() / 2f;
 
                 // Draw trail
-                if (stealthType == StealthStrikeType.PlayingCard && projectile.oldPos != null)
+                if ((stealthType == StealthStrikeType.PlayingCard || stealthType == StealthStrikeType.WackWrench) && projectile.oldPos != null)
                 {
                     for (int i = 0; i < projectile.oldPos.Length; i++)
                     {
@@ -452,6 +460,16 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                     newStealth.SetupAsStealthStrike(StealthStrikeType.FireAxe);
                     newStealth.spawnedFromStealthAxe = true;
                 }
+            }
+
+            // ===================== WACK WRENCH =====================
+            if (stealthType == StealthStrikeType.WackWrench)
+            {
+                projectile.velocity = Vector2.Zero;  // stop moving
+                projectile.tileCollide = false;      // stays ghosted
+                projectile.penetrate = -1;           // don’t despawn after 1 hit
+
+                projectile.damage -= (projectile.damage / 25);
             }
         }
 

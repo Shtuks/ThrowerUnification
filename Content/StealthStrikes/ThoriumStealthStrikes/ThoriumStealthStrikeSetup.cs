@@ -19,6 +19,7 @@ using ThoriumMod.Items.Donate;
 using ThoriumMod.Items.BossThePrimordials.Aqua;
 using ThoriumMod.Items.Lodestone;
 using ThoriumMod.Items.Valadium;
+using ThoriumMod.Items.BossViscount;
 
 namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
 {
@@ -45,6 +46,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
         ValadiumAxe,
         ChlorophyteTomahawk,
         FireAxe,
+        DraculaFang,
+        WackWrench,
     }
     [ExtendsFromMod(ModCompatibility.Thorium.Name, ModCompatibility.Calamity.Name)]
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name, ModCompatibility.Calamity.Name)]
@@ -53,7 +56,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
         //Don't load the stealth strikes if Infernal or Hummus' mod is enabled to prevent overlap or duplication.
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ThrowerModConfig.Instance.StealthStrikes;
+            // Only load if CalamityMod is present AND stealth strikes are enabled in your config
+            return ModLoader.TryGetMod("CalamityMod", out _) && ThrowerModConfig.Instance.StealthStrikes;
         }
 
         public override bool InstancePerEntity => true;
@@ -611,6 +615,82 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                 }
             }
 
+            // ===================== DRACULA FANG =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Dracula Fang")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    int numProjectiles = 4;              // how many fangs to shoot
+                    float totalSpread = MathHelper.ToRadians(35f); // total cone angle
+                    for (int i = 0; i < numProjectiles; i++)
+                    {
+                        // Random angle within [-totalSpread/2, totalSpread/2]
+                        float offset = Main.rand.NextFloat(-totalSpread / 2f, totalSpread / 2f);
+
+                        // Rotate the velocity by this offset
+                        Vector2 perturbedSpeed = velocity.RotatedBy(offset);
+
+                        int projID = Projectile.NewProjectile(
+                            source,
+                            position,
+                            perturbedSpeed,
+                            type,
+                            damage,
+                            knockback,
+                            player.whoAmI
+                        );
+
+                        if (Main.projectile.IndexInRange(projID) &&
+                            Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                        {
+                            stealthGlobal.SetupAsStealthStrike(StealthStrikeType.DraculaFang);
+
+                            // Give stealth strike fangs local iframes
+                            Projectile proj = Main.projectile[projID];
+                            proj.usesLocalNPCImmunity = true;
+                            proj.localNPCHitCooldown = 30;
+                        }
+                    }
+
+                    return false;
+                }
+            }
+
+            // ===================== WACK WRENCH =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Wack Wrench")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    int projID = Projectile.NewProjectile(
+                        source,
+                        position,
+                        velocity,
+                        type,
+                        damage,
+                        knockback,
+                        player.whoAmI
+                    );
+
+                    if (Main.projectile.IndexInRange(projID) &&
+                        Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                    {
+                        stealthGlobal.SetupAsStealthStrike(StealthStrikeType.WackWrench);
+
+                        // Apply stealth strike properties right away
+                        Projectile proj = Main.projectile[projID];
+
+                        proj.scale = 6f;
+                        proj.width *= 6;
+                        proj.height *= 6;
+                        proj.position -= new Vector2(proj.width / 2f, proj.height / 2f);
+
+                        proj.tileCollide = false; // goes through walls
+                    }
+
+                    return false;
+                }
+            }
+
             return true;
         }
 
@@ -821,6 +901,16 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             if (item.type == ModContent.ItemType<FireAxe>())
             {
                 FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.FireAxe"));
+            }
+
+            if (item.type == ModContent.ItemType<DraculaFang>())
+            {
+                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.DraculaFang"));
+            }
+
+            if (item.type == ModContent.ItemType<WackWrench>())
+            {
+                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.WackWrench"));
             }
         }
     }

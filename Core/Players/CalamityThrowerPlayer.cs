@@ -58,7 +58,9 @@ namespace ThrowerUnification.Core.Players
                         "Soul Bomb",
                         "Soulslasher",
                         "Soft Serve Sunderer",
-                        "Shade Shuriken"
+                        "Shade Shuriken",
+                        "Dracula Fang",
+                        "Wack Wrench"
                     };
 
                     for (int i = 0; i < preventDamageBoostItems.Length; i++)

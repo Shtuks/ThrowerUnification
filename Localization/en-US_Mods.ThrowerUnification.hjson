@@ -19,6 +19,8 @@ ThoriumStealthStrike: {
 	LodestoneJav: Stealth strikes cause earth to erupt from the struck enemy, inflicting sunder
 	ValadiumThrowingAxe: Stealth strikes on first hit will create a ring of axes to fly at the struck enemy
 	ChlorophyteTomahawk: Stealth strikes will last longer, have more pierce and generate homing spores throughout it's duration
+	DraculaFang: Stealth strikes will throw a fan of 4 fangs that life steal
+	WackWrench: Stealth strikes throw a larger wrench that will pass through blocks and stay in place after hitting an enemy
 	FireAxe:
 		'''
 		'Best to avoid chasms with this thing...'

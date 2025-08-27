@@ -30,7 +30,8 @@ namespace ThrowerUnification.Content.StealthStrikes
 
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ThrowerModConfig.Instance.StealthStrikes;
+            // Only load if CalamityMod is present AND stealth strikes are enabled in your config
+            return ModLoader.TryGetMod("CalamityMod", out _) && ThrowerModConfig.Instance.StealthStrikes;
         }
 
         // Define allowed mod names
@@ -90,7 +91,9 @@ namespace ThrowerUnification.Content.StealthStrikes
                 "Soulslasher",
                 "Shade Shuriken",
                 "Soft Serve Sunderer",
-                "White Dwarf Cutter"
+                "White Dwarf Cutter",
+                "Dracula Fang",
+                "Wack Wrench"
             };
 
             string[] NASS =
@@ -209,8 +212,16 @@ namespace ThrowerUnification.Content.StealthStrikes
         }
     }
 
+    [ExtendsFromMod(ModCompatibility.Calamity.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
     public class DefaultStealthStrikeGlobalProjectile : GlobalProjectile
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            // Only load if CalamityMod is present AND stealth strikes are enabled in your config
+            return ModLoader.TryGetMod("CalamityMod", out _) && ThrowerModConfig.Instance.StealthStrikes;
+        }
+
         public override bool InstancePerEntity => true;
 
         // Whip tip/strike projectiles that should apply debuffs

@@ -19,6 +19,8 @@ ThoriumStealthStrike: {
 	LodestoneJav: 潜伏攻击会使被击中的敌怪释放土壤喷发，并造成剥离减益
 	ValadiumThrowingAxe: 潜伏攻击在首次命中时，会在目标周围召唤一圈战斧飞向被击中的敌人
 	ChlorophyteTomahawk: 潜伏攻击持续时间更长，穿透更强，并在持续期间内持续生成追踪的孢子
+	// DraculaFang: Stealth strikes will throw a fan of 4 fangs that life steal
+	// WackWrench: Stealth strikes throw a larger wrench that will pass through blocks and stay in place after hitting an enemy
 	FireAxe:
 		'''
 		“最好用这个东西来避免裂隙……”

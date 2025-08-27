@@ -19,6 +19,8 @@ ThoriumStealthStrike: {
 	LodestoneJav: Скрытые атаки вызывают извержение земли из пораженного врага, накладывая "раскол"
 	ValadiumThrowingAxe: Скрытые атаки при первом попадании создают кольцо топоров, летящих в пораженного врага
 	ChlorophyteTomahawk: Скрытые атаки длятся дольше, пробивают больше врагов и создают самонаводящиеся споры на протяжении всего действия
+	// DraculaFang: Stealth strikes will throw a fan of 4 fangs that life steal
+	// WackWrench: Stealth strikes throw a larger wrench that will pass through blocks and stay in place after hitting an enemy
 	FireAxe:
 		'''
 		'Лучше держаться подальше от пропастей с этой штукой...'
