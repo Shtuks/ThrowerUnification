@@ -471,6 +471,28 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
 
                 projectile.damage -= (projectile.damage / 25);
             }
+
+            // ====================== Dracula Fang ===================
+            if (stealthType == StealthStrikeType.DraculaFang)
+            {
+                Player player = Main.player[projectile.owner];
+
+                int heal = (int)Math.Round(hit.Damage * Utils.NextFloat(Main.rand, 0.05f, 0.1f));
+                if (heal > DraculaFangLifeStealCap)
+                    heal = DraculaFangLifeStealCap;
+
+                if (player.lifeSteal > 0f && heal > 0 && target.lifeMax > 5)
+                {
+                    // 305 is Calamity’s blood orb, but you can sub in any projectile ID you want
+                    CalamityGlobalProjectile.SpawnLifeStealProjectile(
+                        projectile,
+                        player,
+                        heal,
+                        305, // life steal projectile type
+                        DraculaFangLifeStealRange
+                    );
+                }
+            }
         }
 
         //SETDEFAULTS OVERIDES

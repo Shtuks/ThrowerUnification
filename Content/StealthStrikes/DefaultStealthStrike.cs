@@ -251,15 +251,30 @@ namespace ThrowerUnification.Content.StealthStrikes
             "ShroomiteBoStaffProj", "PiercicleProj", "PurifierProj"
         };
 
+        private static bool IsWhipOrBoStaffProjectile(Projectile projectile)
+        {
+            string projName = projectile.Name;
+
+            return crumblingProj.Contains(projName) ||
+                   crunchProj.Contains(projName) ||
+                   boCrumblingProj.Contains(projName) ||
+                   boCrunchProj.Contains(projName);
+        }
+
+
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
+            // Only run this logic for specific projectiles
+            if (!IsWhipOrBoStaffProjectile(projectile))
+                return;
+
             // 1) If this was spawned by another projectile, copy Calamity's stealth flag from the parent.
             Projectile parentProj = TryGetParentProjectile(source);
             if (parentProj != null)
             {
                 if (IsCalamityStealthProjectile(parentProj))
                 {
-                    projectile.localAI[1] = 1f; // your internal debuff marker
+                    projectile.localAI[1] = 1f; // internal debuff marker
 
                     // ALSO mark it as a stealth strike for Calamity
                     CalamityGlobalProjectile modProj = projectile.GetGlobalProjectile<CalamityGlobalProjectile>();
@@ -283,7 +298,6 @@ namespace ThrowerUnification.Content.StealthStrikes
                 }
             }
         }
-
 
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
