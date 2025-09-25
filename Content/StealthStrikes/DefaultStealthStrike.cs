@@ -48,7 +48,7 @@ namespace ThrowerUnification.Content.StealthStrikes
         // STEALTH PROJECTILE SPEED STUFF
         public override void ModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
-            if (item.Name == "Captain's Poignard")
+            if (item.Name == "Captain's Poignard" || item.Name == "Steel Throwing Axe")
                 return;
 
             bool isModded = item.ModItem != null;

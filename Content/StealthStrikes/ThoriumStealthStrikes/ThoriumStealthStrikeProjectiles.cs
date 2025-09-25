@@ -493,6 +493,262 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                     );
                 }
             }
+
+            // ===================== ENCHANTED KNIFE =====================
+            if (stealthType == StealthStrikeType.EnchantedKnife)
+            {
+                int starType = ProjectileID.FallingStar;
+
+                Vector2 aimPosition = projectile.Center;
+
+                float aboveDistance = Main.screenHeight * 1.25f + 200f;
+
+                // Add random horizontal variance to the spawn position
+                float xVariance = Main.rand.NextFloat(-200f, 200f); // adjust range if you want wider/narrower spread
+                Vector2 spawnPos = new Vector2(aimPosition.X + xVariance, aimPosition.Y - aboveDistance);
+
+                // Velocity is recalculated so it always points at the aim position
+                float fallSpeed = 30f;
+                Vector2 velocity = Vector2.Normalize(aimPosition - spawnPos) * fallSpeed;
+
+                int starDamage = projectile.damage;
+
+                int starID = Projectile.NewProjectile(
+                    projectile.GetSource_OnHit(target),
+                    spawnPos,
+                    velocity,
+                    starType,
+                    starDamage,
+                    projectile.knockBack,
+                    projectile.owner
+                );
+
+                if (Main.projectile.IndexInRange(starID))
+                {
+                    Projectile starProj = Main.projectile[starID];
+                    starProj.DamageType = projectile.DamageType;
+
+                    if (Main.netMode == NetmodeID.Server)
+                        NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, starID);
+                }
+            }
+
+            // ===================== GOBLIN WAR SPEAR =====================
+            if (stealthType == StealthStrikeType.GoblinWarSpear)
+            {
+                // Always apply Gouge
+                if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium) &&
+                    thorium.TryFind("Gouge", out ModBuff gougeBuff))
+                {
+                    target.AddBuff(gougeBuff.Type, 120);
+                }
+
+                // Only spawn shrapnel if this projectile is NOT the shrapnel itself
+                if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium2) &&
+                    thorium2.TryFind("YewWoodShrapnelPro", out ModProjectile shrapnelProj) &&
+                    projectile.type != shrapnelProj.Type)
+                {
+                    int numShrapnel = Main.rand.Next(3, 5);
+
+                    SoundEngine.PlaySound(SoundID.Item17, projectile.Center);
+
+                    for (int i = 0; i < numShrapnel; i++)
+                    {
+                        Vector2 baseDir = projectile.velocity.SafeNormalize(Vector2.UnitX);
+
+                        float angleOffset = MathHelper.ToRadians(Main.rand.NextFloat(-15f, 15f));
+                        Vector2 shrapnelVelocity = baseDir.RotatedBy(angleOffset) * projectile.velocity.Length();
+
+                        int shrapnelDamage = projectile.damage / 3;
+
+                        int shrapnelID = Projectile.NewProjectile(
+                            projectile.GetSource_OnHit(target),
+                            projectile.Center,
+                            shrapnelVelocity,
+                            shrapnelProj.Type,
+                            shrapnelDamage,
+                            projectile.knockBack / 2,
+                            projectile.owner
+                        );
+
+                        if (Main.projectile.IndexInRange(shrapnelID))
+                        {
+                            Projectile shrapnel = Main.projectile[shrapnelID];
+                            shrapnel.DamageType = projectile.DamageType;
+
+                            if (shrapnel.TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                            {
+                                stealthGlobal.SetupAsStealthStrike(StealthStrikeType.GoblinWarSpear);
+                            }
+
+                            if (Main.netMode == NetmodeID.Server)
+                                NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, shrapnelID);
+                        }
+                    }
+                }
+            }
+
+            // ===================== METEORITE CLUSTER BOMB =====================
+            if (stealthType == StealthStrikeType.MeteoriteClusterBomb)
+            {
+                if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium) &&
+                    thorium.TryFind("MeteoriteClusterBombPro", out ModProjectile childProj))
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        // Random scatter velocity
+                        Vector2 velocity = new Vector2(
+                            Main.rand.NextFloat(-4f, 4f),
+                            Main.rand.NextFloat(-6f, -3f) // bias upward slightly
+                        );
+
+                        int childID = Projectile.NewProjectile(
+                            projectile.GetSource_FromThis(),
+                            projectile.Center,
+                            velocity,
+                            childProj.Type,
+                            projectile.damage - (projectile.damage / 4),
+                            projectile.knockBack * 0.75f,
+                            projectile.owner
+                        );
+
+                        if (Main.projectile.IndexInRange(childID))
+                        {
+                            Projectile child = Main.projectile[childID];
+                            child.DamageType = projectile.DamageType;
+
+                            if (Main.netMode == NetmodeID.Server)
+                                NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, childID);
+                        }
+                    }
+                }
+            }
+
+
+            // ===================== AQUAITE KNIFE =====================
+            if (stealthType == StealthStrikeType.AquaiteKnife)
+            {
+                if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
+                {
+                    // Try to get AquaiteKnifePro and AquaiteKnifePro2
+                    bool foundAquaPro = thorium.TryFind<ModProjectile>("AquaiteKnifePro", out ModProjectile aquaPro);
+                    bool foundAquaPro2 = thorium.TryFind<ModProjectile>("AquaiteKnifePro2", out ModProjectile aquaPro2);
+
+                    // Only proceed if projectile matches one of the Aquaite Knife projectiles
+                    if ((foundAquaPro && projectile.type == aquaPro.Type) ||
+                        (foundAquaPro2 && projectile.type == aquaPro2.Type))
+                    {
+                        // Try to get HighTidePro2 for spawning
+                        if (thorium.TryFind<ModProjectile>("HighTidePro2", out ModProjectile highTideProj))
+                        {
+                            SoundEngine.PlaySound(SoundID.Item21, projectile.Center);
+
+                            Vector2 baseDir = projectile.velocity.SafeNormalize(Vector2.UnitX);
+
+                            float spread = MathHelper.ToRadians(90f);
+                            Vector2 leftDir = baseDir.RotatedBy(-spread);
+                            Vector2 rightDir = baseDir.RotatedBy(spread);
+
+                            int[] spawned = new int[2];
+                            spawned[0] = Projectile.NewProjectile(
+                                projectile.GetSource_OnHit(target),
+                                projectile.Center,
+                                (leftDir * projectile.velocity.Length()) / 5,
+                                highTideProj.Type,
+                                projectile.damage,
+                                projectile.knockBack,
+                                projectile.owner
+                            );
+
+                            spawned[1] = Projectile.NewProjectile(
+                                projectile.GetSource_OnHit(target),
+                                projectile.Center,
+                                (rightDir * projectile.velocity.Length()) / 5,
+                                highTideProj.Type,
+                                projectile.damage,
+                                projectile.knockBack,
+                                projectile.owner
+                            );
+
+                            for (int i = 0; i < spawned.Length; i++)
+                            {
+                                if (Main.projectile.IndexInRange(spawned[i]))
+                                {
+                                    Projectile tide = Main.projectile[spawned[i]];
+                                    tide.DamageType = projectile.DamageType; // inherit rogue damage
+
+                                    if (tide.TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                                        stealthGlobal.SetupAsStealthStrike(StealthStrikeType.AquaiteKnife);
+
+                                    if (Main.netMode == NetmodeID.Server)
+                                        NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, spawned[i]);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // ===================== HIGH TIDE PRO 2 (AquaiteKnife SS) =====================
+            if (stealthType == StealthStrikeType.AquaiteKnife)
+            {
+                if (ModLoader.TryGetMod("CalamityMod", out Mod calamity) &&
+                    calamity.TryFind("RiptideDebuff", out ModBuff riptideBuff))
+                {
+                    target.AddBuff(riptideBuff.Type, 60);
+                }
+            }
+
+            // ===================== STEEL THROWING AXE / DURASTEEL THROWING SPEAR =====================
+            if (stealthType == StealthStrikeType.SteelThrowingAxe || stealthType == StealthStrikeType.DurasteelThrowingSpear)
+            {
+                // Always apply stun
+                if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium) &&
+                    thorium.TryFind("Stunned", out ModBuff stunBuff))
+                {
+                    target.AddBuff(stunBuff.Type, 120);
+                }
+            }
+        }
+
+        //OnTileCollision
+        public override bool OnTileCollide(Projectile projectile, Vector2 oldVelocity)
+        {
+            if (stealthType == StealthStrikeType.MeteoriteClusterBomb)
+            {
+                if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium) &&
+                    thorium.TryFind("MeteoriteClusterBombPro", out ModProjectile childProj))
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        Vector2 velocity = new Vector2(
+                            Main.rand.NextFloat(-4f, 4f),
+                            Main.rand.NextFloat(-6f, -3f)
+                        );
+
+                        int childID = Projectile.NewProjectile(
+                            projectile.GetSource_FromThis(),
+                            projectile.Center,
+                            velocity,
+                            childProj.Type,
+                            projectile.damage - (projectile.damage / 4),
+                            projectile.knockBack,
+                            projectile.owner
+                        );
+
+                        if (Main.projectile.IndexInRange(childID))
+                        {
+                            Projectile child = Main.projectile[childID];
+                            child.DamageType = projectile.DamageType;
+
+                            if (Main.netMode == NetmodeID.Server)
+                                NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, childID);
+                        }
+                    }
+                }
+            }
+
+            return base.OnTileCollide(projectile, oldVelocity);
         }
 
         //SETDEFAULTS OVERIDES
@@ -571,6 +827,25 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
 
                     if (projectile.timeLeft < 420)
                         projectile.timeLeft = 420;
+                }
+
+                //STEEL THROWING AXE COOLDOWN
+                if (stealthType == StealthStrikeType.SteelThrowingAxe)
+                {
+                    projectile.usesIDStaticNPCImmunity = false;
+                    projectile.usesLocalNPCImmunity = true;
+                    projectile.localNPCHitCooldown = 20;
+                }
+
+                //DURASTEEL THROWING SPEAR PEN CHANGES
+                if (stealthType == StealthStrikeType.DurasteelThrowingSpear)
+                {
+                    if (projectile.penetrate < 3 || projectile.penetrate == -1)
+                        projectile.penetrate = 3;
+
+                    projectile.usesIDStaticNPCImmunity = false;
+                    projectile.usesLocalNPCImmunity = true;
+                    projectile.localNPCHitCooldown = 20;
                 }
 
                 //CLOCKWORK SIZE AND LIFETIME CHANGES
@@ -1037,4 +1312,42 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
         }
     }
+
+    public class AquaiteKnifeGlobalProj : GlobalProjectile
+    {
+        public override void OnSpawn(Projectile projectile, IEntitySource source)
+        {
+            if (!ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
+                return;
+
+            // Try to get the AquaiteKnifePro2 projectile
+            if (!thorium.TryFind<ModProjectile>("AquaiteKnifePro2", out ModProjectile aquaPro2))
+                return;
+
+            if (projectile.type != aquaPro2.Type)
+                return;
+
+            // Check if the source is a projectile spawn
+            if (source is EntitySource_Parent parentSource)
+            {
+                Projectile parentProj = parentSource.Entity as Projectile;
+                if (parentProj != null)
+                {
+                    // Check if the parent has our Stealth Strike flag
+                    if (parentProj.TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthParent))
+                    {
+                        if (stealthParent.stealthType == StealthStrikeType.AquaiteKnife)
+                        {
+                            // Propagate the flag
+                            if (projectile.TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthChild))
+                            {
+                                stealthChild.SetupAsStealthStrike(StealthStrikeType.AquaiteKnife);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }

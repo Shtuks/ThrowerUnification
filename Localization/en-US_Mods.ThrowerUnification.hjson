@@ -21,6 +21,12 @@ ThoriumStealthStrike: {
 	ChlorophyteTomahawk: Stealth strikes will last longer, have more pierce and generate homing spores throughout it's duration
 	DraculaFang: Stealth strikes will throw a fan of 4 fangs that life steal
 	WackWrench: Stealth strikes throw a larger wrench that will pass through blocks and stay in place after hitting an enemy
+	EnchantedKnife: Stealth strikes on hit will summon a star from the sky to strike hit enemies
+	GoblinWarSpear: Stealth strikes will shatter into 3-4 yew wood shrapnels on hit that will always gouge
+	MeteoriteClusterBomb: Stealth strikes will split into another group of itself, making for a recursive cluster
+	AquaiteKnife: Stealth strikes on will carve high piercing waves outwards from hit enemies
+	SteelThrowingAxe: Stealth strikes throw a spread of 3 axes that will stun enemies on hit
+	DurasteelThrowingSpear: Stealth strikes throw a spread of 3 higher pierce spears that will stun enemies on hit
 	FireAxe:
 		'''
 		'Best to avoid chasms with this thing...'
