@@ -12,7 +12,7 @@ ThoriumStealthStrike: {
 	SoulBomb: 潜伏攻击在引爆时释放一阵追踪的灵魂
 	PlayingCard: 潜伏攻击会发射出5张爆炸性的追踪卡片
 	Soulslasher: 潜伏攻击命中敌人后会继续追踪攻击
-	WhiteDwarfCutter: 潜伏攻击的每次命中都会产生伤害为目标最大生命值0.1%的白色闪光
+	WhiteDwarfCutter: 潜伏攻击的每次命中都会产生伤害为目标最大生命值0.1%的象牙状火焰
 	CaptainsPoignard: 潜伏攻击会一次性发射6把匕首，并使你的攻速增加10秒
 	SoftServeSunderer: 潜伏攻击会在被击中的敌人的上方释放锥刺雨
 	ShadeShuriken: 潜伏攻击会发射一枚更大更快且穿透更强的手里剑
