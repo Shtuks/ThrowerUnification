@@ -1,6 +1,8 @@
-DefaultStealthStrikeTooltip: Stealth strikes have +75% damage and +75% velocity.
-DefaultStealthStrikeTooltipDamage: Stealth strikes have +75% damage.
-DefaultStealthStrikeTooltipVelocity: Stealth strikes have +75% velocity.
+DefaultStealthStrikeTooltip: Stealth strikes deal increased damage and fly faster
+DefaultStealthStrikeTooltipDamage: Stealth strikes have +75% damage
+DefaultStealthStrikeTooltipVelocity: Stealth strikes have +75% velocity
+CrumblingStrikeTooltip: Stealth strikes deal increased damage and inflict crumbling for 5 seconds
+CrunchStrikeTooltip: Stealth strikes deal increased damage and inflict armor crunch for 5 seconds
 
 ThoriumStealthStrike: {
 	CactusNeedle: Stealth strikes throw out needles in a tight fan of 3
@@ -17,6 +19,14 @@ ThoriumStealthStrike: {
 	LodestoneJav: Stealth strikes cause earth to erupt from the struck enemy, inflicting sunder
 	ValadiumThrowingAxe: Stealth strikes on first hit will create a ring of axes to fly at the struck enemy
 	ChlorophyteTomahawk: Stealth strikes will last longer, have more pierce and generate homing spores throughout it's duration
+	DraculaFang: Stealth strikes will throw a fan of 4 fangs that life steal
+	WackWrench: Stealth strikes throw a larger wrench that will pass through blocks and stay in place after hitting an enemy
+	EnchantedKnife: Stealth strikes on hit will summon a star from the sky to strike hit enemies
+	GoblinWarSpear: Stealth strikes will shatter into 3-4 yew wood shrapnels on hit that will always gouge
+	MeteoriteClusterBomb: Stealth strikes will split into another group of itself, making for a recursive cluster
+	AquaiteKnife: Stealth strikes will carve high piercing waves outwards from hit enemies
+	SteelThrowingAxe: Stealth strikes throw a spread of 3 axes that will stun enemies on hit
+	DurasteelThrowingSpear: Stealth strikes throw a spread of 3 higher pierce spears that will stun enemies on hit
 	FireAxe:
 		'''
 		'Best to avoid chasms with this thing...'

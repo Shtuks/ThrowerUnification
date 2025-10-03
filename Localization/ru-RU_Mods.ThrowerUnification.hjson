@@ -1,6 +1,8 @@
 DefaultStealthStrikeTooltip: Скрытые атаки наносят на +75% больше урона и имеют +75% к скорости снаряда.
 DefaultStealthStrikeTooltipDamage: I colpi furtivi infliggenu +75% di danni in piщ.
 DefaultStealthStrikeTooltipVelocity: L'attacchi furtivi anu una velocitа di +75%.
+// CrumblingStrikeTooltip: Stealth strikes deal increased damage and inflict crumbling for 5 seconds
+// CrunchStrikeTooltip: Stealth strikes deal increased damage and inflict armor crunch for 5 seconds
 
 ThoriumStealthStrike: {
 	CactusNeedle: Скрытые атаки выбрасывают иглы в виде веера из 3 штук
@@ -17,6 +19,14 @@ ThoriumStealthStrike: {
 	LodestoneJav: Скрытые атаки вызывают извержение земли из пораженного врага, накладывая "раскол"
 	ValadiumThrowingAxe: Скрытые атаки при первом попадании создают кольцо топоров, летящих в пораженного врага
 	ChlorophyteTomahawk: Скрытые атаки длятся дольше, пробивают больше врагов и создают самонаводящиеся споры на протяжении всего действия
+	// DraculaFang: Stealth strikes will throw a fan of 4 fangs that life steal
+	// WackWrench: Stealth strikes throw a larger wrench that will pass through blocks and stay in place after hitting an enemy
+	// EnchantedKnife: Stealth strikes on hit will summon a star from the sky to strike hit enemies
+	// GoblinWarSpear: Stealth strikes will shatter into 3-4 yew wood shrapnels on hit that will always gouge
+	// MeteoriteClusterBomb: Stealth strikes will split into another group of itself, making for a recursive cluster
+	// AquaiteKnife: Stealth strikes will carve high piercing waves outwards from hit enemies
+	// SteelThrowingAxe: Stealth strikes throw a spread of 3 axes that will stun enemies on hit
+	// DurasteelThrowingSpear: Stealth strikes throw a spread of 3 higher pierce spears that will stun enemies on hit
 	FireAxe:
 		'''
 		'Лучше держаться подальше от пропастей с этой штукой...'

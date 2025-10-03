@@ -19,6 +19,11 @@ using ThoriumMod.Items.Donate;
 using ThoriumMod.Items.BossThePrimordials.Aqua;
 using ThoriumMod.Items.Lodestone;
 using ThoriumMod.Items.Valadium;
+using ThoriumMod.Items.BossViscount;
+using ThoriumMod.Items.ArcaneArmor;
+using ThoriumMod.Items.ArcaneArmor;
+using ThoriumMod.Items.Depths;
+using ThoriumMod.Items.Steel;
 
 namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
 {
@@ -45,6 +50,14 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
         ValadiumAxe,
         ChlorophyteTomahawk,
         FireAxe,
+        DraculaFang,
+        WackWrench,
+        EnchantedKnife,
+        GoblinWarSpear,
+        MeteoriteClusterBomb,
+        AquaiteKnife,
+        SteelThrowingAxe,
+        DurasteelThrowingSpear,
     }
     [ExtendsFromMod(ModCompatibility.Thorium.Name, ModCompatibility.Calamity.Name)]
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name, ModCompatibility.Calamity.Name)]
@@ -53,7 +66,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
         //Don't load the stealth strikes if Infernal or Hummus' mod is enabled to prevent overlap or duplication.
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ThrowerModConfig.Instance.StealthStrikes;
+            // Only load if CalamityMod is present AND stealth strikes are enabled in your config
+            return ModLoader.TryGetMod("CalamityMod", out _) && ThrowerModConfig.Instance.StealthStrikes;
         }
 
         public override bool InstancePerEntity => true;
@@ -611,6 +625,264 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                 }
             }
 
+            // ===================== DRACULA FANG =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Dracula Fang")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    int numProjectiles = 4;              // how many fangs to shoot
+                    float totalSpread = MathHelper.ToRadians(35f); // total cone angle
+                    for (int i = 0; i < numProjectiles; i++)
+                    {
+                        // Random angle within [-totalSpread/2, totalSpread/2]
+                        float offset = Main.rand.NextFloat(-totalSpread / 2f, totalSpread / 2f);
+
+                        // Rotate the velocity by this offset
+                        Vector2 perturbedSpeed = velocity.RotatedBy(offset);
+
+                        int projID = Projectile.NewProjectile(
+                            source,
+                            position,
+                            perturbedSpeed,
+                            type,
+                            damage,
+                            knockback,
+                            player.whoAmI
+                        );
+
+                        if (Main.projectile.IndexInRange(projID) &&
+                            Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                        {
+                            stealthGlobal.SetupAsStealthStrike(StealthStrikeType.DraculaFang);
+
+                            // Give stealth strike fangs local iframes
+                            Projectile proj = Main.projectile[projID];
+                            proj.usesLocalNPCImmunity = true;
+                            proj.localNPCHitCooldown = 30;
+                        }
+                    }
+
+                    return false;
+                }
+            }
+
+            // ===================== WACK WRENCH =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Wack Wrench")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    int projID = Projectile.NewProjectile(
+                        source,
+                        position,
+                        velocity,
+                        type,
+                        damage,
+                        knockback,
+                        player.whoAmI
+                    );
+
+                    if (Main.projectile.IndexInRange(projID) &&
+                        Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                    {
+                        stealthGlobal.SetupAsStealthStrike(StealthStrikeType.WackWrench);
+
+                        // Apply stealth strike properties right away
+                        Projectile proj = Main.projectile[projID];
+
+                        proj.scale = 6f;
+                        proj.width *= 6;
+                        proj.height *= 6;
+                        proj.position -= new Vector2(proj.width / 2f, proj.height / 2f);
+
+                        proj.tileCollide = false; // goes through walls
+                    }
+
+                    return false;
+                }
+            }
+
+            // ===================== ENCHANTED KNIFE =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Enchanted Knife")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    int projID = Projectile.NewProjectile(
+                        source,
+                        position,
+                        velocity,
+                        type,
+                        damage,
+                        knockback,
+                        player.whoAmI
+                    );
+
+                    if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                    {
+                        stealthGlobal.SetupAsStealthStrike(StealthStrikeType.EnchantedKnife);
+                    }
+
+                    return false; // prevent default behavior; we spawned our stealth projectile
+                }
+            }
+
+            // ===================== GOBLIN WAR SPEAR =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Goblin War Spear")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    int projID = Projectile.NewProjectile(
+                        source,
+                        position,
+                        velocity,
+                        type,
+                        damage,
+                        knockback,
+                        player.whoAmI
+                    );
+
+                    if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                    {
+                        stealthGlobal.SetupAsStealthStrike(StealthStrikeType.GoblinWarSpear);
+                    }
+
+                    return false; // prevent normal shot
+                }
+            }
+
+            // ===================== METEORITE CLUSTER BOMB =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Meteorite Cluster Bomb")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    int projID = Projectile.NewProjectile(
+                        source,
+                        position,
+                        velocity,
+                        type,
+                        damage,
+                        knockback,
+                        player.whoAmI
+                    );
+
+                    if (Main.projectile.IndexInRange(projID) &&
+                        Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                    {
+                        stealthGlobal.SetupAsStealthStrike(StealthStrikeType.MeteoriteClusterBomb);
+                    }
+
+                    return false; // prevent default projectile
+                }
+            }
+
+            // ===================== AQUAITE KNIFE =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Aquaite Knife")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    int projID = Projectile.NewProjectile(
+                        source,
+                        position,
+                        velocity,
+                        type,
+                        damage,
+                        knockback,
+                        player.whoAmI
+                    );
+
+                    if (Main.projectile.IndexInRange(projID) &&
+                        Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                    {
+                        stealthGlobal.SetupAsStealthStrike(StealthStrikeType.AquaiteKnife);
+                    }
+
+                    return false; // prevent default projectile
+                }
+            }
+
+            // ===================== STEEL THROWING AXE =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Steel Throwing Axe")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    int count = 3;
+                    float angleStep = MathHelper.ToRadians(15f); // 15° each side
+                    float middleOffset = (count - 1) / 2f;
+
+                    if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod) &&
+                        thoriumMod.TryFind("SteelThrowingAxePro", out ModProjectile modProj))
+                    {
+                        int projType = modProj.Type;
+
+                        for (int i = 0; i < count; i++)
+                        {
+                            float rotation = (i - middleOffset) * angleStep;
+                            Vector2 rotatedVelocity = velocity.RotatedBy(rotation);
+
+                            int adjustedDamage = (int)Math.Round(damage * 1f);
+
+                            int projID = Projectile.NewProjectile(
+                                source,
+                                position,
+                                rotatedVelocity,
+                                projType,
+                                adjustedDamage,
+                                knockback,
+                                player.whoAmI
+                            );
+
+                            if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                            {
+                                stealthGlobal.SetupAsStealthStrike(StealthStrikeType.SteelThrowingAxe);
+                            }
+                        }
+
+                        return false;
+                    }
+                }
+            }
+
+            // ===================== DURASTEEL THROWING SPEAR =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Durasteel Throwing Spear")
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    int count = 3;
+                    float angleStep = MathHelper.ToRadians(15f); // 15° each side
+                    float middleOffset = (count - 1) / 2f;
+
+                    if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod) &&
+                        thoriumMod.TryFind("DurasteelThrowingSpearPro", out ModProjectile modProj))
+                    {
+                        int projType = modProj.Type;
+
+                        for (int i = 0; i < count; i++)
+                        {
+                            float rotation = (i - middleOffset) * angleStep;
+                            Vector2 rotatedVelocity = velocity.RotatedBy(rotation);
+
+                            int adjustedDamage = (int)Math.Round(damage * 1f);
+
+                            int projID = Projectile.NewProjectile(
+                                source,
+                                position,
+                                rotatedVelocity,
+                                projType,
+                                adjustedDamage,
+                                knockback,
+                                player.whoAmI
+                            );
+
+                            if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                            {
+                                stealthGlobal.SetupAsStealthStrike(StealthStrikeType.DurasteelThrowingSpear);
+                            }
+                        }
+
+                        return false;
+                    }
+                }
+            }
+
             return true;
         }
 
@@ -821,6 +1093,46 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             if (item.type == ModContent.ItemType<FireAxe>())
             {
                 FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.FireAxe"));
+            }
+
+            if (item.type == ModContent.ItemType<DraculaFang>())
+            {
+                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.DraculaFang"));
+            }
+
+            if (item.type == ModContent.ItemType<WackWrench>())
+            {
+                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.WackWrench"));
+            }
+
+            if (item.type == ModContent.ItemType<EnchantedKnife>())
+            {
+                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.EnchantedKnife"));
+            }
+
+            if (item.type == ModContent.ItemType<GoblinWarSpear>())
+            {
+                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.GoblinWarSpear"));
+            }
+
+            if (item.type == ModContent.ItemType<MeteoriteClusterBomb>())
+            {
+                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.MeteoriteClusterBomb"));
+            }
+
+            if (item.type == ModContent.ItemType<AquaiteKnife>())
+            {
+                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.AquaiteKnife"));
+            }
+
+            if (item.type == ModContent.ItemType<SteelThrowingAxe>())
+            {
+                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.SteelThrowingAxe"));
+            }
+
+            if (item.type == ModContent.ItemType<DurasteelThrowingSpear>())
+            {
+                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.DurasteelThrowingSpear"));
             }
         }
     }

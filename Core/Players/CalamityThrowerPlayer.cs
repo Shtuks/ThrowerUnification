@@ -58,7 +58,11 @@ namespace ThrowerUnification.Core.Players
                         "Soul Bomb",
                         "Soulslasher",
                         "Soft Serve Sunderer",
-                        "Shade Shuriken"
+                        "Shade Shuriken",
+                        "Dracula Fang",
+                        "Wack Wrench",
+                        "Goblin War Spear",
+                        "Meteorite Cluster Bomb",
                     };
 
                     for (int i = 0; i < preventDamageBoostItems.Length; i++)
