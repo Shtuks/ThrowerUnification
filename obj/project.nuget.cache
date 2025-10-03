@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hgbSTFuHdt4=",
+  "dgSpecHash": "0OP/M7gKV6M=",
   "success": true,
   "projectFilePath": "N:\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ThrowerUnification\\ThrowerUnification.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Super\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }
