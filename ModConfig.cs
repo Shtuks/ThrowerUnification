@@ -32,6 +32,11 @@ namespace ThrowerUnification
 
         [ReloadRequired]
         [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(false)]
+        public bool ThoriumClassTag { get; set; }
+
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
         [DefaultValue(true)]
         public bool StealthStrikes { get; set; }
 

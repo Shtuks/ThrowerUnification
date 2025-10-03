@@ -237,6 +237,5 @@ N:\Documents\My Games\Terraria\tModLoader\ModSources\ThrowerUnification\obj\Debu
 N:\Documents\My Games\Terraria\tModLoader\ModSources\ThrowerUnification\obj\Debug\net8.0\ThrowerUnification.pdb
 N:\Documents\My Games\Terraria\tModLoader\ModSources\ThrowerUnification\obj\Debug\net8.0\ref\ThrowerUnification.dll
 N:\Documents\My Games\Terraria\tModLoader\ModSources\ThrowerUnification\bin\Debug\net8.0\InfernalEclipseAPI_v0.8.1.1.dll
-N:\Documents\My Games\Terraria\tModLoader\ModSources\ThrowerUnification\bin\Debug\net8.0\ssm_v1.1.3.12.dll
 N:\Documents\My Games\Terraria\tModLoader\ModSources\ThrowerUnification\bin\Debug\net8.0\WHummusMultiModBalancing_v1.2.4.dll
 N:\Documents\My Games\Terraria\tModLoader\ModSources\ThrowerUnification\bin\Debug\net8.0\RagnarokMod_v1.4.4.dll

@@ -72,13 +72,14 @@ DamageClasses: {
 }
 
 CustomName: "{0} damage"
+ClassTag: -{0} Class-
 
 Configs: {
 	ThrowerModConfig: {
 		DisplayName: Thrower Mod Config
 
 		Headers: {
-			General: General Header
+			General: General
 			ColoredDamageType: Colored Damage Type
 		}
 
@@ -138,6 +139,11 @@ Configs: {
 				Allows you to enter a custom name for the united thrower class.
 				Enter the deseried class name with proper capitalization (i.e. Thrower)
 				'''
+		}
+
+		ThoriumClassTag: {
+			Label: Class Tag
+			Tooltip: Toggles the class tag that appears at the top of an items tooltip.
 		}
 	}
 

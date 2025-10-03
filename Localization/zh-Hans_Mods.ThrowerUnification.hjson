@@ -72,6 +72,7 @@ DamageClasses: {
 }
 
 CustomName: "{0}伤害"
+// ClassTag: -{0} Class-
 
 Configs: {
 	ThrowerModConfig: {
@@ -138,6 +139,11 @@ Configs: {
 				允许你为融合后的投手职业使用自定义名称
 				输入你想使用的职业伤害名称
 				'''
+		}
+
+		ThoriumClassTag: {
+			// Label: Class Tag
+			// Tooltip: Toggles the class tag that appears at the top of an items tooltip.
 		}
 	}
 
