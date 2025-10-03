@@ -1,8 +1,8 @@
 DefaultStealthStrikeTooltip: 潜伏攻击增加75%伤害和75%速度
 DefaultStealthStrikeTooltipDamage: 潜伏攻击增加75%伤害
 DefaultStealthStrikeTooltipVelocity: 潜伏攻击增加75%速度
-// CrumblingStrikeTooltip: Stealth strikes deal increased damage and inflict crumbling for 5 seconds
-// CrunchStrikeTooltip: Stealth strikes deal increased damage and inflict armor crunch for 5 seconds
+CrumblingStrikeTooltip: 潜伏攻击有更高伤害并造成5秒的粉碎减益
+CrunchStrikeTooltip: 潜伏攻击有更高伤害并造成5秒的碎甲减益
 
 ThoriumStealthStrike: {
 	CactusNeedle: 潜伏攻击会发射出3个为一束的针刺
@@ -12,21 +12,21 @@ ThoriumStealthStrike: {
 	SoulBomb: 潜伏攻击在引爆时释放一阵追踪的灵魂
 	PlayingCard: 潜伏攻击会发射出5张爆炸性的追踪卡片
 	Soulslasher: 潜伏攻击命中敌人后会继续追踪攻击
-	WhiteDwarfCutter: 潜伏攻击的每次命中都会产生伤害为目标最大生命值0.1%的白色闪光
+	WhiteDwarfCutter: 潜伏攻击的每次命中都会产生伤害为目标最大生命值0.1%的象牙状火焰
 	CaptainsPoignard: 潜伏攻击会一次性发射6把匕首，并使你的攻速增加10秒
 	SoftServeSunderer: 潜伏攻击会在被击中的敌人的上方释放锥刺雨
 	ShadeShuriken: 潜伏攻击会发射一枚更大更快且穿透更强的手里剑
 	LodestoneJav: 潜伏攻击会使被击中的敌怪释放土壤喷发，并造成剥离减益
 	ValadiumThrowingAxe: 潜伏攻击在首次命中时，会在目标周围召唤一圈战斧飞向被击中的敌人
 	ChlorophyteTomahawk: 潜伏攻击持续时间更长，穿透更强，并在持续期间内持续生成追踪的孢子
-	// DraculaFang: Stealth strikes will throw a fan of 4 fangs that life steal
-	// WackWrench: Stealth strikes throw a larger wrench that will pass through blocks and stay in place after hitting an enemy
-	// EnchantedKnife: Stealth strikes on hit will summon a star from the sky to strike hit enemies
-	// GoblinWarSpear: Stealth strikes will shatter into 3-4 yew wood shrapnels on hit that will always gouge
-	// MeteoriteClusterBomb: Stealth strikes will split into another group of itself, making for a recursive cluster
-	// AquaiteKnife: Stealth strikes will carve high piercing waves outwards from hit enemies
-	// SteelThrowingAxe: Stealth strikes throw a spread of 3 axes that will stun enemies on hit
-	// DurasteelThrowingSpear: Stealth strikes throw a spread of 3 higher pierce spears that will stun enemies on hit
+	DraculaFang: 潜伏攻击会投出4枚尖齿组成的扇形弹幕，尖齿有生命汲取效果
+	WackWrench: 潜伏攻击会投掷一把更大的扳手，可穿透物块并在击中敌人后停留
+	EnchantedKnife: 潜伏攻击命中会召唤一颗星星砸向目标敌人
+	GoblinWarSpear: 潜伏攻击命中后碎裂成3–4枚紫衫木碎片，造成穿刺减益
+	MeteoriteClusterBomb: 潜伏攻击会分裂成另一簇相同的炸弹，形成递归式的集群效果
+	AquaiteKnife: 潜伏攻击命中敌人时向外放射出高穿透性的波纹
+	SteelThrowingAxe: 潜伏攻击会散射出3把斧头，命中敌人后会造成晕眩减益
+	DurasteelThrowingSpear: 潜伏攻击会散射出3根穿透更强的长矛，命中敌人后会造成晕眩减益
 	FireAxe:
 		'''
 		“最好用这个东西来避免裂隙……”
@@ -95,11 +95,11 @@ Configs: {
 
 		Vitality: {
 			Label: 万灵
-			Tooltip: 开关对万灵模组中鲜血猎人职业的合并功能
+			Tooltip: 开关对万灵模组中血猎职业的合并功能
 		}
 
 		SacredTools: {
-			Label: 亚巴顿之影（原圣域）
+			Label: 亚巴顿之影
 			Tooltip: 开关对亚巴顿之影模组中刺客职业的合并功能
 		}
 
