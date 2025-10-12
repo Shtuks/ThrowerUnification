@@ -1,23 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
-using Terraria.GameContent;
-using Terraria;
-using Terraria.ID;
-using System.Reflection;
 using Microsoft.Xna.Framework;
 using CalamityMod.CalPlayer;
 using ThrowerUnification.Core.UnitedModdedThrowerClass;
-using ThrowerUnification.Core;
 using Terraria.Localization;
-using CalamityMod.Physics;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Buffs.DamageOverTime;
 using Terraria.DataStructures;
 using CalamityMod.Projectiles;
+using Terraria;
 
 namespace ThrowerUnification.Content.StealthStrikes
 {
@@ -48,8 +41,11 @@ namespace ThrowerUnification.Content.StealthStrikes
         // STEALTH PROJECTILE SPEED STUFF
         public override void ModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
-            if (item.Name == "Captain's Poignard" || item.Name == "Steel Throwing Axe")
-                return;
+            if (item.ModItem != null)
+            {
+                if (item.ModItem.Name == "CaptainsPoniard" || item.ModItem.Name == "SteelThrowingAxe")
+                    return;
+            }
 
             bool isModded = item.ModItem != null;
             string modName = isModded ? item.ModItem.Mod.Name : null;
@@ -79,74 +75,74 @@ namespace ThrowerUnification.Content.StealthStrikes
         {
             string[] fullSS =
             {
-                "Clockwork Bomb",
-                "Cactus Needle",
-                "Icy Tomahawk",
-                "Captain's Poignard",
-                "Lodestone Javelin",
-                "Valadium Throwing Axe",
-                "Playing Card",
-                "Chlorophyte Tomahawk",
-                "Soul Bomb",
+                "ClockWorkBomb",
+                "CactusNeedle",
+                "IcyTomahawk",
+                "CaptainsPoniard",
+                "LodestoneJavelin",
+                "ValadiumBattleAxe",
+                "MagicCard",
+                "ChlorophyteTomahawk",
+                "SoulBomb",
                 "Soulslasher",
-                "Shade Shuriken",
-                "Soft Serve Sunderer",
-                "White Dwarf Cutter",
-                "Dracula Fang",
-                "Wack Wrench"
+                "BugenkaiShuriken",
+                "SoftServeSunderer",
+                "WhiteDwarfKunai",
+                "DraculaFang",
+                "WackWrench"
             };
 
             string[] NASS =
             {
-                "Blood Hunter Lexicon"
+                "BloodHunterLexiconn"
             };
 
             string[] crumblingSS =
             {
-                "Rope Bull Whip",
-                "Argonite Bull Whip",
-                "Whine Vine",
-                "The Worm",
-                "Nerve Bundle",
+                "RopeBullWhip",
+                "ArgoniteBullWhip",
+                "WhineVine",
+                "TheWorm",
+                "NerveBundle",
                 "Firelash",
                 "Pricklewire",
 
-                "Wooden Bo Staff",
-                "Reinforced Bo Staff",
-                "Glacial Baton",
-                "Argonite Perforator",
+                "WoodenBoStaff",
+                "ReinforcedBoStaff",
+                "GlacialBaton",
+                "ArgonitePerforator",
                 "Brainrot",
-                "Trident of the Corruption",
-                "Honey Dipper",
-                "The Toothpick",
+                "TridentoftheCorruption",
+                "HoneyDipper",
+                "TheToothpick",
             };
 
             string[] crunchSS =
             {
                 "Mummifier",
-                "Sphinx O' Nine",
+                "SphinxONine",
                 "Tarantulash",
-                "Mechanical Handful",
+                "MechanicalHandful",
                 "Chlorolash",
-                "The Plug",
-                "Jack 'O Crack",
-                "The Conductor",
-                "Brink of Blood",
+                "ThePlug",
+                "JackOCrack",
+                "TheConductor",
+                "BrinkofBlood",
 
-                "Cobalt Bo Staff",
-                "Palladium Bo Staff",
-                "Mythril Bo Staff",
-                "Orichalcum Bo Staff",
-                "Adamantite Bo Staff",
-                "Titanium Bo Staff",
+                "CobaltBoStaff",
+                "PalladiumBoStaff",
+                "MythrilBoStaff",
+                "OrichalcumBoStaff",
+                "AdamantiteBoStaff",
+                "TitaniumBoStaff",
                 "Dissonance",
-                "Hallowed Bo Staff",
+                "HallowedBoStaff",
                 "Beetlegeuse",
-                "Mosquito Masher",
-                "Chlorophyte Bo Staff",
-                "Bloodrock Lance",
+                "MosquitoMasher",
+                "ChlorophyteBoStaff",
+                "BloodrockLancee",
                 "Equilibrium",
-                "Shroomite Bo Staff",
+                "ShroomiteBoStaff",
                 "Piercicle",
                 "Purifier",
             };
@@ -165,17 +161,25 @@ namespace ThrowerUnification.Content.StealthStrikes
             // Vanilla items (no ModItem) that use rogue damage
             bool isVanillaRogue = !isModded && isMergedRogue;
 
-            if ((isNotCalamityAndConsumableRogue || isFromAllowedMod || isVanillaRogue) && !fullSS.Contains(item.Name) && !crumblingSS.Contains(item.Name) && !crunchSS.Contains(item.Name) && !NASS.Contains(item.Name))
+            if (isVanillaRogue)
             {
                 AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.DefaultStealthStrikeTooltip"));
             }
 
-            if (crumblingSS.Contains(item.Name))
+            if (item.ModItem == null)
+                return;
+
+            if ((isNotCalamityAndConsumableRogue || isFromAllowedMod) && !fullSS.Contains(item.ModItem.Name) && !crumblingSS.Contains(item.ModItem.Name) && !crunchSS.Contains(item.ModItem.Name) && !NASS.Contains(item.ModItem.Name))
+            {
+                AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.DefaultStealthStrikeTooltip"));
+            }
+
+            if (crumblingSS.Contains(item.ModItem.Name))
             {
                 AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.CrumblingStrikeTooltip"));
             }
 
-            if (crunchSS.Contains(item.Name))
+            if (crunchSS.Contains(item.ModItem.Name))
             {
                 AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.CrunchStrikeTooltip"));
             }

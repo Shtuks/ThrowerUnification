@@ -1,5 +1,4 @@
-﻿using System;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
@@ -7,6 +6,8 @@ using Microsoft.Xna.Framework;
 namespace ThrowerUnification.Content.StealthStrikes.CrossmodStealthFixes
 {
     //Akira
+    [ExtendsFromMod(ModCompatibility.SacredTools.Name, ModCompatibility.Calamity.Name)]
+    [JITWhenModsEnabled(ModCompatibility.SacredTools.Name, ModCompatibility.Calamity.Name)]
     public class AbaddonStealthFix : GlobalItem
     {
         public override bool IsLoadingEnabled(Mod mod)

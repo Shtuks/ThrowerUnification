@@ -1,4 +1,5 @@
-﻿using Terraria.ModLoader;
+﻿using System.CodeDom;
+using Terraria.ModLoader;
 
 namespace ThrowerUnification;
 
@@ -34,6 +35,21 @@ public static class ModCompatibility
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
     }
+
+    public static class ThoriumRework
+    {
+        public const string Name = "ThoriumRework";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
+
+    public static class SOTS
+    {
+        public const string Name = "SOTS";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
+
     public static class SOTSBardThrowerHealer
     {
         public const string Name = "SOTSBardHealer";

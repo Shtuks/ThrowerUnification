@@ -33,14 +33,14 @@ namespace ThrowerUnification.Common
                 {
                     tooltips.Insert(index + 1, new TooltipLine(Mod, "ThrowerTag", Language.GetTextValue("Mods.ThrowerUnification.ClassTag", ThrowerModConfig.Instance.CustomTooltipOverride))
                     {
-                        OverrideColor = new Microsoft.Xna.Framework.Color(byte.MaxValue, 165, 60)
+                        OverrideColor = new Microsoft.Xna.Framework.Color(ThrowerModConfig.Instance.TagR, ThrowerModConfig.Instance.TagG, ThrowerModConfig.Instance.TagB)
                     });
                 }
                 else
                 {
                     tooltips.Insert(index + 1, new TooltipLine(Mod, "ThrowerTag", Language.GetTextValue("Mods.ThrowerUnification.ClassTag", ThrowerModConfig.Instance.TooltipOverride))
                     {
-                        OverrideColor = new Microsoft.Xna.Framework.Color(byte.MaxValue, 165, 60)
+                        OverrideColor = new Microsoft.Xna.Framework.Color(ThrowerModConfig.Instance.TagR, ThrowerModConfig.Instance.TagG, ThrowerModConfig.Instance.TagB)
                     });
                 }
             }

@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using Terraria.ModLoader.Config;
 
 namespace ThrowerUnification
@@ -32,11 +33,6 @@ namespace ThrowerUnification
 
         [ReloadRequired]
         [BackgroundColor(60, 200, 60, 192)]
-        [DefaultValue(false)]
-        public bool ThoriumClassTag { get; set; }
-
-        [ReloadRequired]
-        [BackgroundColor(60, 200, 60, 192)]
         [DefaultValue(true)]
         public bool StealthStrikes { get; set; }
 
@@ -46,27 +42,45 @@ namespace ThrowerUnification
         [DefaultValue(TooltipOverrideStyle.Thrower)]
         public TooltipOverrideStyle TooltipOverride { get; set; }
 
-        [ReloadRequired]
         [BackgroundColor(60, 200, 60, 192)]
         [DefaultValue("")]
         public string CustomTooltipOverride { get; set; }
+
+        [Header("ClassTag")]
+
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(false)]
+        public bool ThoriumClassTag { get; set; }
+
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(255)]
+        public byte TagR { get; set; }
+
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(165)]
+        public byte TagG { get; set; }
+
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(60)]
+        public byte TagB { get; set; }
 
         [Header("ColoredDamageType")]
 
         [ReloadRequired]
         [BackgroundColor(60, 200, 60, 192)]
         [DefaultValue(255)]
-        public int R { get; set; }
+        public byte R { get; set; }
 
         [ReloadRequired]
         [BackgroundColor(60, 200, 60, 192)]
         [DefaultValue(100)]
-        public int G { get; set; }
+        public byte G { get; set; }
 
         [ReloadRequired]
         [BackgroundColor(60, 200, 60, 192)]
         [DefaultValue(100)]
-        public int B { get; set; }
+        public byte B { get; set; }
     }
     public enum TooltipOverrideStyle : byte
     {

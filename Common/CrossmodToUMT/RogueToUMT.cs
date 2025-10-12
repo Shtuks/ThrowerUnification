@@ -1,7 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 using CalamityMod;
-using ThrowerUnification.Core;
 using ThrowerUnification.Core.UnitedModdedThrowerClass;
 
 namespace ThrowerUnification.Common.CrossmodToUMT

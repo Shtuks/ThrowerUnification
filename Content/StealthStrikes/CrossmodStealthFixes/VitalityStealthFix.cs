@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework;
 namespace ThrowerUnification.Content.StealthStrikes.CrossmodStealthFixes
 {
     //Akira
+    [ExtendsFromMod(ModCompatibility.Vitality.Name, ModCompatibility.Calamity.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Vitality.Name, ModCompatibility.Calamity.Name)]
     public class VitalityStealthFix : GlobalItem
     {
         public override bool IsLoadingEnabled(Mod mod)

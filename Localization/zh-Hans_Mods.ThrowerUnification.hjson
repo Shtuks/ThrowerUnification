@@ -81,6 +81,7 @@ Configs: {
 		Headers: {
 			General: 通用标题
 			ColoredDamageType: 伤害类型染色
+			// ClassTag: Class Tag Header
 		}
 
 		Vanilla: {
@@ -144,6 +145,21 @@ Configs: {
 		ThoriumClassTag: {
 			// Label: Class Tag
 			// Tooltip: Toggles the class tag that appears at the top of an items tooltip.
+		}
+
+		TagR: {
+			// Label: Tag R
+			// Tooltip: ""
+		}
+
+		TagG: {
+			// Label: Tag G
+			// Tooltip: ""
+		}
+
+		TagB: {
+			// Label: Tag B
+			// Tooltip: ""
 		}
 	}
 

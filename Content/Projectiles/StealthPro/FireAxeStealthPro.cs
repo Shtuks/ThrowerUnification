@@ -14,6 +14,8 @@ using ThrowerUnification.Core.UnitedModdedThrowerClass;
 namespace ThrowerUnification.Content.Projectiles.StealthPro
 {
     //Wardrobe Hummus
+    [ExtendsFromMod(ModCompatibility.Calamity.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
     public class FireAxeStealthPro : ModProjectile
     {
         private int hitCount = 0;

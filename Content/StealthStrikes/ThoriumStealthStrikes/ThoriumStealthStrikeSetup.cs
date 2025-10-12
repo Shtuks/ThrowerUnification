@@ -10,7 +10,6 @@ using Terraria.DataStructures;
 using Terraria;
 using Terraria.ModLoader;
 using ThrowerUnification.Core;
-using ThrowerUnification.Content.Projectiles.StealthPro;
 using Terraria.Localization;
 using ThoriumMod.Items.BossLich;
 using ThoriumMod.Items.Icy;
@@ -21,9 +20,9 @@ using ThoriumMod.Items.Lodestone;
 using ThoriumMod.Items.Valadium;
 using ThoriumMod.Items.BossViscount;
 using ThoriumMod.Items.ArcaneArmor;
-using ThoriumMod.Items.ArcaneArmor;
 using ThoriumMod.Items.Depths;
 using ThoriumMod.Items.Steel;
+using ThrowerUnification.Content.Projectiles.StealthPro;
 
 namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
 {
@@ -77,7 +76,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             var calPlayer = player.GetModPlayer<CalamityPlayer>();
 
             // ===================== ICY TOMAHAWK =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Icy Tomahawk")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<IcyTomahawk>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -111,7 +110,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== CACTUS NEEDLE =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Cactus Needle")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<CactusNeedle>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -143,7 +142,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== GEL GLOVE =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Gel Glove")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<GelGlove>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -167,12 +166,12 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== ZEPHYR'S RUIN =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumRework" && item.Name == "Zephyr's Ruin")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumRework" && item.ModItem.Name == "ZephyrsRuin")
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
                     velocity *= 1.75f;
-                    damage = (int)(damage * 2f);
+                    damage = (int)(damage * 1.5f);
 
                     int projID = Projectile.NewProjectile(
                         source,
@@ -194,7 +193,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== CAPTAIN'S POIGNARD =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Captain's Poignard")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<CaptainsPoniard>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -219,7 +218,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== LODESTONE JAVELIN =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Lodestone Javelin")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<LodestoneJavelin>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -244,7 +243,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
 
 
             // ===================== VALADIUM BATTLE AXE =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Valadium Throwing Axe")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<ValadiumBattleAxe>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -268,7 +267,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== CLOCKWORK BOMB =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Clockwork Bomb")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<ClockWorkBomb>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -292,7 +291,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== CHLOROPHYTE TOMAHAWK =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Chlorophyte Tomahawk")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<ChlorophyteTomahawk>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -319,7 +318,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== SOUL BOMB =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Soul Bomb")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<SoulBomb>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -343,7 +342,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== PLAYING CARD =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Playing Card")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<MagicCard>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -388,7 +387,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== SHADE SHURIKEN =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Shade Shuriken")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<BugenkaiShuriken>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -419,7 +418,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== SOULSLASHER =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Soulslasher")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<Soulslasher>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -450,7 +449,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== SOFT SERVE SUNDERER =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Soft Serve Sunderer")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<SoftServeSunderer>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -475,7 +474,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== WHITE DWARF CUTTER =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "White Dwarf Cutter")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<WhiteDwarfKunai>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -526,7 +525,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== TERRA KNIFE =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Terra Knife")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<TerraKnife>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -575,7 +574,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== TIDAL WAVE =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Tidal Wave")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<TidalWave>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -601,14 +600,14 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== FIRE AXE =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Fire Axe")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<FireAxe>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
                     int projID = Projectile.NewProjectile(
                         source,
                         position,
-                        (velocity * 1.5f),
+                        velocity * 1.5f,
                         type,
                         (int)(damage * 1f),
                         knockback,
@@ -626,7 +625,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== DRACULA FANG =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Dracula Fang")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<DraculaFang>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -667,7 +666,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== WACK WRENCH =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Wack Wrench")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<WackWrench>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -702,7 +701,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== ENCHANTED KNIFE =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Enchanted Knife")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<EnchantedKnife>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -726,7 +725,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== GOBLIN WAR SPEAR =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Goblin War Spear")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<GoblinWarSpear>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -750,7 +749,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== METEORITE CLUSTER BOMB =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Meteorite Cluster Bomb")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<MeteoriteClusterBomb>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -775,7 +774,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== AQUAITE KNIFE =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Aquaite Knife")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<AquaiteKnife>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -800,7 +799,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== STEEL THROWING AXE =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Steel Throwing Axe")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<SteelThrowingAxe>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {
@@ -842,7 +841,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
 
             // ===================== DURASTEEL THROWING SPEAR =====================
-            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.Name == "Durasteel Throwing Spear")
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<DurasteelThrowingSpear>())
             {
                 if (calPlayer.StealthStrikeAvailable())
                 {

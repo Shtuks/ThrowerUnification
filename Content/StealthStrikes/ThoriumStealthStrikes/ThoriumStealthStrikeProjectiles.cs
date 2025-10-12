@@ -15,11 +15,11 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
-using ThrowerUnification.Content.Projectiles.StealthPro;
 using ThrowerUnification.Core;
 using ThrowerUnification.Core.UnitedModdedThrowerClass;
 using CalamityMod.Balancing;
 using CalamityMod.Projectiles;
+using ThrowerUnification.Content.Projectiles.StealthPro;
 
 namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
 {
@@ -155,7 +155,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
         //SPRITE STUFF
         public override bool PreDraw(Projectile projectile, ref Color lightColor)
         {
-            if (!isStealthStrike || (stealthType != StealthStrikeType.PlayingCard && stealthType != StealthStrikeType.ClockworkBomb && stealthType != StealthStrikeType.WackWrench))
+            if (!isStealthStrike || stealthType != StealthStrikeType.PlayingCard && stealthType != StealthStrikeType.ClockworkBomb && stealthType != StealthStrikeType.WackWrench)
                 return true;
 
             if (projectile.ModProjectile != null && projectile.ModProjectile.Mod.Name == "ThoriumMod")
@@ -404,7 +404,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                                     Main.rand.NextFloat(-3f, 3f),
                                     Main.rand.NextFloat(-3f, 3f),
                                     75,
-                                    default(Color),
+                                    default,
                                     1.5f
                                 );
                                 Main.dust[dust].noGravity = true;
@@ -420,7 +420,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                                     Main.rand.NextFloat(-2f, 2f),
                                     Main.rand.NextFloat(-2f, 2f),
                                     75,
-                                    default(Color),
+                                    default,
                                     1f
                                 );
                                 Main.dust[dust2].noGravity = true;
@@ -469,7 +469,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                 projectile.tileCollide = false;      // stays ghosted
                 projectile.penetrate = -1;           // don’t despawn after 1 hit
 
-                projectile.damage -= (projectile.damage / 25);
+                projectile.damage -= projectile.damage / 25;
             }
 
             // ====================== Dracula Fang ===================
@@ -477,7 +477,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             {
                 Player player = Main.player[projectile.owner];
 
-                int heal = (int)Math.Round(hit.Damage * Utils.NextFloat(Main.rand, 0.05f, 0.1f));
+                int heal = (int)Math.Round(hit.Damage * Main.rand.NextFloat(0.05f, 0.1f));
                 if (heal > DraculaFangLifeStealCap)
                     heal = DraculaFangLifeStealCap;
 
@@ -607,7 +607,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                             projectile.Center,
                             velocity,
                             childProj.Type,
-                            projectile.damage - (projectile.damage / 4),
+                            projectile.damage - projectile.damage / 4,
                             projectile.knockBack * 0.75f,
                             projectile.owner
                         );
@@ -631,15 +631,15 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                 if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
                 {
                     // Try to get AquaiteKnifePro and AquaiteKnifePro2
-                    bool foundAquaPro = thorium.TryFind<ModProjectile>("AquaiteKnifePro", out ModProjectile aquaPro);
-                    bool foundAquaPro2 = thorium.TryFind<ModProjectile>("AquaiteKnifePro2", out ModProjectile aquaPro2);
+                    bool foundAquaPro = thorium.TryFind("AquaiteKnifePro", out ModProjectile aquaPro);
+                    bool foundAquaPro2 = thorium.TryFind("AquaiteKnifePro2", out ModProjectile aquaPro2);
 
                     // Only proceed if projectile matches one of the Aquaite Knife projectiles
-                    if ((foundAquaPro && projectile.type == aquaPro.Type) ||
-                        (foundAquaPro2 && projectile.type == aquaPro2.Type))
+                    if (foundAquaPro && projectile.type == aquaPro.Type ||
+                        foundAquaPro2 && projectile.type == aquaPro2.Type)
                     {
                         // Try to get HighTidePro2 for spawning
-                        if (thorium.TryFind<ModProjectile>("HighTidePro2", out ModProjectile highTideProj))
+                        if (thorium.TryFind("HighTidePro2", out ModProjectile highTideProj))
                         {
                             SoundEngine.PlaySound(SoundID.Item21, projectile.Center);
 
@@ -653,7 +653,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                             spawned[0] = Projectile.NewProjectile(
                                 projectile.GetSource_OnHit(target),
                                 projectile.Center,
-                                (leftDir * projectile.velocity.Length()) / 5,
+                                leftDir * projectile.velocity.Length() / 5,
                                 highTideProj.Type,
                                 projectile.damage,
                                 projectile.knockBack,
@@ -663,7 +663,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                             spawned[1] = Projectile.NewProjectile(
                                 projectile.GetSource_OnHit(target),
                                 projectile.Center,
-                                (rightDir * projectile.velocity.Length()) / 5,
+                                rightDir * projectile.velocity.Length() / 5,
                                 highTideProj.Type,
                                 projectile.damage,
                                 projectile.knockBack,
@@ -731,7 +731,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                             projectile.Center,
                             velocity,
                             childProj.Type,
-                            projectile.damage - (projectile.damage / 4),
+                            projectile.damage - projectile.damage / 4,
                             projectile.knockBack,
                             projectile.owner
                         );
@@ -1321,7 +1321,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                 return;
 
             // Try to get the AquaiteKnifePro2 projectile
-            if (!thorium.TryFind<ModProjectile>("AquaiteKnifePro2", out ModProjectile aquaPro2))
+            if (!thorium.TryFind("AquaiteKnifePro2", out ModProjectile aquaPro2))
                 return;
 
             if (projectile.type != aquaPro2.Type)

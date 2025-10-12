@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 using ThrowerUnification.Core.UnitedModdedThrowerClass;
 using ThrowerUnification.Core;
 
-namespace ThrowerUnification.Content.CrossmodDamageFix
+namespace ThrowerUnification.Content.StealthStrikes.CrossmodStealthFixes
 {
     public class BloodHunterLexiconFix : GlobalItem
     {

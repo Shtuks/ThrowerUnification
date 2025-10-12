@@ -11,6 +11,8 @@ using Microsoft.Xna.Framework;
 namespace ThrowerUnification.Content.StealthStrikes.CrossmodStealthFixes
 {
     //Akira
+    [ExtendsFromMod(ModCompatibility.ThoriumRework.Name, ModCompatibility.Calamity.Name)]
+    [JITWhenModsEnabled(ModCompatibility.ThoriumRework.Name, ModCompatibility.Calamity.Name)]
     public class GraniteEnergyStormStealthFix : GlobalItem
     {
         public override bool IsLoadingEnabled(Mod mod)

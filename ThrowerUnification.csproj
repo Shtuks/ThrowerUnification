@@ -23,6 +23,9 @@
 	  <Reference Include="SacredTools">
 	    <HintPath>..\ModAssemblies\SacredTools_v1.2.3.dll</HintPath>
 	  </Reference>
+	  <Reference Include="SOTS">
+	    <HintPath>..\ModAssemblies\SOTS_v0.25.0.4.dll</HintPath>
+	  </Reference>
 	  <Reference Include="ThoriumMod">
 	    <HintPath>..\ModAssemblies\ThoriumMod_v1.7.2.4.dll</HintPath>
 	  </Reference>

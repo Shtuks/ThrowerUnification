@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria;
 using Terraria.ModLoader;
 using ThoriumMod;
-using ThrowerUnification.Core;
 
 namespace ThrowerUnification.Content.StealthStrikes.CrossmodStealthFixes
 {
     //Wardrobe hummus
-    [ExtendsFromMod(ModCompatibility.Thorium.Name)]
-    [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
+    [ExtendsFromMod(ModCompatibility.Thorium.Name, ModCompatibility.Calamity.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Thorium.Name, ModCompatibility.Calamity.Name)]
     public class ProjectileStealthConsumptionFixes : GlobalProjectile
     {
         public override bool IsLoadingEnabled(Mod mod)
