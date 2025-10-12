@@ -1,0 +1,42 @@
+[h1]跨模组投手融合[/h1]
+该模组将来自多个不同模组的投手职业合并为一个类别，由以下团队的成员开发
+[list]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3329620648&searchtext=community]Fargo社区魂石拓展[/url]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686]诸神黄昏：炼狱蚀光[/url]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3452171528&searchtext=tpackbuilder]WHummus的灾厄/瑟银平衡[/url]
+[/list]
+
+当前支持的职业：
+[list]
+	[*] 投手（瑟银或任何其他使用原版投掷体系的模组）
+	[*] 盗贼（灾厄及其附属模组）
+	[*] 刺客（造成来自亚巴顿之影模组的动能伤害）
+	[*] 血猎（造成来自万灵模组的恶念伤害）
+[/list]
+
+本模组还为部分非灾厄投掷武器添加了自定义潜伏攻击，未来还会持续更新更多武器支持
+
+本模组高度可配置，你可以：
+[list]
+	[*] 单独启用或禁用某个职业的合并
+	[*] 覆盖物品信息
+	[*] 决定非灾厄武器是否拥有自定义潜伏攻击
+	[*] 设置[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2793782057]Colored Damage Types[/url]模组带来的伤害颜色显示
+[/list]
+
+如果你在同时游玩其它具有投手职业融合功能的模组的话，我们会建议您关闭它们的投手融合功能
+
+注意：本模组不进行职业平衡调整。如需平衡性改动，推荐在同时启用灾厄和瑟银时，也同时启用[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3452171528&searchtext=tpackbuilder]WHummus的灾厄/瑟银平衡[/url]，以及额外的跨模组平衡模组，例如[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3114886209&searchtext=ragnarok]诸神的黄昏[/url]
+
+超链接：
+[list]
+	[*] 潜伏攻击的[url=https://terrariamods.wiki.gg/wiki/Infernal_Eclipse_of_Ragnarok/Stealth_Strikes]英文wiki页面[/url]
+	[*] [url=https://discord.gg/frUcz2dQAy]官方Discord服务器[/url]
+[/list]
+
+成员：
+[list]
+	[*]程序：StarlightCat，Akira，WardrobeHummus
+	[*]美术：Akira，Tyr
+	[*]翻译：Pudd1ng（简体中文）
+[/list]
