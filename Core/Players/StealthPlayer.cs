@@ -14,11 +14,13 @@ namespace ThrowerUnification.Core.Players
         {
             if (ModCompatibility.ThoriumRework.Loaded) 
             {
-                if (CheckArmorSet(helhiem.Find<ModItem>("TitanHood").Type, thorium.Find<ModItem>("TitanBreastplate").Type, thorium.Find<ModItem>("TitanGreaves").Type))
+                if (helhiem.TryFind("TitanHood", out ModItem titanHood))
                 {
-                    AddStealth(110);
-                }
-                
+                    if (CheckArmorSet(titanHood.Type, thorium.Find<ModItem>("TitanBreastplate").Type, thorium.Find<ModItem>("TitanGreaves").Type))
+                    {
+                        AddStealth(110);
+                    }
+                }  
             }
         }
 
