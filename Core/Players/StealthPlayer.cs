@@ -26,7 +26,7 @@ namespace ThrowerUnification.Core.Players
         {
             Player.Calamity().rogueStealthMax += stealth / 100f;
             Player.Calamity().wearingRogueArmor = true;
-            Player.setBonus = $"{this.Player.setBonus}\n+{stealth.ToString()} maximum stealth";
+            Player.setBonus = $"{Player.setBonus}\n+{stealth.ToString()} maximum stealth";
         }
 
         public bool CheckArmorSet(int head, int body, int legs)
