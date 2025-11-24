@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RagnarokMod.Utils;
-using SacredTools.Content.DamageClasses;
+﻿using RagnarokMod.Utils;
 using Terraria;
 using Terraria.ModLoader;
-using ThrowerUnification.Core;
 using ThrowerUnification.Core.UnitedModdedThrowerClass;
 
 namespace ThrowerUnification.Common.CrossmodToUMT.ThoriumToUMT
