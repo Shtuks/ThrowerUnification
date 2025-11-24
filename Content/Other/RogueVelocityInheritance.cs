@@ -5,12 +5,11 @@ using Microsoft.Xna.Framework;
 
 namespace ThrowerUnification.Content.Other
 {
+    [ExtendsFromMod(ModCompatibility.Calamity.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
     public class RogueVelocityInheritance : ModPlayer
     {
-        public override bool IsLoadingEnabled(Mod mod)
-            => ThrowerModConfig.Instance.Calamity;
-
-        // Apply AFTER Calamity finalizes rogue stats
+        public override bool IsLoadingEnabled(Mod mod) => false; //ModCompatibility.Calamity.Loaded
         public override void PostUpdateRunSpeeds()
         {
             // verify calamity exists
@@ -37,22 +36,13 @@ namespace ThrowerUnification.Content.Other
     }
 
 
-    [ExtendsFromMod("CalamityMod")]
+    [ExtendsFromMod(ModCompatibility.Calamity.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
     public class ThrownToRogueVelocityFixer : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
 
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            if (ThrowerModConfig.Instance.Calamity && ModLoader.TryGetMod("CalamityMod", out Mod calamity))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        public override bool IsLoadingEnabled(Mod mod) => false; //ThrowerModConfig.Instance.Calamity && ModCompatibility.Calamity.Loaded);
 
         // Track if projectile was originally Rogue
         public bool wasRogue = false;

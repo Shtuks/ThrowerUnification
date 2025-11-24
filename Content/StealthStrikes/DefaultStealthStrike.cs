@@ -12,6 +12,7 @@ using Terraria.DataStructures;
 using CalamityMod.Projectiles;
 using Terraria;
 using Terraria.ID;
+using ThrowerUnification.Common.CrossmodToUMT;
 
 namespace ThrowerUnification.Content.StealthStrikes
 {
@@ -22,11 +23,7 @@ namespace ThrowerUnification.Content.StealthStrikes
     {
         public override bool InstancePerEntity => true;
 
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            // Only load if CalamityMod is present AND stealth strikes are enabled in your config
-            return ModLoader.TryGetMod("CalamityMod", out _) && ThrowerModConfig.Instance.StealthStrikes;
-        }
+        public override bool IsLoadingEnabled(Mod mod) => ThrowerModConfig.Instance.StealthStrikes;
 
         // Define allowed mod names
         HashSet<string> allowedMods = new HashSet<string>
@@ -162,16 +159,9 @@ namespace ThrowerUnification.Content.StealthStrikes
             // Vanilla items (no ModItem) that use rogue damage
             bool isVanillaRogue = !isModded && isMergedRogue;
 
-            if (isVanillaRogue || (item.type == ItemID.Shuriken || item.type == ItemID.ThrowingKnife ||
-    item.type == ItemID.PoisonedKnife || item.type == ItemID.Snowball ||
-    item.type == ItemID.Beenade || item.type == ItemID.BoneDagger || item.type == ItemID.BoneJavelin ||
-    item.type == ItemID.Grenade || item.type == ItemID.StickyGrenade || item.type == ItemID.BouncyGrenade ||
-    item.type == ItemID.StarAnise || item.type == ItemID.SpikyBall || item.type == ItemID.Bone ||
-    item.type == ItemID.RottenEgg || item.type == ItemID.Javelin || item.type == ItemID.FrostDaggerfish ||
-    item.type == ItemID.PartyGirlGrenade || item.type == ItemID.AleThrowingGlove || item.type == ItemID.MolotovCocktail) && ThrowerModConfig.Instance.LegacyVanillaThrowerWeapons)
+            if (isVanillaRogue || ThrowingToUMT.VanillaThrowerWeapons.Contains(item.type))
             {
-                tooltips.Add(new TooltipLine(Mod, "StealthStrikeInfo",
-                    Language.GetTextValue("Mods.ThrowerUnification.DefaultStealthStrikeTooltip")));
+                AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.DefaultStealthStrikeTooltip"));
             }
 
 

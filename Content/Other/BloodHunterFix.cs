@@ -8,13 +8,19 @@ using Microsoft.Xna.Framework;
 
 namespace ThrowerUnification.Content.Other
 {
-    [ExtendsFromMod("VitalityMod")]
+    [ExtendsFromMod(ModCompatibility.Vitality.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Vitality.Name)]
     public class BloodHunterFix : ModSystem
     {
         private FieldInfo canPickupField;
         private FieldInfo holdingSpecialField;
         private FieldInfo bloodClotDropField; // renamed for clarity
         private string bloodHunterPlayerFullName = "VitalityMod.BloodHunter.BloodHunterPlayer";
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return false;
+        }
 
         public override void Load()
         {
@@ -70,9 +76,15 @@ namespace ThrowerUnification.Content.Other
         }
     }
 
-    [ExtendsFromMod("VitalityMod")]
+    [ExtendsFromMod(ModCompatibility.Vitality.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Vitality.Name)]
     public class UnitedBloodHunterHits : GlobalProjectile
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return false;
+        }
+
         public override void Load()
         {
             var vitalityMod = ModLoader.GetMod("VitalityMod");

@@ -41,7 +41,7 @@ namespace ThrowerUnification.Common.CrossmodToUMT
             {
                 item.DamageType = (DamageClass)(object)ModContent.GetInstance<UnitedModdedThrower>();
 
-                item.GetGlobalProjectile<ThrownToRogueVelocityFixer>().wasRogue = true;
+                //item.GetGlobalProjectile<ThrownToRogueVelocityFixer>().wasRogue = true;
 
                 convertedFromRogue = true;
             }

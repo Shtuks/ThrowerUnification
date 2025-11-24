@@ -34,12 +34,12 @@ namespace ThrowerUnification
         [ReloadRequired]
         [BackgroundColor(60, 200, 60, 192)]
         [DefaultValue(true)]
-        public bool StealthStrikes { get; set; }
+        public bool LegacyVanillaThrowerWeapons { get; set; }
 
         [ReloadRequired]
         [BackgroundColor(60, 200, 60, 192)]
         [DefaultValue(true)]
-        public bool LegacyVanillaThrowerWeapons { get; set; }
+        public bool StealthStrikes { get; set; }
 
         [ReloadRequired]
         [BackgroundColor(60, 200, 60, 192)]
