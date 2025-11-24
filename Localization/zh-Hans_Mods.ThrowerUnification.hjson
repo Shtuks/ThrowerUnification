@@ -161,15 +161,40 @@ Configs: {
 			// Label: Tag B
 			// Tooltip: ""
 		}
+
+		LegacyVanillaThrowerWeapons: {
+			// Tooltip: Toggles the conversion of vanilla ranged weapons that used to be thrower to thrower.
+			// Label: Legacy Vanilla Thrower Weapons
+		}
 	}
 
 	TooltipOverrideStyle: {
 		Tooltip: ""
-		Thrower.Label: 投手
-		Rogue.Label: 盗贼
-		Malevolent.Label: 恶念
-		Kinetic.Label: 动能
-		Custom.Label: 自定义
+
+		Thrower: {
+			Label: 投手
+			// Tooltip: ""
+		}
+
+		Rogue: {
+			Label: 盗贼
+			// Tooltip: ""
+		}
+
+		Malevolent: {
+			Label: 恶念
+			// Tooltip: ""
+		}
+
+		Kinetic: {
+			Label: 动能
+			// Tooltip: ""
+		}
+
+		Custom: {
+			Label: 自定义
+			// Tooltip: ""
+		}
 	}
 }
 

@@ -161,15 +161,40 @@ Configs: {
 			// Label: Tag B
 			// Tooltip: ""
 		}
+
+		LegacyVanillaThrowerWeapons: {
+			// Tooltip: Toggles the conversion of vanilla ranged weapons that used to be thrower to thrower.
+			// Label: Legacy Vanilla Thrower Weapons
+		}
 	}
 
 	TooltipOverrideStyle: {
 		Tooltip: ""
-		Thrower.Label: Метатель
-		Rogue.Label: Разбойник
-		Malevolent.Label: Malevolent
-		Kinetic.Label: Кинетический
-		Custom.Label: Custom
+
+		Thrower: {
+			Label: Метатель
+			// Tooltip: ""
+		}
+
+		Rogue: {
+			Label: Разбойник
+			// Tooltip: ""
+		}
+
+		Malevolent: {
+			Label: Malevolent
+			// Tooltip: ""
+		}
+
+		Kinetic: {
+			Label: Кинетический
+			// Tooltip: ""
+		}
+
+		Custom: {
+			Label: Custom
+			// Tooltip: ""
+		}
 	}
 }
 
