@@ -2,6 +2,7 @@
 using Terraria.ModLoader;
 using CalamityMod;
 using ThrowerUnification.Core.UnitedModdedThrowerClass;
+using ThrowerUnification.Content.Other;
 
 namespace ThrowerUnification.Common.CrossmodToUMT
 {
@@ -26,6 +27,10 @@ namespace ThrowerUnification.Common.CrossmodToUMT
     [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
     public class RogueToUMTProj : GlobalProjectile
     {
+        public override bool InstancePerEntity => true;
+
+        public bool convertedFromRogue = false;
+
         public override bool IsLoadingEnabled(Mod mod)
         {
             return ThrowerModConfig.Instance.Calamity;
@@ -35,6 +40,10 @@ namespace ThrowerUnification.Common.CrossmodToUMT
             if (item.DamageType == ModContent.GetInstance<RogueDamageClass>())
             {
                 item.DamageType = (DamageClass)(object)ModContent.GetInstance<UnitedModdedThrower>();
+
+                item.GetGlobalProjectile<ThrownToRogueVelocityFixer>().wasRogue = true;
+
+                convertedFromRogue = true;
             }
         }
     }

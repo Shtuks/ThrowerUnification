@@ -11,6 +11,7 @@ using CalamityMod.Buffs.DamageOverTime;
 using Terraria.DataStructures;
 using CalamityMod.Projectiles;
 using Terraria;
+using Terraria.ID;
 
 namespace ThrowerUnification.Content.StealthStrikes
 {
@@ -161,10 +162,18 @@ namespace ThrowerUnification.Content.StealthStrikes
             // Vanilla items (no ModItem) that use rogue damage
             bool isVanillaRogue = !isModded && isMergedRogue;
 
-            if (isVanillaRogue)
+            if (isVanillaRogue || (item.type == ItemID.Shuriken || item.type == ItemID.ThrowingKnife ||
+    item.type == ItemID.PoisonedKnife || item.type == ItemID.Snowball ||
+    item.type == ItemID.Beenade || item.type == ItemID.BoneDagger || item.type == ItemID.BoneJavelin ||
+    item.type == ItemID.Grenade || item.type == ItemID.StickyGrenade || item.type == ItemID.BouncyGrenade ||
+    item.type == ItemID.StarAnise || item.type == ItemID.SpikyBall || item.type == ItemID.Bone ||
+    item.type == ItemID.RottenEgg || item.type == ItemID.Javelin || item.type == ItemID.FrostDaggerfish ||
+    item.type == ItemID.PartyGirlGrenade || item.type == ItemID.AleThrowingGlove || item.type == ItemID.MolotovCocktail) && ThrowerModConfig.Instance.LegacyVanillaThrowerWeapons)
             {
-                AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.DefaultStealthStrikeTooltip"));
+                tooltips.Add(new TooltipLine(Mod, "StealthStrikeInfo",
+                    Language.GetTextValue("Mods.ThrowerUnification.DefaultStealthStrikeTooltip")));
             }
+
 
             if (item.ModItem == null)
                 return;
@@ -174,12 +183,12 @@ namespace ThrowerUnification.Content.StealthStrikes
                 AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.DefaultStealthStrikeTooltip"));
             }
 
-            if (crumblingSS.Contains(item.ModItem.Name))
+            if (isMergedRogue && crumblingSS.Contains(item.ModItem.Name))
             {
                 AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.CrumblingStrikeTooltip"));
             }
 
-            if (crunchSS.Contains(item.ModItem.Name))
+            if (isMergedRogue && crunchSS.Contains(item.ModItem.Name))
             {
                 AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.CrunchStrikeTooltip"));
             }

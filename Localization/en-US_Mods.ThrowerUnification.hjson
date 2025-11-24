@@ -161,6 +161,11 @@ Configs: {
 			Label: Tag B
 			Tooltip: ""
 		}
+
+		LegacyVanillaThrowerWeapons: {
+			Tooltip: Toggles the conversion of vanilla ranged weapons that used to be thrower to thrower.
+			Label: Legacy Vanilla Thrower Weapons
+		}
 	}
 
 	TooltipOverrideStyle: {
