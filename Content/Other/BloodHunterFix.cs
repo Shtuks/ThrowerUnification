@@ -3,8 +3,8 @@ using Terraria.ModLoader;
 using ThrowerUnification.Core.UnitedModdedThrowerClass;
 using System.Reflection;
 using System.Collections.Generic;
-using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
+using System;
 
 namespace ThrowerUnification.Content.Other
 {
@@ -12,35 +12,65 @@ namespace ThrowerUnification.Content.Other
     [JITWhenModsEnabled(ModCompatibility.Vitality.Name)]
     public class BloodHunterFix : ModSystem
     {
-        private FieldInfo canPickupField;
-        private FieldInfo holdingSpecialField;
-        private FieldInfo bloodClotDropField; // renamed for clarity
-        private string bloodHunterPlayerFullName = "VitalityMod.BloodHunter.BloodHunterPlayer";
+        private static FieldInfo canPickupField;
+        private static FieldInfo holdingSpecialField;
+        private static FieldInfo bloodClotDropField;
 
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return false;
-        }
+        private static FieldInfo modPlayersField;
+        private static int bhIndex = -1;
+
+        private static Type bhType;
+
+        private const BindingFlags flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
 
         public override void Load()
         {
-            var vitalityMod = ModLoader.GetMod("VitalityMod");
-            if (vitalityMod == null || !ThrowerModConfig.Instance.Vitality)
+            if (!ThrowerModConfig.Instance.Vitality)
                 return;
 
-            var bhType = vitalityMod.Code?.GetType(bloodHunterPlayerFullName);
+            var vitality = ModLoader.GetMod("VitalityMod");
+            if (vitality == null)
+                return;
+
+            bhType = vitality.Code?.GetType("VitalityMod.BloodHunter.BloodHunterPlayer");
             if (bhType == null)
                 return;
 
-            // Reflect the fields in BloodHunterPlayer
-            canPickupField = bhType.GetField("canPickupBloodClots", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            holdingSpecialField = bhType.GetField("holdingSpecialBloodHunterItem", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            bloodClotDropField = bhType.GetField("BloodClotDrop", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            // Cache fields once
+            canPickupField = bhType.GetField("canPickupBloodClots", flags);
+            holdingSpecialField = bhType.GetField("holdingSpecialBloodHunterItem", flags);
+            bloodClotDropField = bhType.GetField("BloodClotDrop", flags);
+
+            // Cache reflection for modPlayers
+            modPlayersField = typeof(Player).GetField("modPlayers", flags);
+
+            // Cache index
+            CacheBloodHunterIndex();
+        }
+
+        private static void CacheBloodHunterIndex()
+        {
+            if (modPlayersField == null || bhType == null)
+                return;
+
+            var temp = new Player();
+            var mpList = modPlayersField.GetValue(temp) as IList<ModPlayer>;
+            if (mpList == null)
+                return;
+
+            for (int i = 0; i < mpList.Count; i++)
+            {
+                if (mpList[i].GetType() == bhType)
+                {
+                    bhIndex = i;
+                    break;
+                }
+            }
         }
 
         public override void PostUpdateEverything()
         {
-            if (canPickupField == null || holdingSpecialField == null || bloodClotDropField == null)
+            if (bhIndex == -1)
                 return;
 
             foreach (var player in Main.player)
@@ -48,30 +78,16 @@ namespace ThrowerUnification.Content.Other
                 if (player == null || !player.active)
                     continue;
 
-                var modPlayersField = typeof(Player).GetField("modPlayers", BindingFlags.Instance | BindingFlags.NonPublic);
-                var modPlayersList = modPlayersField?.GetValue(player) as IList<ModPlayer>;
-                if (modPlayersList == null)
+                var list = modPlayersField.GetValue(player) as IList<ModPlayer>;
+                if (list == null)
                     continue;
 
-                object bhPlayer = null;
-                foreach (var mp in modPlayersList)
-                {
-                    if (mp.GetType().FullName == bloodHunterPlayerFullName)
-                    {
-                        bhPlayer = mp;
-                        break;
-                    }
-                }
+                var bhPlayer = list[bhIndex];
+                bool holdingUnited = player.HeldItem?.DamageType is UnitedModdedThrower;
 
-                if (bhPlayer == null)
-                    continue;
-
-                bool holdingUnitedThrower = player.HeldItem?.DamageType is UnitedModdedThrower;
-
-                // Force the BloodHunter fields
-                holdingSpecialField.SetValue(bhPlayer, holdingUnitedThrower);
-                canPickupField.SetValue(bhPlayer, holdingUnitedThrower);
-                bloodClotDropField.SetValue(bhPlayer, holdingUnitedThrower);
+                holdingSpecialField.SetValue(bhPlayer, holdingUnited);
+                canPickupField.SetValue(bhPlayer, holdingUnited);
+                bloodClotDropField.SetValue(bhPlayer, holdingUnited);
             }
         }
     }
@@ -80,71 +96,96 @@ namespace ThrowerUnification.Content.Other
     [JITWhenModsEnabled(ModCompatibility.Vitality.Name)]
     public class UnitedBloodHunterHits : GlobalProjectile
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return false;
-        }
+        private static FieldInfo modPlayersField;
+        private static int bhIndex = -1;
+
+        private static FieldInfo timerF;
+        private static FieldInfo dropF;
+        private static FieldInfo dropChanceF;
+        private static FieldInfo dropCooldownF;
+        private static FieldInfo dropTimerF;
+        private static FieldInfo maxBLF;
+        private static FieldInfo curBLF;
+
+        private const BindingFlags flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
 
         public override void Load()
         {
-            var vitalityMod = ModLoader.GetMod("VitalityMod");
-            if (vitalityMod == null || !ThrowerModConfig.Instance.Vitality)
+            if (!ThrowerModConfig.Instance.Vitality)
                 return;
+
+            var vitality = ModLoader.GetMod("VitalityMod");
+            if (vitality == null)
+                return;
+
+            var t = vitality.Code.GetType("VitalityMod.BloodHunter.BloodHunterPlayer");
+
+            // Cache all fields
+            timerF = t.GetField("BloodHunterTimer", flags);
+            dropF = t.GetField("BloodClotDrop", flags);
+            dropChanceF = t.GetField("BloodClotDropChance", flags);
+            dropCooldownF = t.GetField("BloodClotDropCooldown", flags);
+            dropTimerF = t.GetField("BloodClotDropTimer", flags);
+            maxBLF = t.GetField("MaxBloodlust", flags);
+            curBLF = t.GetField("Bloodlust", flags);
+
+            // Cache modPlayers reference
+            modPlayersField = typeof(Player).GetField("modPlayers", flags);
+
+            CacheIndex(t);
+        }
+
+        private static void CacheIndex(Type t)
+        {
+            var temp = new Player();
+            var list = modPlayersField.GetValue(temp) as IList<ModPlayer>;
+            if (list == null)
+                return;
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].GetType() == t)
+                {
+                    bhIndex = i;
+                    break;
+                }
+            }
         }
 
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (!(projectile?.DamageType is UnitedModdedThrower))
+            if (bhIndex == -1 || !(projectile.DamageType is UnitedModdedThrower))
                 return;
 
             var player = Main.player[projectile.owner];
-            if (player == null || !player.active || target == null || target.SpawnedFromStatue || target.CountsAsACritter || target.type == 488)
+            if (player == null || !player.active || target == null)
                 return;
 
-            var modPlayersField = typeof(Player).GetField("modPlayers", BindingFlags.Instance | BindingFlags.NonPublic);
-            var modPlayersList = modPlayersField?.GetValue(player) as IList<ModPlayer>;
-            if (modPlayersList == null || modPlayersList.Count == 0)
+            if (target.SpawnedFromStatue || target.CountsAsACritter || target.type == 488)
                 return;
 
-            object bhPlayer = null;
-            foreach (var mp in modPlayersList)
-            {
-                if (mp?.GetType()?.FullName == "VitalityMod.BloodHunter.BloodHunterPlayer")
-                {
-                    bhPlayer = mp;
-                    break;
-                }
-            }
-
-            if (bhPlayer == null)
+            var list = modPlayersField.GetValue(player) as IList<ModPlayer>;
+            if (list == null)
                 return;
 
-            // Cache fields safely
-            var type = bhPlayer.GetType();
-            var bloodHunterTimer = type.GetField("BloodHunterTimer", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            var bloodClotDrop = type.GetField("BloodClotDrop", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            var bloodClotDropChance = type.GetField("BloodClotDropChance", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            var bloodClotDropCooldown = type.GetField("BloodClotDropCooldown", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            var bloodClotDropTimer = type.GetField("BloodClotDropTimer", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            var maxBloodlust = type.GetField("MaxBloodlust", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            var currentBloodlust = type.GetField("Bloodlust", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            var bh = list[bhIndex];
 
-            if (bloodHunterTimer != null)
-                bloodHunterTimer.SetValue(bhPlayer, 0);
+            // Reset timer
+            timerF.SetValue(bh, 0);
 
-            if (bloodClotDrop == null || bloodClotDropChance == null || bloodClotDropCooldown == null || bloodClotDropTimer == null || maxBloodlust == null || currentBloodlust == null)
-                return;
+            // Grab values
+            bool drop = (bool)dropF.GetValue(bh);
+            float chance = (float)dropChanceF.GetValue(bh);
+            int cooldown = (int)dropCooldownF.GetValue(bh);
+            int timer = (int)dropTimerF.GetValue(bh);
+            float maxBL = (float)maxBLF.GetValue(bh);
+            float curBL = (float)curBLF.GetValue(bh);
 
-            bool dropClot = (bool)bloodClotDrop.GetValue(bhPlayer);
-            float dropChance = (float)bloodClotDropChance.GetValue(bhPlayer);
-            int dropCooldown = (int)bloodClotDropCooldown.GetValue(bhPlayer);
-            int dropTimer = (int)bloodClotDropTimer.GetValue(bhPlayer);
-            float maxBL = (float)maxBloodlust.GetValue(bhPlayer);
-            float curBL = (float)currentBloodlust.GetValue(bhPlayer);
-
-            if (dropClot && Main.rand.NextFloat(0, 100) <= dropChance && dropTimer >= dropCooldown && curBL < maxBL)
+            // Drop conditions
+            if (drop && Main.rand.NextFloat(100f) <= chance && timer >= cooldown && curBL < maxBL)
             {
                 int projType = ModContent.ProjectileType<VitalityMod.BloodHunter.BloodStream>();
+
                 Projectile.NewProjectile(
                     projectile.GetSource_FromThis(),
                     target.Center,
@@ -155,7 +196,8 @@ namespace ThrowerUnification.Content.Other
                     player.whoAmI
                 );
 
-                bloodClotDropTimer.SetValue(bhPlayer, 0);
+                // Reset drop timer
+                dropTimerF.SetValue(bh, 0);
             }
         }
     }

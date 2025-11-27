@@ -2,6 +2,8 @@
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using System.IO;
+using Terraria.ID;
 
 namespace ThrowerUnification.Content.Other
 {
@@ -9,88 +11,86 @@ namespace ThrowerUnification.Content.Other
     [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
     public class RogueVelocityInheritance : ModPlayer
     {
-        public override bool IsLoadingEnabled(Mod mod) => false; //ModCompatibility.Calamity.Loaded
+        private static Mod calamity;
+        private static bool apiReady = false;
+
+        public override bool IsLoadingEnabled(Mod mod) =>
+            ThrowerModConfig.Instance.Calamity && ModCompatibility.Calamity.Loaded;
+
+        public override void Load()
+        {
+            // Cache mod once
+            if (ModLoader.TryGetMod("CalamityMod", out calamity))
+                apiReady = true;
+        }
+
         public override void PostUpdateRunSpeeds()
         {
-            // verify calamity exists
-            if (!ModLoader.TryGetMod("CalamityMod", out Mod calamity))
+            if (!apiReady)
                 return;
 
-            // vanilla thrown velocity multiplier
             float thrownVelo = Player.ThrownVelocity;
+            if (thrownVelo <= 1f)
+                return;
 
-            if (thrownVelo != 0f)
+            // Query Calamity safely
+            object result = calamity.Call("GetRogueVelocity", Player);
+            if (result is float rogueVelo)
             {
-                // That means we want to ADD rogueVelocity * thrownVelo so that rogueVelocity functions as a merged stat
-                object getResult = calamity.Call("GetRogueVelocity", Player);
-
-                if (getResult is float rogueVelo)
-                {
-                    float addAmount = (thrownVelo - 1f);
-
-                    // Official safe API call
-                    calamity.Call("AddRogueVelocity", Player, addAmount);
-                }
+                float addAmount = thrownVelo - 1f;
+                calamity.Call("AddRogueVelocity", Player, addAmount);
             }
         }
     }
-
 
     [ExtendsFromMod(ModCompatibility.Calamity.Name)]
     [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
     public class ThrownToRogueVelocityFixer : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
+        public override bool IsLoadingEnabled(Mod mod) =>
+            ThrowerModConfig.Instance.Calamity && ModCompatibility.Calamity.Loaded;
 
-        public override bool IsLoadingEnabled(Mod mod) => false; //ThrowerModConfig.Instance.Calamity && ModCompatibility.Calamity.Loaded);
-
-        // Track if projectile was originally Rogue
-        public bool wasRogue = false;
-
-        public override void SetDefaults(Projectile proj)
-        {
-            if (proj.DamageType == ModContent.GetInstance<RogueDamageClass>())
-                wasRogue = true;
-        }
+        // Deterministic flag — no need to manually sync
+        public bool wasRogue;
 
         public override void OnSpawn(Projectile proj, Terraria.DataStructures.IEntitySource source)
         {
+            // Only modify velocity on the SERVER to avoid desync
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+                return;
+
+            // Validate owner safely
+            if (proj.owner < 0 || proj.owner >= Main.maxPlayers)
+                return;
+
             Player owner = Main.player[proj.owner];
+            if (owner == null || !owner.active)
+                return;
+
             float thrownVelo = owner.ThrownVelocity;
 
-            //Now work off of just RogueVelocity even if not rogue cause that now works as the merged velocity stat (having Calamity not enabled will just make everything run as normal)
+            // Prevent division by zero or unstable behaviour
+            if (thrownVelo <= 0f)
+                return;
+
+            // NON-ROGUE PROJECTILE: scale down initial velocity so rogue-velocity later multiplies correctly
             if (!wasRogue)
             {
                 proj.velocity /= thrownVelo;
-
-                /*
-                if (proj.velocity != Vector2.Zero && thrownVelo != 1f)
-                {
-                    // Desired velocity based on rogueVelo
-                    object getResult = ModLoader.GetMod("CalamityMod")?.Call("GetRogueVelocity", owner);
-                    if (getResult is float rogueVelo)
-                    {
-                        Vector2 desiredVelocity = proj.velocity * rogueVelo;
-
-                        // Only boost if current velocity is too low
-                        if ((proj.velocity * thrownVelo).Length() < desiredVelocity.Length())
-                        {
-                            proj.velocity = desiredVelocity;
-                        }
-                    }
-                }
-                */
-
+                proj.netUpdate = true;
                 return;
             }
 
-            //If originally rogue, now fixed since it originally used JUST rogueVelocity +thrownVelocity flatly (for some reason)
+            /*
+            // ROGUE PROJECTILE – remove calamity’s extra flat thrown velocity boost
             if (thrownVelo > 1f && proj.velocity != Vector2.Zero)
             {
-                // Subtract a flat amount in the direction of the projectile
-                Vector2 flatSubtraction = Vector2.Normalize(proj.velocity) * (thrownVelo);
-                proj.velocity -= flatSubtraction;
+                Vector2 flat = Vector2.Normalize(proj.velocity) * thrownVelo;
+                proj.velocity -= flat;
+                proj.netUpdate = true;
             }
+            */
         }
     }
 }
