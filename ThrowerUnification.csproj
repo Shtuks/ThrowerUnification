@@ -9,7 +9,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <Reference Include="CalamityMod">
-	    <HintPath>..\ModAssemblies\CalamityMod_v2.0.7.1dll</HintPath>
+	    <HintPath>..\ModAssemblies\CalamityMod_v2.0.7.1.dll</HintPath>
 	  </Reference>
 	  <Reference Include="InfernalEclipseAPI">
 	    <HintPath>..\ModAssemblies\InfernalEclipseAPI_v0.8.1.1.dll</HintPath>
