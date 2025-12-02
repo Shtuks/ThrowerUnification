@@ -281,7 +281,7 @@ namespace ThrowerUnification.Content.StealthStrikes
 
                     // ALSO mark it as a stealth strike for Calamity
                     CalamityGlobalProjectile modProj = projectile.GetGlobalProjectile<CalamityGlobalProjectile>();
-                    if (modProj != null)
+                    if (modProj != null && modProj.Mod.Name != "CalamityMod")
                     {
                         modProj.stealthStrike = true;
                     }

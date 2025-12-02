@@ -35,7 +35,7 @@ namespace ThrowerUnification.Content.StealthStrikes
                 if (calPlayer.StealthStrikeAvailable())
                 {
                     CalamityGlobalProjectile modProj = projectile.GetGlobalProjectile<CalamityGlobalProjectile>();
-                    if (modProj != null)
+                    if (modProj != null && modProj.Mod.Name != "CalamityMod" && modProj.Mod.Name != "CatalystMod" && modProj.Mod.Name != "CalamityHunt")
                     {
                         modProj.stealthStrike = true;
                     }
