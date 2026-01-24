@@ -1,6 +1,6 @@
 displayName = Thrower Unification
 author = StarlightCat, Akira, & WardrobeHummus
-version = 0.3.13.3
+version = 0.3.14
 weakReferences = VitalityMod, CalamityMod, ThoriumMod, SacredTools, RagnarokMod, SOTS
 sortAfter = VitalityMod, CalamityMod, ThoriumMod, SacredTools, CalamityBardHealer, RagnarokMod, SOTS, SOTSBardHealer, RagnarokMod, SOTS
 homepage = https://discord.gg/frUcz2dQAy

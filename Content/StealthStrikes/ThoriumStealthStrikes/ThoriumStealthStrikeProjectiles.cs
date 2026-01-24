@@ -748,6 +748,37 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                 }
             }
 
+            if (stealthType == StealthStrikeType.ShinobiSlicer)
+            {
+                if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium) &&
+                    thorium.TryFind("ShinobiSlicerPro", out ModProjectile childProj))
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        Vector2 velocity = Main.rand.NextVector2Unit() * 5f;
+
+                        int childID = Projectile.NewProjectile(
+                            projectile.GetSource_FromThis(),
+                            projectile.Center,
+                            velocity,
+                            ModContent.ProjectileType<ShinobiGelStealthPro>(),
+                            projectile.damage / 6,
+                            projectile.knockBack,
+                            projectile.owner
+                        );
+
+                        if (Main.projectile.IndexInRange(childID))
+                        {
+                            Projectile child = Main.projectile[childID];
+                            child.DamageType = projectile.DamageType;
+
+                            if (Main.netMode == NetmodeID.Server)
+                                NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, childID);
+                        }
+                    }
+                }
+            }
+
             return base.OnTileCollide(projectile, oldVelocity);
         }
 

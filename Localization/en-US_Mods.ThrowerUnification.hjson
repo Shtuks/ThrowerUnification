@@ -27,6 +27,7 @@ ThoriumStealthStrike: {
 	AquaiteKnife: Stealth strikes will carve high piercing waves outwards from hit enemies
 	SteelThrowingAxe: Stealth strikes throw a spread of 3 axes that will stun enemies on hit
 	DurasteelThrowingSpear: Stealth strikes throw a spread of 3 higher pierce spears that will stun enemies on hit
+	ShinobiSlicer: Stealth strikes on bounce release gel fragments that home onto nearby enemies
 	FireAxe:
 		'''
 		'Best to avoid chasms with this thing...'
@@ -202,4 +203,5 @@ Projectiles: {
 	FireAxeStealthPro.DisplayName: Fire Axe Stealth Pro
 	RogueSpectreBlast.DisplayName: Rogue Spectre Blast
 	TidalWaveWhirlpool.DisplayName: Tidal Wave Whirlpool
+	ShinobiGelStealthPro.DisplayName: Shinobi Gel Stealth Pro
 }
