@@ -1,3 +1,4 @@
+# Thrower Unification
 This mod merges a few modded throwers into one class, and is developed for and maintained by the teams behind the Community Souls Expansion, Infernal Eclipse of Ragnarok, & WHummus' Calamity/Thorium Balancing.
 
 Currently supported classes:
