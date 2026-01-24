@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria.ModLoader;
@@ -13,6 +13,7 @@ using CalamityMod.Projectiles;
 using Terraria;
 using Terraria.ID;
 using ThrowerUnification.Common.CrossmodToUMT;
+using RagnarokMod.Utils;
 
 namespace ThrowerUnification.Content.StealthStrikes
 {
@@ -41,7 +42,7 @@ namespace ThrowerUnification.Content.StealthStrikes
         {
             if (item.ModItem != null)
             {
-                if (item.ModItem.Name == "CaptainsPoniard" || item.ModItem.Name == "SteelThrowingAxe")
+                if (item.ModItem.Name == "CaptainsPoniard" || item.ModItem.Name == "SteelThrowingAxe" || item.ModItem.Name == "ShinobiSlicer")
                     return;
             }
 
@@ -87,7 +88,8 @@ namespace ThrowerUnification.Content.StealthStrikes
                 "SoftServeSunderer",
                 "WhiteDwarfKunai",
                 "DraculaFang",
-                "WackWrench"
+                "WackWrench",
+                "ShinobiSlicer"
             };
 
             string[] NASS =
@@ -227,17 +229,19 @@ namespace ThrowerUnification.Content.StealthStrikes
 
         public override bool InstancePerEntity => true;
 
+        public bool IsStealthStrikeProjectile;
+
         // Whip tip/strike projectiles that should apply debuffs
         private static readonly string[] crumblingProj =
         {
-            "RopeBullWhipProj", "ArgoniteBullWhipProj", "WhineVineProj",
-            "TheWormProj", "NerveBundleProj", "FirelashProj", "PricklewireProj",
+            "RopeBullWhipHelperProj", "RopeBullWhipProj", "ArgoniteBullWhipProj","ArgoniteBullWhipHelperProj", "WhineVineProj", "WhineVineHelperProj",
+            "TheWormProj", "TheWormHelperProj", "NerveBundleProj", "NerveBundleHelperProj", "FirelashProj", "FirelashHelperProj", "PricklewireProj", "PricklewireHelperProj"
         };
 
         private static readonly string[] crunchProj =
         {
-            "MummifierProj", "SphinxONineProj", "TarantulashProj", "MechanicalHandfulProj",
-            "ChlorolashProj", "ThePlugProj", "JackOCrackProj", "TheConductorProj", "BrinkofBloodProj",
+            "MummifierProj", "MummifierHelperProj", "SphinxONineProj", "SphinxONineHelperProj", "TarantulashProj", "TarantulashHelperProj", "MechanicalHandfulProj", "MechanicalHandfulHelperProj",
+            "ChlorolashProj", "ChlorolashHelperProj", "ThePlugProj", "ThePlugHelperProj", "JackOCrackProj", "JackOCrackHelperProj", "TheConductorProj", "TheConductorHelperProj", "BrinkofBloodProj", "BrinkofBloodHelperProj"
         };
 
         //Bo staff versions
@@ -256,7 +260,7 @@ namespace ThrowerUnification.Content.StealthStrikes
 
         private static bool IsWhipOrBoStaffProjectile(Projectile projectile)
         {
-            string projName = projectile.Name;
+            string projName = projectile.ModProjectile?.Name ?? projectile.Name;
 
             return crumblingProj.Contains(projName) ||
                    crunchProj.Contains(projName) ||
@@ -264,108 +268,59 @@ namespace ThrowerUnification.Content.StealthStrikes
                    boCrunchProj.Contains(projName);
         }
 
-
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            // Only run this logic for specific projectiles
-            if (!IsWhipOrBoStaffProjectile(projectile))
-                return;
+            string name = projectile.ModProjectile?.Name ?? projectile.Name;
 
-            // 1) If this was spawned by another projectile, copy Calamity's stealth flag from the parent.
-            Projectile parentProj = TryGetParentProjectile(source);
-            if (parentProj != null)
+            // Only care about our whips/bo staffs
+            if (!IsWhipOrBoStaffProjectile(projectile)) return;
+
+            Player owner = Main.player[projectile.owner];
+            var calPlayer = owner.GetModPlayer<CalamityPlayer>();
+
+            // 1️ Mark the projectile itself as stealth if spawned directly by player and available
+            if (calPlayer.StealthStrikeAvailable())
             {
-                if (IsCalamityStealthProjectile(parentProj))
-                {
-                    projectile.localAI[1] = 1f; // internal debuff marker
-
-                    // ALSO mark it as a stealth strike for Calamity
-                    CalamityGlobalProjectile modProj = projectile.GetGlobalProjectile<CalamityGlobalProjectile>();
-                    if (modProj != null && modProj.Mod.Name != "CalamityMod")
-                    {
-                        modProj.stealthStrike = true;
-                    }
-                }
-                return; // children do not check the player at all
+                IsStealthStrikeProjectile = true;
             }
 
-            // 2) This is a root whip projectile; mark it stealth if Calamity says it's stealth.
-            if (IsCalamityStealthProjectile(projectile))
+            // 2️ Propagate stealth strike from parent projectile (whip helper, etc.)
+            if (source is EntitySource_Parent parentSource &&
+                parentSource.Entity is Projectile parentProj)
             {
-                projectile.localAI[1] = 1f;
-
-                CalamityGlobalProjectile modProj = projectile.GetGlobalProjectile<CalamityGlobalProjectile>();
-                if (modProj != null)
+                // Try to get our own GlobalProjectile from the parent
+                if (parentProj.TryGetGlobalProjectile(out DefaultStealthStrikeGlobalProjectile parentStealth))
                 {
-                    modProj.stealthStrike = true;
+                    if (parentStealth.IsStealthStrikeProjectile)
+                    {
+                        IsStealthStrikeProjectile = true;
+                    }
                 }
             }
         }
 
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            string projName = GetProjName(projectile.type);
+            // ---- NAME GATE ----
+            string name = projectile.ModProjectile?.Name ?? projectile.Name;
 
-            // --- whip logic stays as-is ---
-            if (projectile.localAI[1] == 1f)
-            {
-                if (crumblingProj.Contains(projName))
-                {
-                    target.AddBuff(ModContent.BuffType<Crumbling>(), 300);
-                }
-                else if (crunchProj.Contains(projName))
-                {
-                    target.AddBuff(ModContent.BuffType<ArmorCrunch>(), 300);
-                }
-            }
+            bool allowed =
+                crumblingProj.Contains(name) ||
+                crunchProj.Contains(name) ||
+                boCrumblingProj.Contains(name) ||
+                boCrunchProj.Contains(name);
 
-            // --- bo staff logic: check directly if it's a stealth strike ---
-            if (boCrumblingProj.Contains(projName) || boCrunchProj.Contains(projName))
-            {
-                if (IsCalamityStealthProjectile(projectile))
-                {
-                    if (boCrumblingProj.Contains(projName))
-                    {
-                        target.AddBuff(ModContent.BuffType<Crumbling>(), 300);
-                        target.AddBuff(ModContent.BuffType<RiptideDebuff>(), 300);
-                    }
-                    else if (boCrunchProj.Contains(projName))
-                    {
-                        target.AddBuff(ModContent.BuffType<ArmorCrunch>(), 300);
-                        target.AddBuff(ModContent.BuffType<CrushDepth>(), 300);
-                    }
-                }
-            }
-        }
+            if (!allowed)
+                return;
 
+            // ---- CHECK STEALTH STRIKE ----
+            if (!IsStealthStrikeProjectile) return;
 
-
-        // ---- helpers ----
-
-        private static Projectile TryGetParentProjectile(IEntitySource source)
-        {
-            if (source is EntitySource_Parent parent && parent.Entity is Projectile proj)
-                return proj;
-
-            return null;
-        }
-
-
-        private static bool IsCalamityStealthProjectile(Projectile proj)
-        {
-            var calamity = ModLoader.GetMod("CalamityMod");
-            if (calamity == null)
-                return false;
-
-            // Calamity API: returns true if the projectile is a stealth strike projectile
-            // (object?) cast guards against null; ?? false gives a safe default
-            return (bool?)calamity.Call("GetStealthProjectile", proj) ?? false;
-        }
-
-        private static string GetProjName(int type)
-        {
-            ModProjectile modProj = ModContent.GetModProjectile(type);
-            return modProj?.Name ?? "";
+            // ---- APPLY DEBUFF ----
+            if (crumblingProj.Contains(name) || boCrumblingProj.Contains(name))
+                target.AddBuff(ModContent.BuffType<Crumbling>(), 300);
+            else
+                target.AddBuff(ModContent.BuffType<ArmorCrunch>(), 300);
         }
     }
 }

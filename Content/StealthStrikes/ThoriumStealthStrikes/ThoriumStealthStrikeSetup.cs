@@ -57,6 +57,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
         AquaiteKnife,
         SteelThrowingAxe,
         DurasteelThrowingSpear,
+        ShinobiSlicer,
     }
     [ExtendsFromMod(ModCompatibility.Thorium.Name, ModCompatibility.Calamity.Name)]
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name, ModCompatibility.Calamity.Name)]
@@ -882,6 +883,30 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                 }
             }
 
+            // ===================== SHINOBI SLICER =====================
+            if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.type == ModContent.ItemType<ShinobiSlicer>())
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    int projID = Projectile.NewProjectile(
+                        source,
+                        position,
+                        velocity,
+                        type,
+                        damage,
+                        knockback,
+                        player.whoAmI
+                    );
+
+                    if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                    {
+                        stealthGlobal.SetupAsStealthStrike(StealthStrikeType.ShinobiSlicer);
+                    }
+
+                    return false; // Prevent default projectile since we spawned our own
+                }
+            }
+
             return true;
         }
 
@@ -1132,6 +1157,11 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             if (item.type == ModContent.ItemType<DurasteelThrowingSpear>())
             {
                 FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.DurasteelThrowingSpear"));
+            }
+
+            if (item.type == ModContent.ItemType<ShinobiSlicer>())
+            {
+                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.ShinobiSlicer"));
             }
         }
     }

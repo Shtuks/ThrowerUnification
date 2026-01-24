@@ -27,6 +27,7 @@ ThoriumStealthStrike: {
 	AquaiteKnife: 潜伏攻击命中敌人时向外放射出高穿透性的波纹
 	SteelThrowingAxe: 潜伏攻击会散射出3把斧头，命中敌人后会造成晕眩减益
 	DurasteelThrowingSpear: 潜伏攻击会散射出3根穿透更强的长矛，命中敌人后会造成晕眩减益
+	// ShinobiSlicer: Stealth strikes on bounce release gel fragments that home onto nearby enemies
 	FireAxe:
 		'''
 		“最好用这个东西来避免裂隙……”
@@ -202,4 +203,5 @@ Projectiles: {
 	FireAxeStealthPro.DisplayName: 消防斧绝赞潜伏中
 	RogueSpectreBlast.DisplayName: 幽影冲击
 	TidalWaveWhirlpool.DisplayName: 海潮涡流
+	// ShinobiGelStealthPro.DisplayName: Shinobi Gel Stealth Pro
 }
