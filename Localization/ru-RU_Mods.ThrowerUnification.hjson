@@ -1,171 +1,171 @@
-DefaultStealthStrikeTooltip: Скрытые атаки наносят на +75% больше урона и имеют +75% к скорости снаряда.
-DefaultStealthStrikeTooltipDamage: I colpi furtivi infliggenu +75% di danni in piщ.
-DefaultStealthStrikeTooltipVelocity: L'attacchi furtivi anu una velocitа di +75%.
-// CrumblingStrikeTooltip: Stealth strikes deal increased damage and inflict crumbling for 5 seconds
-// CrunchStrikeTooltip: Stealth strikes deal increased damage and inflict armor crunch for 5 seconds
+DefaultStealthStrikeTooltip: При скрытном ударе увеличивает урон атаки на 75% и скорость снаряда на 75%
+DefaultStealthStrikeTooltipDamage: При скрытном ударе увеличивает урон атаки на 75%
+DefaultStealthStrikeTooltipVelocity: При скрытном ударе увеличивает скорость снаряда на 75%
+CrumblingStrikeTooltip: При скрытном ударе атака наносит увеличенный урон и накладывает дебафф «Разрушение» на 5 секунд
+CrunchStrikeTooltip: При скрытном ударе атака наносит увеличенный урон и накладывает дебафф «Потресканная броня» на 5 секунд
 
 ThoriumStealthStrike: {
-	CactusNeedle: Скрытые атаки выбрасывают иглы в виде веера из 3 штук
-	IcyTomahawk: Скрытые атаки выбрасывают 4 томагавка с разной скоростью, которые дольше летают и пробивают больше врагов
-	ZephyrRuin: Скрытые атаки бросают усиленное копье, которое всегда наносит критический урон
-	ClockworkBomb: Скрытые атаки создают большую область взрыва, которая дольше длится
-	SoulBomb: Скрытые атаки выпускают поток самонаводящихся душ при детонации
-	PlayingCard: Скрытые атаки бросают 5 самонаводящихся карт, которые всегда взрываются
-	Soulslasher: Скрытые атаки после попадания по врагу агрессивно преследуют его
-	WhiteDwarfCutter: При скрытой атаке каждое попадание создает вспышки, наносящие 0.1% от максимального здоровья цели
-	CaptainsPoignard: Скрытые атаки выбрасывают залп из 6 кинжалов и увеличивают скорость атаки игрока на 10 секунд
-	SoftServeSunderer: Скрытые атаки призывают дождь из шишек над пораженным врагом
-	ShadeShuriken: Скрытые атаки бросают увеличенный, быстрый сюрикен с повышенным пробиванием
-	LodestoneJav: Скрытые атаки вызывают извержение земли из пораженного врага, накладывая "раскол"
-	ValadiumThrowingAxe: Скрытые атаки при первом попадании создают кольцо топоров, летящих в пораженного врага
-	ChlorophyteTomahawk: Скрытые атаки длятся дольше, пробивают больше врагов и создают самонаводящиеся споры на протяжении всего действия
-	// DraculaFang: Stealth strikes will throw a fan of 4 fangs that life steal
-	// WackWrench: Stealth strikes throw a larger wrench that will pass through blocks and stay in place after hitting an enemy
-	// EnchantedKnife: Stealth strikes on hit will summon a star from the sky to strike hit enemies
-	// GoblinWarSpear: Stealth strikes will shatter into 3-4 yew wood shrapnels on hit that will always gouge
-	// MeteoriteClusterBomb: Stealth strikes will split into another group of itself, making for a recursive cluster
-	// AquaiteKnife: Stealth strikes will carve high piercing waves outwards from hit enemies
-	// SteelThrowingAxe: Stealth strikes throw a spread of 3 axes that will stun enemies on hit
-	// DurasteelThrowingSpear: Stealth strikes throw a spread of 3 higher pierce spears that will stun enemies on hit
-	// ShinobiSlicer: Stealth strikes on bounce release gel fragments that home onto nearby enemies
+	CactusNeedle: При скрытном ударе бросает иглы веером из 3-х штук
+	IcyTomahawk: При скрытном ударе бросает 4 томагавка с разной скоростью, которые дольше летят и прошивают большее количество врагов
+	ZephyrRuin: При скрытном ударе копьё усиливается и гарантированно наносит критический удар
+	ClockworkBomb: При скрытном ударе бросает бомбу с увеличенной областью взрыва и длительностью
+	SoulBomb: При скрытном ударе выпускает поток самонаводящихся взрывных духов
+	PlayingCard: При скрытном ударе бросает 5 взрывающихся самонаводящихся карт
+	Soulslasher: При скрытном ударе после попадания по врагу агрессивно преследует его
+	WhiteDwarfCutter: При скрытном ударе каждое попадание создаёт вспышки, наносящие 0,1% от максимального здоровья цели
+	CaptainsPoignard: При скрытном удары бросает залп из 6 кинжалов и увеличивает скорость атаки игрока на 10 секунд
+	SoftServeSunderer: При скрытном ударе призывает дождь из шишек над поражённым врагом
+	ShadeShuriken: При скрытном ударе бросает увеличенный, быстрый сюрикен с повышенным пробиванием
+	LodestoneJav: При скрытном ударе вызывает извержение земли на месте пораженного врага, накладывая дебафф «Раскол»
+	ValadiumThrowingAxe: При скрытном ударе атака во время первого попадания создаёт кольцо топоров, летящих в поражённого врага
+	ChlorophyteTomahawk: При скрытном ударе атака длится дольше, пробивает больше врагов и создаёт самонаводящиеся споры на протяжении всего действия атаки
+	DraculaFang: При скрытном ударе бросает веер из 4-х клыков, крадущих жизнь
+	WackWrench: При скрытном ударе бросает крупный гаечный ключ, способный проходить сквозь стены и задерживаться на месте при попадании по врагу
+	EnchantedKnife: При скрытном ударе атака при попадании призывает звезду с неба, наносящую урон
+	GoblinWarSpear: При скрытном ударе атака разделяется на 3-4 тиссовые шрапнели, накладывающие дебафф «Глубокая рана»
+	MeteoriteClusterBomb: При скрытном ударе атака разделяется на ещё одно точно такое-же скопление, создавая рекурсивный кластер
+	AquaiteKnife: При скрытном ударе после попадания по врагу создаёт на этом месте мощные пронзающие волны
+	SteelThrowingAxe: При скрытном ударе бросает 3 топора, оглушающие врагов при попадании
+	DurasteelThrowingSpear: При скрытном ударе бросает 3 пронзающих копья, оглушающие врагов при попадании
+	ShinobiSlicer: При скрытном ударе каждый отскок резака сопровождается запуском множества гелевых коючек, самонаводящихся в ближайших врагов
 	FireAxe:
 		'''
-		'Лучше держаться подальше от пропастей с этой штукой...'
-		Скрытые атаки призывают призрачный огненный топор, рассекающий пораженных врагов
+		'С этой штукой лучше держаться подальше от пропастей...'
+		При скрытном ударе призывает призрачный огненный топор, рассекающий пораженных врагов
 		'''
 	TerraKnife:
 		'''
-		ЛКМ: быстро бросает терра-кинжалы
-		ПКМ: бросает пронзающий терра-нож, который постоянно наносит урон выбранной цели
-		При скрытой атаке бросаются и кинжалы, и нож, причем нож при попадании вызывает град ударов
+		Нажмите ЛКМ, чтобы бросить скоростной терра-кинжал
+		Нажмите ПКМ, чтобы бросить прошивающий врагов терра-кинжал, постоянно наносящий урон первой попавшейся цели
+		При скрытном ударе бросает и кинжалы, и нож, причем нож при попадании по врагу вызывает шквал мощных ударов
 		'''
 	GelGlove:
 		'''
-		Выбрасывает сгусток геля, отскакивающий от поверхностей
+		Бросает сгусток геля, отскакивающий от поверхностей
 		Можно заряжать для увеличения урона, количества отскоков и размера
-		Скрытые атаки во время полета выстреливают сюрикенами по ближайшим врагам
+		При скрытном ударе снаряд во время полёта стреляет сюрикенами в ближайших врагов
 		'''
 	TidalWave:
 		'''
 		'Смети своих врагов яростью прилива...'
-		Выбрасывает массивный водяной сюрикен, выпускающий миниатюрные волны
-		Скрытые атаки создают разрушительную приливную волну, следующую за сюрикеном и притягивающую врагов
+		Бросает крупный водяной сюрикен, выпускающий миниатюрные волны
+		При скрытном ударе создаёт сокрушающую приливную волну, следующую за сюрикеном и стягивающую врагов
 		'''
 }
 
 DamageClasses: {
 	UnitedModdedThrower: {
 		DisplayName: {
-			0: метательый урон
-			1: разбойный урон
-			2: malevolent damage
-			3: кинетический урон
-			Thrower: метательый урон
-			Rogue: разбойный урон
-			Malevolent: malevolent damage
-			Kinetic: кинетический урон
-			thrower: метательый урон
-			rogue: разбойный урон
-			malevolent: malevolent damage
-			kinetic: кинетический урон
+			0: ед. метательного урона
+			1: ед. разбойного урона
+			2: ед. вероломного урона
+			3: ед. кинетического урона
+			Thrower: ед. метательного урона
+			Rogue: ед. разбойного урона
+			Malevolent: ед. вероломного урона
+			Kinetic: ед. кинетического урона
+			thrower: ед. метательного урона
+			rogue: ед. разбойного урона
+			malevolent: ед. вероломного урона
+			kinetic: ед. кинетического урона
 		}
 	}
 }
 
-CustomName: "{0} урон"
-// ClassTag: -{0} Class-
+CustomName: "ед. {0} урона"
+ClassTag: -{0}-
 
 Configs: {
 	ThrowerModConfig: {
-		DisplayName: Конфигурация Мода
+		DisplayName: Конфигурация
 
 		Headers: {
 			General: Основные настройки
 			ColoredDamageType: Цвет урона
-			// ClassTag: Class Tag Header
+			ClassTag: Классовый тег
 		}
 
 		Vanilla: {
-			Label: Ванильный
-			Tooltip: Включает/выключает объединение для модов, использующих ванильный класс метателя. В основном затрагивает мод Thorium.
+			Label: Ванилла
+			Tooltip: Включает/Выключает объединение модов, использующих ванильный класс метателя. В основном затрагивает Thorium.
 		}
 
 		Calamity: {
 			Label: Calamity
-			Tooltip: Включает/выключает объединение для класса Разбойник (Rogue) из мода Calamity.
+			Tooltip: Включает/Выключает объединение класса Разбойник (Rogue) из Calamity.
 		}
 
 		Vitality: {
 			Label: Vitality
-			Tooltip: Включает/выключает объединение для класса Кровавый Охотник (Blood Hunter) из мода Vitality.
+			Tooltip: Включает/Выключает объединение класса Кровавый охотник (Blood Hunter) из Vitality.
 		}
 
 		SacredTools: {
 			Label: Shadows of Abaddon
-			Tooltip: Включает/выключает объединение для класса Ревенант (Revenant) из мода Shadows of Abaddon.
+			Tooltip: Включает/Выключает объединение класса Ревенант (Revenant) из Shadows of Abaddon.
 		}
 
 		TooltipOverride: {
-			Label: Переопределение названия класса и подсказок
-			// Tooltip: Lets you adjust the name of the class to any of the supported classes, or the custom name set below.
+			Label: Название общего класса
+			Tooltip: Позволяет вам самостоятельно выбрать готовое название общего метательного класса, или вписать собственное название ниже.
 		}
 
 		R: {
-			Label: R (Красный)
+			Label: Красный
 			Tooltip: ""
 		}
 
 		G: {
-			Label: G (Зеленый)
+			Label: Зеленый
 			Tooltip: ""
 		}
 
 		B: {
-			Label: B (Синий)
+			Label: Синий
 			Tooltip: ""
 		}
 
 		StealthStrikes: {
-			Label: Скрытые атаки
+			Label: Скрытные удары
 			Tooltip:
 				'''
-				Включает/выключает скрытые атаки (не из Calamity), добавленные этим модом.
-				Эта настройка ничего не делает, если Calamity отключен.
+				Включает/Выключает скрытные удары, добавляемые этим модом.
+				Эта опция ничего не делает, если Calamity отключен.
 				'''
 		}
 
 		CustomTooltipOverride: {
-			Label: Custom Tooltip Override
+			Label: Собственное название общего класса
 			Tooltip:
 				'''
-				Allows you to enter a custom name for the united thrower class.
-				Enter the deseried class name with proper capitalization (i.e. Thrower)
+				Позволяет вам ввести собственное название для общего метательного класса.
+				Вводите желаемое название для класса с заглавной буквы (например: Метатель).
 				'''
 		}
 
 		ThoriumClassTag: {
-			// Label: Class Tag
-			// Tooltip: Toggles the class tag that appears at the top of an items tooltip.
+			Label: Классовый тег
+			Tooltip: Включает/Выключает классовый тег, появляющийся над описанием предмета.
 		}
 
 		TagR: {
-			// Label: Tag R
-			// Tooltip: ""
+			Label: Красный
+			Tooltip: ""
 		}
 
 		TagG: {
-			// Label: Tag G
-			// Tooltip: ""
+			Label: Зелёный
+			Tooltip: ""
 		}
 
 		TagB: {
-			// Label: Tag B
-			// Tooltip: ""
+			Label: Синий
+			Tooltip: ""
 		}
 
 		LegacyVanillaThrowerWeapons: {
-			// Tooltip: Toggles the conversion of vanilla ranged weapons that used to be thrower to thrower.
-			// Label: Legacy Vanilla Thrower Weapons
+			Tooltip: Заставляет всё расходуемое стрелковое оружие ваниллы, которое раньше являлось метательным снова стать таковым.
+			Label: Смена класса ванильного расходуемого стрелкового оружия
 		}
 	}
 
@@ -174,34 +174,34 @@ Configs: {
 
 		Thrower: {
 			Label: Метатель
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		Rogue: {
 			Label: Разбойник
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		Malevolent: {
-			Label: Malevolent
-			// Tooltip: ""
+			Label: Веролом
+			Tooltip: ""
 		}
 
 		Kinetic: {
-			Label: Кинетический
-			// Tooltip: ""
+			Label: Кинетик
+			Tooltip: ""
 		}
 
 		Custom: {
-			Label: Custom
-			// Tooltip: ""
+			Label: Собственное
+			Tooltip: ""
 		}
 	}
 }
 
 Projectiles: {
-	FireAxeStealthPro.DisplayName: Fire Axe Stealth Pro
-	RogueSpectreBlast.DisplayName: Rogue Spectre Blast
-	TidalWaveWhirlpool.DisplayName: Tidal Wave Whirlpool
-	// ShinobiGelStealthPro.DisplayName: Shinobi Gel Stealth Pro
+	FireAxeStealthPro.DisplayName: Скрытный огненный топор снар
+	RogueSpectreBlast.DisplayName: Разбойный спектральный выстрел
+	TidalWaveWhirlpool.DisplayName: Водоворот приливной волны
+	ShinobiGelStealthPro.DisplayName: Скрытный гель шиноби снар
 }
