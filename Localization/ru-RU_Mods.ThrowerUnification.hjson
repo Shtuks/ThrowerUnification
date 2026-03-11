@@ -72,7 +72,7 @@ DamageClasses: {
 	}
 }
 
-CustomName: "ед. {0} урона"
+CustomName: ед. {0} урона
 ClassTag: -{0}-
 
 Configs: {

@@ -10,7 +10,6 @@ using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using ThrowerUnification.Core.UnitedModdedThrowerClass;
-using ThrowerUnification.Core;
 
 namespace ThrowerUnification.Content.StealthStrikes
 {
@@ -26,7 +25,6 @@ namespace ThrowerUnification.Content.StealthStrikes
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            // Check if the projectile belongs to your custom damage class or is a Shuriken
             if (projectile.DamageType == UnitedModdedThrower.Instance || projectile.type == ProjectileID.Shuriken)
             {
                 Player player = Main.player[projectile.owner];

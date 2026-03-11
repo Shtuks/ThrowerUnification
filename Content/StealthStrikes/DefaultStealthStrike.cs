@@ -7,13 +7,9 @@ using CalamityMod.CalPlayer;
 using ThrowerUnification.Core.UnitedModdedThrowerClass;
 using Terraria.Localization;
 using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.Buffs.DamageOverTime;
 using Terraria.DataStructures;
-using CalamityMod.Projectiles;
 using Terraria;
-using Terraria.ID;
 using ThrowerUnification.Common.CrossmodToUMT;
-using RagnarokMod.Utils;
 
 namespace ThrowerUnification.Content.StealthStrikes
 {
@@ -52,7 +48,7 @@ namespace ThrowerUnification.Content.StealthStrikes
             bool isMergedRogue = item.DamageType?.ToString() == "CalamityMod.RogueDamageClass"
                                  || item.DamageType == UnitedModdedThrower.Instance;
 
-            bool isNotCalamityAndConsumableRogue = isModded && modName != "CalamityMod"
+            bool isNotCalamityAndConsumableRogue = isModded && modName != "CalamityMod" && modName != "CatalystMod" && modName != "CalamityHunt"
                                                    && item.consumable && isMergedRogue;
 
             bool isFromAllowedMod = isModded && allowedMods.Contains(modName) && isMergedRogue;
@@ -153,7 +149,7 @@ namespace ThrowerUnification.Content.StealthStrikes
             bool isMergedRogue = item.DamageType?.ToString() == "CalamityMod.RogueDamageClass"
                                  || item.DamageType == UnitedModdedThrower.Instance;
 
-            bool isNotCalamityAndConsumableRogue = isModded && modName != "CalamityMod"
+            bool isNotCalamityAndConsumableRogue = isModded && modName != "CalamityMod" && modName != "CatalystMod" && modName != "CalamityHunt"
                                                    && item.consumable && isMergedRogue;
 
             bool isFromAllowedMod = isModded && allowedMods.Contains(modName) && isMergedRogue;

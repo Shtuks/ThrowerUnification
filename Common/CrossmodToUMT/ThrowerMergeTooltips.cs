@@ -45,7 +45,8 @@ namespace ThrowerUnification.Common.CrossmodToUMT
                     }
 
                     //This only works for english.... is there a way around this maybe?
-                    tooltips[i].Text = Regex.Replace(tooltips[i].Text, "thrower", val2);
+                    if (!tooltips[i].Text.Contains("flamethrower")) // flamerogues be like:
+                        tooltips[i].Text = Regex.Replace(tooltips[i].Text, "thrower", val2);
                     tooltips[i].Text = Regex.Replace(tooltips[i].Text, "throwing", val2); //some mods say "throwing" instead of thrower.
                     tooltips[i].Text = Regex.Replace(tooltips[i].Text, "kinetic", val2);
                     tooltips[i].Text = Regex.Replace(tooltips[i].Text, "malevolent", val2);
