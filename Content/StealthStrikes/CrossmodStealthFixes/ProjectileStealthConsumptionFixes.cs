@@ -25,6 +25,27 @@ namespace ThrowerUnification.Content.StealthStrikes.CrossmodStealthFixes
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
+            Mod sotsBardHealer = ModLoader.GetMod("SOTSBardHealer");
+
+            if (sotsBardHealer != null)
+            {
+                int phaseKarambitProj = sotsBardHealer.Find<ModProjectile>("PhaseKarambit")?.Type ?? -1;
+
+                if (projectile.type == phaseKarambitProj)
+                {
+                    Player player = Main.player[projectile.owner];
+                    Item heldItem = player.HeldItem;
+
+                    // Safety check: make sure it's actually the correct item
+                    if (heldItem != null && !heldItem.IsAir)
+                    {
+                        int finalDamage = player.GetWeaponDamage(heldItem);
+                        projectile.damage = finalDamage;
+                        projectile.originalDamage = finalDamage;
+                    }
+                }
+            }
+
             Mod thorium = ModLoader.GetMod("ThoriumMod");
             Mod calamity = ModLoader.GetMod("CalamityMod");
 
