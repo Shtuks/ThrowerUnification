@@ -25,9 +25,7 @@ namespace ThrowerUnification.Content.StealthStrikes.CrossmodStealthFixes
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            Mod sotsBardHealer = ModLoader.GetMod("SOTSBardHealer");
-
-            if (sotsBardHealer != null)
+            if (ModLoader.TryGetMod("SOTSBardHealer", out Mod sotsBardHealer))
             {
                 int phaseKarambitProj = sotsBardHealer.Find<ModProjectile>("PhaseKarambit")?.Type ?? -1;
 

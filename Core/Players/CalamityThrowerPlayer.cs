@@ -1,7 +1,8 @@
-﻿using CalamityMod.CalPlayer;
+﻿using CalamityMod;
+using CalamityMod.CalPlayer;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
-using ThrowerUnification.Core;
 using ThrowerUnification.Core.UnitedModdedThrowerClass;
 
 namespace ThrowerUnification.Core.Players
@@ -11,6 +12,39 @@ namespace ThrowerUnification.Core.Players
     [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
     public class CalamityThrowerPlayer : ModPlayer
     {
+        public override void PostUpdateEquips()
+        {
+            if (ThrowerModConfig.Instance.Calamity)
+            {
+                if (Player.armor[1].type == ItemID.MonkShirt)
+                {
+                    Player.GetDamage<RogueDamageClass>() -= 0.2f;
+                    Player.GetDamage(DamageClass.Throwing) += 0.2f;
+                }
+                if (Player.armor[2].type == ItemID.MonkPants)
+                {
+                    Player.GetCritChance<RogueDamageClass>() -= 15;
+                    Player.GetCritChance(DamageClass.Throwing) += 15;
+                }
+
+                if (Player.armor[0].type == ItemID.MonkAltHead)
+                {
+                    Player.GetDamage<RogueDamageClass>() -= 0.2f;
+                    Player.GetDamage(DamageClass.Throwing) += 0.2f;
+                }
+                if (Player.armor[1].type == ItemID.MonkAltShirt)
+                {
+                    Player.GetCritChance<RogueDamageClass>() -= 5;
+                    Player.GetCritChance(DamageClass.Throwing) += 5;
+                }
+                if (Player.armor[2].type == ItemID.MonkAltPants)
+                {
+                    Player.GetCritChance<RogueDamageClass>() -= 20;
+                    Player.GetCritChance(DamageClass.Throwing) += 20;
+                }
+            }
+        }
+
         public override void PostUpdateMiscEffects()
         {
             Player player = Main.LocalPlayer;
