@@ -24,6 +24,18 @@ namespace ThrowerUnification.Core.Players
             }
         }
 
+        public override void PostUpdate()
+        {
+            float currentStealth = ModCompatibility.Calamity.Mod.Call("GetCurrentStealth", Player) is float f ? f : 1f;
+            bool stealthStrike = currentStealth > 0f && Player.HeldItem.CountsAsClass<RogueDamageClass>();
+
+            if (stealthStrike)
+            {
+                Player.GetAttackSpeed(DamageClass.Generic) *= 0f;
+                Player.GetAttackSpeed(DamageClass.Throwing) *= 0f;
+            }
+        }
+
         public void AddStealth(int stealth)
         {
             Player.Calamity().rogueStealthMax += stealth / 100f;
