@@ -3,6 +3,7 @@ using CalamityMod.CalPlayer;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using ThrowerUnification.Core;
 using ThrowerUnification.Core.UnitedModdedThrowerClass;
 
 namespace ThrowerUnification.Core.Players
@@ -49,6 +50,8 @@ namespace ThrowerUnification.Core.Players
         {
             Player player = Main.LocalPlayer;
             var CalPlayer = player.GetModPlayer<CalamityPlayer>();
+
+            ApplyRogueUseTimeFix();
 
             Player.GetDamage<UnitedModdedThrower>() += CalPlayer.stealthDamage;
         }
@@ -108,6 +111,44 @@ namespace ThrowerUnification.Core.Players
                     if (item.consumable || isFromAllowedMod)
                         damage *= 1.75f;
                 }
+            }
+        }
+
+        private void ApplyRogueUseTimeFix()
+        {
+            var calamityPlayer = base.Player.Calamity();
+            Item it = !Main.mouseItem.IsAir ? Main.mouseItem : Player.HeldItem;
+            if (!calamityPlayer.wearingRogueArmor || it.useAnimation == it.useTime) // When the player does not wear a rogue armor or the item animation and usetime is the same, the fix does not have to be applied.
+            {
+                return;
+            }
+            bool flag = it.damage > 0;
+            bool hasHitboxes = !it.noMelee || it.shoot > ProjectileID.None;
+            bool flag2 = it.pick > 0;
+            bool isAxe = it.axe > 0;
+            bool isHammer = it.hammer > 0;
+            bool isPlaced = it.createTile != -1;
+            bool isChannelable = it.channel;
+            bool hasNonWeaponFunction = flag2 || isAxe || isHammer || isPlaced || isChannelable;
+            bool playerUsingWeapon = flag && hasHitboxes && !hasNonWeaponFunction;
+            if ((it.IsAir || !it.CountsAsClass<RogueDamageClass>()) && calamityPlayer.GemTechSet && calamityPlayer.GemTechState.IsRedGemActive)
+            {
+                return;
+            }
+
+            // Besides Rogue attackspeed, Thoriums own attack speed changes for throwing and general class have to be calculated into the attackspeed.
+            float attackSpeed = base.Player.GetAttackSpeed<RogueDamageClass>() * base.Player.GetAttackSpeed(DamageClass.Throwing) * base.Player.GetAttackSpeed(DamageClass.Generic);
+            int adjustedUseTime = (int)(it.useTime / attackSpeed); // Calculates the effective use time
+
+            bool animationCheck = (base.Player.itemTime == adjustedUseTime);
+            if (!calamityPlayer.stealthStrikeThisFrame && animationCheck)
+            {
+                if (calamityPlayer.StealthStrikeAvailable())
+                {
+                    calamityPlayer.ConsumeStealthByAttacking();
+                    return;
+                }
+                calamityPlayer.rogueStealth = 0f;
             }
         }
     }
