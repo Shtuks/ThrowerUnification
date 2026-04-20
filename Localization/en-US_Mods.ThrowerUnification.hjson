@@ -4,6 +4,21 @@ DefaultStealthStrikeTooltipVelocity: Stealth strikes have +75% velocity
 CrumblingStrikeTooltip: Stealth strikes deal increased damage and inflict crumbling for 5 seconds
 CrunchStrikeTooltip: Stealth strikes deal increased damage and inflict armor crunch for 5 seconds
 
+UI: {
+	IEoRNotice:
+		'''
+		NOTICE: Thrower Unification does not balance each of the modded classes merged together.
+		It has also been detected you are using both the Infernum Mode mod & Thorium Mod.
+		If you are seeking a more balanced unification, consider using the Infernal Eclipse of Ragnarok mod.
+		'''
+	HummusNotice:
+		'''
+		NOTICE: Thrower Unification does not balance each of the modded classes merged together.
+		It has also been detected you are using both the Calamity Mod & Thorium Mod.
+		If you are seeking a more balanced unification, consider using the Hummus' Calamity/Thorium Balancing mod.
+		'''
+}
+
 ThoriumStealthStrike: {
 	CactusNeedle: Stealth strikes throw out needles in a tight fan of 3
 	IcyTomahawk: Stealth strikes throw out 4 tomahawks of different speeds that last longer and pierce more

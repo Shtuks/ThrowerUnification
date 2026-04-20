@@ -4,6 +4,21 @@ DefaultStealthStrikeTooltipVelocity: При скрытном ударе увел
 CrumblingStrikeTooltip: При скрытном ударе атака наносит увеличенный урон и накладывает дебафф «Разрушение» на 5 секунд
 CrunchStrikeTooltip: При скрытном ударе атака наносит увеличенный урон и накладывает дебафф «Потресканная броня» на 5 секунд
 
+UI: {
+	/* IEoRNotice:
+		'''
+		NOTICE: Thrower Unification does not balance each of the modded classes merged together.
+		It has also been detected you are using both the Infernum Mode mod & Thorium Mod.
+		If you are seeking a more balanced unification, consider using the Infernal Eclipse of Ragnarok mod.
+		''' */
+	/* HummusNotice:
+		'''
+		NOTICE: Thrower Unification does not balance each of the modded classes merged together.
+		It has also been detected you are using both the Calamity Mod & Thorium Mod.
+		If you are seeking a more balanced unification, consider using the Hummus' Calamity/Thorium Balancing mod.
+		''' */
+}
+
 ThoriumStealthStrike: {
 	CactusNeedle: При скрытном ударе бросает иглы веером из 3-х штук
 	IcyTomahawk: При скрытном ударе бросает 4 томагавка с разной скоростью, которые дольше летят и прошивают большее количество врагов

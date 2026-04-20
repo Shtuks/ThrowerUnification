@@ -3,6 +3,8 @@ using CalamityMod.CalPlayer;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.UI;
+using ThrowerUnification.Content.UI;
 using ThrowerUnification.Core.UnitedModdedThrowerClass;
 
 namespace ThrowerUnification.Core.Players
@@ -12,6 +14,14 @@ namespace ThrowerUnification.Core.Players
     [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
     public class CalamityThrowerPlayer : ModPlayer
     {
+        public override void OnEnterWorld()
+        {
+            if (ModCompatibility.Thorium.Loaded && !ModLoader.HasMod("InfernalEclipseAPI") && !ModLoader.HasMod("WHummusMultiModBalancing"))
+            {
+                InGameNotificationsTracker.AddNotification(new BalancingNotification());
+            }
+        }
+
         public override void PostUpdateEquips()
         {
             if (ThrowerModConfig.Instance.Calamity)
