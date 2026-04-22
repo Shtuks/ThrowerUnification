@@ -1,3 +1,4 @@
+# Thrower Unification
 This mod merges a few modded throwers into one class, and is developed for and maintained by the Infernal Eclipse of Ragnarok team.
 
 Currently supported classes:

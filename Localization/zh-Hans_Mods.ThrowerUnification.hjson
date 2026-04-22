@@ -4,6 +4,21 @@ DefaultStealthStrikeTooltipVelocity: 潜伏攻击增加75%速度
 CrumblingStrikeTooltip: 潜伏攻击有更高伤害并造成5秒的粉碎减益
 CrunchStrikeTooltip: 潜伏攻击有更高伤害并造成5秒的碎甲减益
 
+UI: {
+	/* IEoRNotice:
+		'''
+		NOTICE: Thrower Unification does not balance each of the modded classes merged together.
+		It has also been detected you are using both the Infernum Mode mod & Thorium Mod.
+		If you are seeking a more balanced unification, consider using the Infernal Eclipse of Ragnarok mod.
+		''' */
+	/* HummusNotice:
+		'''
+		NOTICE: Thrower Unification does not balance each of the modded classes merged together.
+		It has also been detected you are using both the Calamity Mod & Thorium Mod.
+		If you are seeking a more balanced unification, consider using the Hummus' Calamity/Thorium Balancing mod.
+		''' */
+}
+
 ThoriumStealthStrike: {
 	CactusNeedle: 潜伏攻击会发射出3个为一束的针刺
 	IcyTomahawk: 潜伏攻击会发射4个速度不同的投斧，投斧会存在更久且穿透更强

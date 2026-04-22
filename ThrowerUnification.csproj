@@ -9,13 +9,13 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <Reference Include="CalamityMod">
-	    <HintPath>..\ModAssemblies\CalamityMod_v2.0.7.1.dll</HintPath>
+	    <HintPath>..\ModAssemblies\CalamityMod_v2.1.dll</HintPath>
 	  </Reference>
 	  <Reference Include="InfernalEclipseAPI">
-	    <HintPath>..\ModAssemblies\InfernalEclipseAPI_v0.8.1.1.dll</HintPath>
+	    <HintPath>..\ModAssemblies\InfernalEclipseAPI_v0.8.3.dll</HintPath>
 	  </Reference>
 	  <Reference Include="RagnarokMod">
-	    <HintPath>..\ModAssemblies\RagnarokMod_v1.4.4.dll</HintPath>
+	    <HintPath>..\ModAssemblies\RagnarokMod_v1.4.4.3.dll</HintPath>
 	  </Reference>
 	  <Reference Include="SacredTools">
 	    <HintPath>..\SoABardHealer\lib\SacredTools.dll</HintPath>
@@ -24,16 +24,16 @@
 	    <HintPath>..\ModAssemblies\SacredTools_v1.2.3.dll</HintPath>
 	  </Reference>
 	  <Reference Include="SOTS">
-	    <HintPath>..\ModAssemblies\SOTS_v0.25.0.4.dll</HintPath>
+	    <HintPath>..\ModAssemblies\SOTS_v0.25.1.3.dll</HintPath>
 	  </Reference>
 	  <Reference Include="ThoriumMod">
-	    <HintPath>..\ModAssemblies\ThoriumMod_v1.7.2.4.dll</HintPath>
+	    <HintPath>..\ModAssemblies\ThoriumMod_v1.7.2.5.dll</HintPath>
 	  </Reference>
 	  <Reference Include="VitalityMod">
 	    <HintPath>..\..\ModReader\VitalityMod\VitalityMod.dll</HintPath>
 	  </Reference>
 	  <Reference Include="WHummusMultiModBalancing">
-	    <HintPath>..\ModAssemblies\WHummusMultiModBalancing_v1.2.4.dll</HintPath>
+	    <HintPath>..\ModAssemblies\WHummusMultiModBalancing_v1.5.1.2.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 

@@ -1,22 +1,22 @@
-This mod merges few modded throwers into one class, and is developed for and maintained by the teams behind [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3329620648&searchtext=community] Community Souls Expansion[/url] & [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686] Infernal Eclipse of Ragnarok[/url], & [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3452171528&searchtext=tpackbuilder] WHummus' Calamity/Thorium Balancing[/url].
+This mod merges a few modded throwers into one class, and is developed for and maintained by the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686] Infernal Eclipse of Ragnarok[/url] team.
 
 Currently supported classes:
 [list]
 	[*] Thrower (Thorium or any other mod that uses vanilla thrower)
-	[*] Rogue (Calamity and it's addons)
+	[*] Rogue (Calamity and its addons)
 	[*] Revenant (Kinetic damage from Shadows of Abaddon)
 	[*] Blood Hunter (Vitality)
 [/list]
 
-This mod also adds custom stealth stikes for some non-Calamity thrower weapons, with more being added in the future.
+This mod also adds custom stealth strikes for some non-Calamity thrower weapons, with more being added in the future.
 
-This mod is highly configurable. You can toggle only a specific class' merge, the tooltip overrides, class tags, if non-Calamity weapons have custom stealth strikes, and the color for Colored Damage Types support.
-If you playing with any other mod that also merges throwers, it is recommended off their thrower merge if possible.
+This mod is highly configurable. You can toggle only a specific class's merge, the tooltip overrides, class tags, if non-Calamity weapons have custom stealth strikes, and the color for Colored Damage Types support.
+If you are playing with any other mod that also merges throwers, it is recommended to turn off their thrower merge if possible.
 
 NOTE: This mod doesn't balance the classes together. If you are looking for balance changes, it is recommended to use [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3452171528&searchtext=tpackbuilder] WHummus' Calamity/Thorium Balancing[/url], as well as other cross-mod balancing mods such as [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3114886209&searchtext=ragnarok] Ragnarok[/url] in conjunction with this mod if you are playing with both Calamity & Thorium enabled.
 
 Stealth strikes wiki page: https://terrariamods.wiki.gg/wiki/Infernal_Eclipse_of_Ragnarok/Stealth_Strikes
-Discord Server: https://discord.gg/frUcz2dQAy
+Discord Server: https://discord.gg/ieor
 
 Coding: StarlightCat, Akira, WardrobeHummus
 Sprites: Akira, Tyr

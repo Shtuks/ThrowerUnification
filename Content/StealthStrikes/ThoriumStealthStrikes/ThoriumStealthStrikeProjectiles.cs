@@ -484,11 +484,14 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                 if (player.lifeSteal > 0f && heal > 0 && target.lifeMax > 5)
                 {
                     // 305 is Calamity’s blood orb, but you can sub in any projectile ID you want
-                    CalamityGlobalProjectile.SpawnLifeStealProjectile(
-                        projectile,
+                    CalamityUtils.SpawnLifeStealProjectile(
                         player,
-                        heal,
+                        target,
+                        projectile,
                         305, // life steal projectile type
+                        heal,
+                        1f,
+                        false,
                         DraculaFangLifeStealRange
                     );
                 }

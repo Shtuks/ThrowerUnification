@@ -1,5 +1,6 @@
 ﻿using CalamityMod;
 using Terraria.ModLoader;
+using ThrowerUnification.Core.UnitedModdedThrowerClass;
 
 namespace ThrowerUnification.Core.Players
 {
@@ -21,6 +22,18 @@ namespace ThrowerUnification.Core.Players
                         AddStealth(110);
                     }
                 }  
+            }
+        }
+
+        public override void PostUpdateMiscEffects()
+        {
+            float currentStealth = ModCompatibility.Calamity.Mod.Call("GetCurrentStealth", Player) is float f ? f : 1f;
+            bool stealthStrike = currentStealth > 0f && (Player.HeldItem.CountsAsClass<RogueDamageClass>() || Player.HeldItem.CountsAsClass<ThrowingDamageClass>() || Player.HeldItem.CountsAsClass<UnitedModdedThrower>());
+
+            if (stealthStrike)
+            {
+                Player.GetAttackSpeed(DamageClass.Generic) = 1f;
+                Player.GetAttackSpeed(DamageClass.Throwing) = 1f;
             }
         }
 
