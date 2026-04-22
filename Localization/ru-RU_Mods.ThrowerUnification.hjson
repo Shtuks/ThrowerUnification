@@ -102,22 +102,22 @@ Configs: {
 
 		Vanilla: {
 			Label: Ванилла
-			Tooltip: Включает/Выключает объединение модов, использующих ванильный класс метателя. В основном затрагивает Thorium.
+			Tooltip: Включает/Выключает объединение для модов, использующих ванильный класс метателя. В основном затрагивает Thorium.
 		}
 
 		Calamity: {
 			Label: Calamity
-			Tooltip: Включает/Выключает объединение класса Разбойник (Rogue) из Calamity.
+			Tooltip: Включает/Выключает объединение для класса Разбойник (Rogue) из Calamity.
 		}
 
 		Vitality: {
 			Label: Vitality
-			Tooltip: Включает/Выключает объединение класса Кровавый охотник (Blood Hunter) из Vitality.
+			Tooltip: Включает/Выключает объединение для класса Кровавый охотник (Blood Hunter) из Vitality.
 		}
 
 		SacredTools: {
 			Label: Shadows of Abaddon
-			Tooltip: Включает/Выключает объединение класса Ревенант (Revenant) из Shadows of Abaddon.
+			Tooltip: Включает/Выключает объединение для класса Ревенант (Revenant) из Shadows of Abaddon.
 		}
 
 		TooltipOverride: {
