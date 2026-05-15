@@ -1,59 +1,59 @@
 Items: {
 	TerrariumHelmet: {
-		// DisplayName: Terrarium Helmet
-		/* Tooltip:
-			'''
-			'All will fall before your might...'
-			Maximum life increased by {0} & life regen increased by {1}
-			{2}% increased damage
-			Sight in the dark is improved
-			''' */
-		/* SetBonus:
-			'''
-			The energies of Terraria will seek to protect you when you're in combat
-			Pressing the '{$Keybinds.ArmorAbility.DisplayName}' key will allow you to cycle and select a Class Focus
-			''' */
+        DisplayName: Террариевый шлем
+        Tooltip:
+            '''
+            'Все падут перед вашей мощью...'
+            Увеличивает максимальный запас здоровья на {0} и регенерацию здоровья на {1} ед.
+            Увеличивает урон на {2}%
+            Улучшает ночное зрение
+            '''
+        SetBonus:
+            '''
+            Энергии Террарии будут защищать вас, пока вы находитесь в бою
+            Нажатие клавиши '{$Keybinds.ArmorAbility.DisplayName}' позволяет вам переключать и выбирать классовую специализацию
+            '''
 
-		Focus: {
-			Generic: {
-				// Name: No Focus
-				// Description: "{0}% increased damage"
-			}
+        Focus: {
+            Generic: {
+                Name: Отсутствие специализации
+                Description: Увеличивает урон на {0}%
+            }
 
-			Melee: {
-				// Name: Melee Focus
-				// Description: "{0}% increased damage reduction"
-			}
+            Melee: {
+                Name: Специализация ближнего боя
+                Description: Увеличивает сопротивление урону на {0}%
+            }
 
-			Ranged: {
-				// Name: Ranged Focus
-				// Description: "{0}% increased firing speed"
-			}
+            Ranged: {
+                Name: Стрелковая специализация
+                Description: Увеличивает скорострельность на {0}%
+            }
 
-			Magic: {
-				// Name: Magic Focus
-				// Description: Maximum mana increased by {0}
-			}
+            Magic: {
+                Name: Магическая специализация
+                Description: Увеличивает максимальный запас маны на {0}
+            }
 
-			Summon: {
-				// Name: Summon Focus
-				// Description: Increases your max number of minions by {0} & decreases non-summon damage by {1}%
-			}
+            Summon: {
+                Name: Специализация призывателя
+                Description: Увеличивает максимальное количество миньонов на {0} и снижает урон от остальных типов оружия на {1}%
+            }
 
-			Throwing: {
-				// Name: Throwing Focus
-				// Description: Increases your maximum technique points by {0} & grants +110 stealth
-			}
+            Throwing: {
+                Name: Метательная специализация
+                Description: Увеличивает максимальное число очков техники на {0} и максимальную скрытность на 110
+            }
 
-			Healer: {
-				// Name: Radiant Focus
-				// Description: Healing spells will heal an additional {0} life
-			}
+            Healer: {
+                Name: Лучезарная специализация
+                Description: Исцеляющие заклинания восстанавливают дополнительно {0} ед. здоровья
+            }
 
-			Bard: {
-				// Name: Symphonic Focus
-				// Description: Increases empowerment duration by {0} {^0:second;seconds}
-			}
-		}
-	}
+            Bard: {
+                Name: Симфоническая специализация
+                Description: Увеличивает длительность усилений на {0} секунды
+            }
+        }
+    }
 }
