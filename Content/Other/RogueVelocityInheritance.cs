@@ -1,8 +1,5 @@
-﻿using CalamityMod;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using System.IO;
 using Terraria.ID;
 
 namespace ThrowerUnification.Content.Other
@@ -48,49 +45,34 @@ namespace ThrowerUnification.Content.Other
     public class ThrownToRogueVelocityFixer : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
-        public override bool IsLoadingEnabled(Mod mod) =>
-            ThrowerModConfig.Instance.Calamity && ModCompatibility.Calamity.Loaded;
+        public override bool IsLoadingEnabled(Mod mod) => ThrowerModConfig.Instance.Calamity && ModCompatibility.Calamity.Loaded;
 
-        // Deterministic flag — no need to manually sync
         public bool wasRogue;
 
         public override void OnSpawn(Projectile proj, Terraria.DataStructures.IEntitySource source)
         {
-            // Only modify velocity on the SERVER to avoid desync
             if (Main.netMode == NetmodeID.MultiplayerClient)
                 return;
 
-            // Validate owner safely
             if (proj.owner < 0 || proj.owner >= Main.maxPlayers)
                 return;
 
             Player owner = Main.player[proj.owner];
-            if (owner == null || !owner.active)
+
+            if (!owner.active || !proj.friendly)
+                return;
+
+            if (!wasRogue)
                 return;
 
             float thrownVelo = owner.ThrownVelocity;
 
-            // Prevent division by zero or unstable behaviour
             if (thrownVelo <= 0f)
                 return;
 
-            // NON-ROGUE PROJECTILE: scale down initial velocity so rogue-velocity later multiplies correctly
-            if (!wasRogue)
-            {
-                proj.velocity /= thrownVelo;
-                proj.netUpdate = true;
-                return;
-            }
-
-            /*
-            // ROGUE PROJECTILE – remove calamity’s extra flat thrown velocity boost
-            if (thrownVelo > 1f && proj.velocity != Vector2.Zero)
-            {
-                Vector2 flat = Vector2.Normalize(proj.velocity) * thrownVelo;
-                proj.velocity -= flat;
-                proj.netUpdate = true;
-            }
-            */
+            //scale down initial velocity so rogue-velocity later multiplies correctly
+            proj.velocity /= thrownVelo;
+            proj.netUpdate = true;
         }
     }
 }

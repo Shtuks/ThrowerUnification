@@ -10,6 +10,7 @@ using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using ThrowerUnification.Core.UnitedModdedThrowerClass;
+using CalamityMod;
 
 namespace ThrowerUnification.Content.StealthStrikes
 {
@@ -25,20 +26,40 @@ namespace ThrowerUnification.Content.StealthStrikes
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            if (projectile.DamageType == UnitedModdedThrower.Instance || projectile.type == ProjectileID.Shuriken)
-            {
-                Player player = Main.player[projectile.owner];
-                CalamityPlayer calPlayer = player.GetModPlayer<CalamityPlayer>();
+            if (projectile.owner < 0 || projectile.owner >= Main.maxPlayers)
+                return;
 
-                if (calPlayer.StealthStrikeAvailable())
-                {
-                    CalamityGlobalProjectile modProj = projectile.GetGlobalProjectile<CalamityGlobalProjectile>();
-                    if (modProj != null && modProj.Mod.Name != "CalamityMod" && modProj.Mod.Name != "CatalystMod" && modProj.Mod.Name != "CalamityHunt")
-                    {
-                        modProj.stealthStrike = true;
-                    }
-                }
-            }
+            if (!projectile.friendly || projectile.hostile || projectile.npcProj || projectile.trap)
+                return;
+
+            bool isUMT =
+                projectile.DamageType == UnitedModdedThrower.Instance ||
+                projectile.type == ProjectileID.Shuriken;
+
+            if (!isUMT)
+                return;
+
+            Player player = Main.player[projectile.owner];
+            if (!player.active)
+                return;
+
+            CalamityPlayer calPlayer = player.GetModPlayer<CalamityPlayer>();
+
+            if (!calPlayer.StealthStrikeAvailable())
+                return;
+
+            string projModName = projectile.ModProjectile?.Mod?.Name;
+
+            bool fromCalamityFamily =
+                projModName == "CalamityMod" ||
+                projModName == "CatalystMod" ||
+                projModName == "CalamityHunt" ||
+                projModName == "Clamity";
+
+            if (fromCalamityFamily)
+                return;
+
+            projectile.Calamity().stealthStrike = true;
         }
     }
 }

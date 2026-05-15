@@ -23,6 +23,7 @@ using ThoriumMod.Items.ArcaneArmor;
 using ThoriumMod.Items.Depths;
 using ThoriumMod.Items.Steel;
 using ThrowerUnification.Content.Projectiles.StealthPro;
+using CalamityMod;
 
 namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
 {
@@ -100,6 +101,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                             player.whoAmI
                         );
 
+                        Main.projectile[projID].Calamity().stealthStrike = true;
+
                         if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
                         {
                             stealthGlobal.SetupAsStealthStrike(StealthStrikeType.IcyTomahawk);
@@ -132,6 +135,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                             player.whoAmI
                         );
 
+                        Main.projectile[projID].Calamity().stealthStrike = true;
+
                         if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
                         {
                             stealthGlobal.SetupAsStealthStrike(StealthStrikeType.CactusNeedle);
@@ -156,6 +161,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                         knockback,
                         player.whoAmI
                     );
+
+                    Main.projectile[projID].Calamity().stealthStrike = true;
 
                     if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
                     {
@@ -184,6 +191,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                         player.whoAmI
                     );
 
+                    Main.projectile[projID].Calamity().stealthStrike = true;
+
                     if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
                     {
                         stealthGlobal.SetupAsStealthStrike(StealthStrikeType.ZephyrsRuin);
@@ -207,6 +216,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                         knockback,
                         player.whoAmI
                     );
+
+                    Main.projectile[projID].Calamity().stealthStrike = true;
 
                     if (Main.projectile.IndexInRange(projID) &&
                         Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
@@ -233,6 +244,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                         player.whoAmI
                     );
 
+                    Main.projectile[projID].Calamity().stealthStrike = true;
+
                     if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
                     {
                         stealthGlobal.SetupAsStealthStrike(StealthStrikeType.LodestoneJavelin);
@@ -258,6 +271,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                         player.whoAmI
                     );
 
+                    Main.projectile[projID].Calamity().stealthStrike = true;
+
                     if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
                     {
                         stealthGlobal.SetupAsStealthStrike(StealthStrikeType.ValadiumAxe);
@@ -281,6 +296,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                         knockback,
                         player.whoAmI
                     );
+
+                    Main.projectile[projID].Calamity().stealthStrike = true;
 
                     if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
                     {
@@ -309,6 +326,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                         player.whoAmI
                     );
 
+                    Main.projectile[projID].Calamity().stealthStrike = true;
+
                     if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
                     {
                         stealthGlobal.SetupAsStealthStrike(StealthStrikeType.ChlorophyteTomahawk);
@@ -332,6 +351,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                         knockback,
                         player.whoAmI
                     );
+
+                    Main.projectile[projID].Calamity().stealthStrike = true;
 
                     if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
                     {
@@ -376,6 +397,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                                 1f // force explosive version
                             );
 
+                            Main.projectile[projID].Calamity().stealthStrike = true;
+
                             if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
                             {
                                 stealthGlobal.SetupAsStealthStrike(StealthStrikeType.PlayingCard);
@@ -406,6 +429,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                             knockback,
                             player.whoAmI
                         );
+
+                        Main.projectile[projID].Calamity().stealthStrike = true;
 
                         if (Main.projectile.IndexInRange(projID) &&
                             Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
@@ -438,6 +463,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                             player.whoAmI
                         );
 
+                        Main.projectile[projID].Calamity().stealthStrike = true;
+
                         if (Main.projectile.IndexInRange(projID) &&
                             Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
                         {
@@ -463,6 +490,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                         knockback,
                         player.whoAmI
                     );
+
+                    Main.projectile[projID].Calamity().stealthStrike = true;
 
                     if (Main.projectile.IndexInRange(projID) &&
                         Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
@@ -490,6 +519,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                         player.whoAmI
                     );
 
+                    Main.projectile[projID].Calamity().stealthStrike = true;
+
                     if (Main.projectile.IndexInRange(projID) &&
                         Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
                     {
@@ -507,6 +538,9 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
 
                         int upProjID = Projectile.NewProjectile(source, position, velocityUp, sideProjType, damage, knockback, player.whoAmI);
                         int downProjID = Projectile.NewProjectile(source, position, velocityDown, sideProjType, damage, knockback, player.whoAmI);
+
+                        Main.projectile[upProjID].Calamity().stealthStrike = true;
+                        Main.projectile[downProjID].Calamity().stealthStrike = true;
 
                         if (Main.projectile.IndexInRange(upProjID) &&
                             Main.projectile[upProjID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles upStealthGlobal))
@@ -544,6 +578,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                         player.whoAmI
                     );
 
+                    Main.projectile[projID].Calamity().stealthStrike = true;
+
                     if (Main.projectile.IndexInRange(projID) &&
                         Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
                     {
@@ -557,6 +593,9 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
 
                     int upProjID = Projectile.NewProjectile(source, position, velocityUp, sideProjType, damage, knockback, player.whoAmI);
                     int downProjID = Projectile.NewProjectile(source, position, velocityDown, sideProjType, damage, knockback, player.whoAmI);
+
+                    Main.projectile[upProjID].Calamity().stealthStrike = true;
+                    Main.projectile[downProjID].Calamity().stealthStrike = true;
 
                     if (Main.projectile.IndexInRange(upProjID) &&
                         Main.projectile[upProjID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles upStealthGlobal))
@@ -589,7 +628,10 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                         player.whoAmI
                     );
 
-                    Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<TidalWaveWhirlpool>(), damage / 2, knockback, player.whoAmI);
+                    int tidalWaveID = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<TidalWaveWhirlpool>(), damage / 2, knockback, player.whoAmI);
+
+                    Main.projectile[projID].Calamity().stealthStrike = true;
+                    Main.projectile[tidalWaveID].Calamity().stealthStrike = true;
 
                     if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
                     {
@@ -614,6 +656,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                         knockback,
                         player.whoAmI
                     );
+
+                    Main.projectile[projID].Calamity().stealthStrike = true;
 
                     if (Main.projectile.IndexInRange(projID) &&
                         Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
@@ -650,6 +694,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                             player.whoAmI
                         );
 
+                        Main.projectile[projID].Calamity().stealthStrike = true;
+
                         if (Main.projectile.IndexInRange(projID) &&
                             Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
                         {
@@ -680,6 +726,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                         knockback,
                         player.whoAmI
                     );
+
+                    Main.projectile[projID].Calamity().stealthStrike = true;
 
                     if (Main.projectile.IndexInRange(projID) &&
                         Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
@@ -716,6 +764,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                         player.whoAmI
                     );
 
+                    Main.projectile[projID].Calamity().stealthStrike = true;
+
                     if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
                     {
                         stealthGlobal.SetupAsStealthStrike(StealthStrikeType.EnchantedKnife);
@@ -739,6 +789,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                         knockback,
                         player.whoAmI
                     );
+
+                    Main.projectile[projID].Calamity().stealthStrike = true;
 
                     if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
                     {
@@ -764,6 +816,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                         player.whoAmI
                     );
 
+                    Main.projectile[projID].Calamity().stealthStrike = true;
+
                     if (Main.projectile.IndexInRange(projID) &&
                         Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
                     {
@@ -788,6 +842,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                         knockback,
                         player.whoAmI
                     );
+
+                    Main.projectile[projID].Calamity().stealthStrike = true;
 
                     if (Main.projectile.IndexInRange(projID) &&
                         Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
@@ -829,6 +885,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                                 knockback,
                                 player.whoAmI
                             );
+
+                            Main.projectile[projID].Calamity().stealthStrike = true;
 
                             if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
                             {
@@ -872,6 +930,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                                 player.whoAmI
                             );
 
+                            Main.projectile[projID].Calamity().stealthStrike = true;
+
                             if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
                             {
                                 stealthGlobal.SetupAsStealthStrike(StealthStrikeType.DurasteelThrowingSpear);
@@ -897,6 +957,8 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                         knockback,
                         player.whoAmI
                     );
+
+                    Main.projectile[projID].Calamity().stealthStrike = true;
 
                     if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
                     {
@@ -940,7 +1002,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
         }
 
-        private void TrySetIsThrowerNon(Item item, bool active)
+        private static void TrySetIsThrowerNon(Item item, bool active)
         {
             try
             {
@@ -977,7 +1039,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
         }
 
-        public void AddStealthTooltip(List<TooltipLine> tooltips, string stealthTooltip)
+        public static void AddStealthTooltip(List<TooltipLine> tooltips, string stealthTooltip)
         {
             int maxTooltipIndex = -1;
             int maxNumber = -1;
@@ -1007,7 +1069,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             }
         }
 
-        public void FullTooltipOveride(List<TooltipLine> tooltips, string stealthTooltip)
+        public static void FullTooltipOveride(List<TooltipLine> tooltips, string stealthTooltip)
         {
             for (int index = 0; index < tooltips.Count; ++index)
             {
