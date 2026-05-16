@@ -5,6 +5,8 @@ using System.Reflection;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using System;
+using VitalityMod.Common.BloodHunter;
+using Terraria.ID;
 
 namespace ThrowerUnification.Content.Other
 {
@@ -32,7 +34,7 @@ namespace ThrowerUnification.Content.Other
             if (vitality == null)
                 return;
 
-            bhType = vitality.Code?.GetType("VitalityMod.BloodHunter.BloodHunterPlayer");
+            bhType = vitality.Code?.GetType("VitalityMod.Common.BloodHunter.BloodHunterPlayer");
             if (bhType == null)
                 return;
 
@@ -118,7 +120,7 @@ namespace ThrowerUnification.Content.Other
             if (vitality == null)
                 return;
 
-            var t = vitality.Code.GetType("VitalityMod.BloodHunter.BloodHunterPlayer");
+            var t = vitality.Code.GetType("VitalityMod.Common.BloodHunter.BloodHunterPlayer");
 
             // Cache all fields
             timerF = t.GetField("BloodHunterTimer", flags);
@@ -161,7 +163,7 @@ namespace ThrowerUnification.Content.Other
             if (player == null || !player.active || target == null)
                 return;
 
-            if (target.SpawnedFromStatue || target.CountsAsACritter || target.type == 488)
+            if (target.SpawnedFromStatue || target.CountsAsACritter || target.type == NPCID.TargetDummy)
                 return;
 
             var list = modPlayersField.GetValue(player) as IList<ModPlayer>;
@@ -184,7 +186,7 @@ namespace ThrowerUnification.Content.Other
             // Drop conditions
             if (drop && Main.rand.NextFloat(100f) <= chance && timer >= cooldown && curBL < maxBL)
             {
-                int projType = ModContent.ProjectileType<VitalityMod.BloodHunter.BloodStream>();
+                int projType = ModContent.ProjectileType<BloodStream>();
 
                 Projectile.NewProjectile(
                     projectile.GetSource_FromThis(),

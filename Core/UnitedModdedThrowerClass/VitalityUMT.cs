@@ -1,6 +1,5 @@
 ﻿using Terraria.ModLoader;
-using ThrowerUnification.Core;
-using VitalityMod.BloodHunter;
+using VitalityMod.Common.BloodHunter;
 
 namespace ThrowerUnification.Core.UnitedModdedThrowerClass
 {

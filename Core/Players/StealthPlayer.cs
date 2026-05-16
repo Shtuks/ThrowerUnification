@@ -8,16 +8,16 @@ namespace ThrowerUnification.Core.Players
     [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
     public class StealthPlayer : ModPlayer
     {
-        private static readonly Mod thorium = ModCompatibility.Thorium.Mod;
-        private static readonly Mod helhiem = ModCompatibility.ThoriumRework.Mod;
-        private static readonly Mod consolaria = ModCompatibility.Consolaria.Mod;
-
         public override void PostUpdateEquips()
         {
             if (ModCompatibility.Thorium.Loaded)
             {
+                Mod thorium = ModCompatibility.Thorium.Mod;
+
                 if (ModCompatibility.ThoriumRework.Loaded)
                 {
+                    Mod helhiem = ModCompatibility.ThoriumRework.Mod;
+
                     if (helhiem.TryFind("TitanHood", out ModItem titanHood))
                     {
                         if (CheckArmorSet(titanHood.Type, thorium.Find<ModItem>("TitanBreastplate").Type, thorium.Find<ModItem>("TitanGreaves").Type))
@@ -29,6 +29,8 @@ namespace ThrowerUnification.Core.Players
 
                 if (ModCompatibility.Consolaria.Loaded)
                 {
+                    Mod consolaria = ModCompatibility.Consolaria.Mod;
+
                     int viperHelmet = consolaria.Find<ModItem>("ViperHelmet").Type;
                     int viperHelmentOld = consolaria.Find<ModItem>("OldViperHelmet").Type;
 

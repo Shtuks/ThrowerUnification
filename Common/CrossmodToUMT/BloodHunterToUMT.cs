@@ -2,7 +2,7 @@
 using Terraria.ModLoader;
 using ThrowerUnification.Core;
 using ThrowerUnification.Core.UnitedModdedThrowerClass;
-using VitalityMod.BloodHunter;
+using VitalityMod.Common.BloodHunter;
 
 namespace ThrowerUnification.Common.CrossmodToUMT
 {
