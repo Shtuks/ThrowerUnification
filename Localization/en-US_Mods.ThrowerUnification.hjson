@@ -98,6 +98,7 @@ Configs: {
 			General: General
 			ColoredDamageType: Colored Damage Type
 			ClassTag: Class Tag Header
+			Experimental: Experimental
 		}
 
 		Vanilla: {
@@ -181,6 +182,11 @@ Configs: {
 		LegacyVanillaThrowerWeapons: {
 			Tooltip: Toggles the conversion of vanilla ranged weapons that used to be thrower to thrower.
 			Label: Legacy Vanilla Thrower Weapons
+		}
+
+		ConsumableWeaponConversion: {
+			Label: Consumable Weapon Conversion
+			Tooltip: Toggles whether Thrower weapons outside of Calamity and Vanilla are made non-consumable to match Calamity mod Rogue weapons
 		}
 	}
 
