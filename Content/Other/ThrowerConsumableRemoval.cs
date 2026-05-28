@@ -8,6 +8,11 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Creative;
 using ThrowerUnification.Core.UnitedModdedThrowerClass;
 using Terraria.DataStructures;
+using ThoriumMod;
+using ThoriumMod.Core.DataClasses;
+using ThoriumMod.Projectiles.Thrower;
+using System.Reflection;
+using static ThrowerUnification.ModCompatibility;
 
 namespace ThrowerUnification.Content.Other
 {
@@ -27,13 +32,19 @@ namespace ThrowerUnification.Content.Other
             "ThrowerPostGame",
             "Arsenal_Mod",
             "ThrowerArsenalAddOn",
-            "SacredTools",
-            "VitalityMod"
+            "ThoriumMod",
+            "SOTSBardHealer",
+            "SOTSBardHealer",
+            "SpookyBardHealer",
+            "SOTS"
+            //"SacredTools",
+            //"VitalityMod"
         };
 
         // CACHE
 
         internal static readonly HashSet<int> UnifiedThrowableTypes = new();
+        internal static readonly HashSet<int> OriginallyConsumableThrowableTypes = new();
 
         // MATCH LOGIC
 
@@ -44,29 +55,20 @@ namespace ThrowerUnification.Content.Other
 
             bool isModded = item.ModItem != null;
 
-            string modName = isModded
-                ? item.ModItem.Mod.Name
-                : null;
+            if (!isModded)
+                return false;
+
+            string modName = item.ModItem.Mod.Name;
+
+            // hard restriction
+            if (!AllowedMods.Contains(modName))
+                return false;
 
             bool isMergedRogue =
                 item.DamageType?.ToString() == "CalamityMod.RogueDamageClass"
                 || item.DamageType == UnitedModdedThrower.Instance;
 
-            bool isNotCalamityAndConsumableRogue =
-                isModded
-                && modName != "CalamityMod"
-                && modName != "CatalystMod"
-                && modName != "CalamityHunt"
-                && item.consumable
-                && isMergedRogue;
-
-            bool isFromAllowedMod =
-                isModded
-                && AllowedMods.Contains(modName)
-                && isMergedRogue;
-
-            return isNotCalamityAndConsumableRogue
-                || isFromAllowedMod;
+            return isMergedRogue;
         }
 
         // ITEM CONVERSION
@@ -81,6 +83,8 @@ namespace ThrowerUnification.Content.Other
             item.consumable = false;
             item.maxStack = 1;
             item.notAmmo = true;
+            item.shopCustomPrice = item.value * 500;
+            ForceSingleStack(item);
         }
 
         public override bool CanReforge(Item item)
@@ -110,6 +114,51 @@ namespace ThrowerUnification.Content.Other
 
             return base.CanConsumeAmmo(weapon, ammo, player);
         }
+
+        // FORCE SINGLE STACK
+        public override void OnCreated(Item item, ItemCreationContext context)
+        {
+            ForceSingleStack(item);
+        }
+
+        public override void OnSpawn(Item item, IEntitySource source)
+        {
+            ForceSingleStack(item);
+        }
+
+        private static void ForceSingleStack(Item item)
+        {
+            if (item == null)
+                return;
+
+            if (UnifiedThrowableTypes.Contains(item.type))
+            {
+                item.stack = 1;
+                item.maxStack = 1;
+            }
+        }
+
+        //TOOLTIP
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            if (item?.ModItem == null)
+                return;
+
+            string modName = item.ModItem.Mod.Name;
+
+            if (!AllowedMods.Contains(modName))
+              return;
+
+            tooltips.RemoveAll(line =>
+            {
+                if (line?.Text == null)
+                    return false;
+
+                string t = line.Text.ToLowerInvariant();
+
+                return t.Contains("not to consume") && t.Contains("thrown");
+            });
+        }
     }
 
     // RECIPE EDITS
@@ -127,8 +176,7 @@ namespace ThrowerUnification.Content.Other
                 if (recipe == null)
                     continue;
 
-                bool createsUnifiedThrowable =
-                    UnifiedThrowableGlobalItem.UnifiedThrowableTypes.Contains(recipe.createItem.type);
+                bool createsUnifiedThrowable = UnifiedThrowableGlobalItem.OriginallyConsumableThrowableTypes.Contains(recipe.createItem.type);
 
                 if (!createsUnifiedThrowable)
                     continue;
@@ -147,53 +195,9 @@ namespace ThrowerUnification.Content.Other
                     }
                     else
                     {
-                        ingredient.stack *= 5;
+                        ingredient.stack *= 4;
                     }
                 }
-            }
-        }
-    }
-
-    // NPC DROP EDITS
-
-    public class UnifiedThrowableGlobalNPC : GlobalNPC
-    {
-        public override bool IsLoadingEnabled(Mod mod) => ThrowerModConfig.Instance.ConsumableWeaponConversion;
-
-        public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
-        {
-            foreach (IItemDropRule rule in npcLoot.Get())
-            {
-                TryModifyRule(rule);
-            }
-        }
-
-        private void TryModifyRule(IItemDropRule rule)
-        {
-            if (rule == null)
-                return;
-
-            // COMMON DROP
-
-            if (rule is CommonDrop commonDrop)
-            {
-                Item item = ContentSamples.ItemsByType[commonDrop.itemId];
-
-                if (UnifiedThrowableGlobalItem.UnifiedThrowableTypes.Contains(item.type))
-                {
-                    commonDrop.amountDroppedMinimum = 1;
-                    commonDrop.amountDroppedMaximum = 1;
-                }
-            }
-
-            // RECURSIVE CHAINS
-
-            if (rule.ChainedRules == null)
-                return;
-
-            foreach (var chained in rule.ChainedRules)
-            {
-                TryModifyRule(chained.RuleToChain);
             }
         }
     }
@@ -205,6 +209,7 @@ namespace ThrowerUnification.Content.Other
         public override void PostSetupContent()
         {
             UnifiedThrowableGlobalItem.UnifiedThrowableTypes.Clear();
+            UnifiedThrowableGlobalItem.OriginallyConsumableThrowableTypes.Clear();
 
             foreach (Item item in ContentSamples.ItemsByType.Values)
             {
@@ -213,6 +218,12 @@ namespace ThrowerUnification.Content.Other
                     if (UnifiedThrowableGlobalItem.MatchesUnifiedThrowable(item))
                     {
                         UnifiedThrowableGlobalItem.UnifiedThrowableTypes.Add(item.type);
+
+                        // remember items that were consumable BEFORE conversion
+                        if (item.consumable)
+                        {
+                            UnifiedThrowableGlobalItem.OriginallyConsumableThrowableTypes.Add(item.type);
+                        }
                     }
                 }
                 catch
@@ -243,6 +254,77 @@ namespace ThrowerUnification.Content.Other
             if (shouldBlockItemDrop)
             {
                 projectile.noDropItem = true;
+            }
+        }
+    }
+
+    [ExtendsFromMod(ModCompatibility.Thorium.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
+    public class ThoriumDropBlockerSystem : ModSystem
+    {
+        public override bool IsLoadingEnabled(Mod mod) => ThrowerModConfig.Instance.ConsumableWeaponConversion;
+
+        public override void PostSetupContent()
+        {
+            if (!ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
+                return;
+
+            Type cacheHandlerType = thorium.Code.GetType("ThoriumMod.ThoriumCacheHandler");
+
+            if (cacheHandlerType == null)
+                return;
+
+            FieldInfo cacheField = cacheHandlerType.GetField(
+                "ProjItemDropCache",
+                BindingFlags.Static | BindingFlags.NonPublic);
+
+            if (cacheField == null)
+                return;
+
+            var cache = cacheField.GetValue(null) as System.Collections.IDictionary;
+
+            if (cache == null)
+                return;
+
+            List<int> remove = new();
+
+            foreach (System.Collections.DictionaryEntry pair in cache)
+            {
+                int projType = (int)pair.Key;
+
+                // preserve pirates purse
+                if (projType == ModContent.ProjectileType<PiratesPursePro1>() ||
+                    projType == ModContent.ProjectileType<PiratesPursePro2>())
+                {
+                    continue;
+                }
+
+                object data = pair.Value;
+
+                if (data == null)
+                    continue;
+
+                // access dropCondition through reflection
+                FieldInfo dropConditionField =
+                    data.GetType().GetField("dropCondition");
+
+                if (dropConditionField != null)
+                {
+                    Delegate del = dropConditionField.GetValue(data) as Delegate;
+
+                    if (del != null &&
+                        del.Method.Name == "PlayerHasDartPouch")
+                    {
+                        continue;
+                    }
+                }
+
+                remove.Add(projType);
+            }
+
+            foreach (int proj in remove)
+            {
+                cache.Remove(proj);
             }
         }
     }
