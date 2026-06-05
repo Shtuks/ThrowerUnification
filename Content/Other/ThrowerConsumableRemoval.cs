@@ -1,23 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.GameContent.ItemDropRules;
-using Terraria.GameContent.Creative;
 using ThrowerUnification.Core.UnitedModdedThrowerClass;
 using Terraria.DataStructures;
-using ThoriumMod;
-using ThoriumMod.Core.DataClasses;
 using ThoriumMod.Projectiles.Thrower;
 using System.Reflection;
 using static ThrowerUnification.ModCompatibility;
 
 namespace ThrowerUnification.Content.Other
 {
-    [ExtendsFromMod(ModCompatibility.Calamity.Name)]
-    [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
+    [ExtendsFromMod(Calamity.Name)]
+    [JITWhenModsEnabled(Calamity.Name)]
     public class UnifiedThrowableGlobalItem : GlobalItem
     {
         public override bool IsLoadingEnabled(Mod mod) => ThrowerModConfig.Instance.ConsumableWeaponConversion;
@@ -33,7 +28,6 @@ namespace ThrowerUnification.Content.Other
             "Arsenal_Mod",
             "ThrowerArsenalAddOn",
             "ThoriumMod",
-            "SOTSBardHealer",
             "SOTSBardHealer",
             "SpookyBardHealer",
             "SOTS"
