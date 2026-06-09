@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
+using ThrowerUnification.Content.Other;
 using ThrowerUnification.Content.UI;
 using ThrowerUnification.Core.UnitedModdedThrowerClass;
 
@@ -81,12 +82,14 @@ namespace ThrowerUnification.Core.Players
 
             bool isThoriumNonConsumable = isModded && modName == "ThoriumMod" && !item.consumable;
 
+            bool isUnifiedThrowable = UnifiedThrowableGlobalItem.UnifiedThrowableTypes.Contains(item.type) && ThrowerModConfig.Instance.ConsumableWeaponConversion;
+
             // Vanilla items (no ModItem) that use rogue damage
             bool isVanillaRogue = !isModded && isMergedRogue;
 
-            if (isNotCalamityAndConsumableRogue || isFromAllowedMod || isVanillaRogue)
+            if (isNotCalamityAndConsumableRogue || isFromAllowedMod || isVanillaRogue || isUnifiedThrowable)
             {
-                if (isThoriumNonConsumable)
+                if (isThoriumNonConsumable && !isUnifiedThrowable)
                 {
                     return;
                 }
@@ -115,7 +118,7 @@ namespace ThrowerUnification.Core.Players
                             return;
                     }
 
-                    if (item.consumable || isFromAllowedMod)
+                    if (item.consumable || isFromAllowedMod || isUnifiedThrowable)
                         damage *= 1.75f;
                 }
             }

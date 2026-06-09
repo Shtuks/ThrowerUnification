@@ -86,6 +86,13 @@ namespace ThrowerUnification
         [BackgroundColor(60, 200, 60, 192)]
         [DefaultValue(100)]
         public byte B { get; set; }
+
+        [Header("Experimental")]
+
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(true)]
+        public bool ConsumableWeaponConversion { get; set; }
     }
     public enum TooltipOverrideStyle : byte
     {

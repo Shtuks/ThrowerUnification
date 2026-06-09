@@ -10,6 +10,7 @@ using CalamityMod.Buffs.StatDebuffs;
 using Terraria.DataStructures;
 using Terraria;
 using ThrowerUnification.Common.CrossmodToUMT;
+using ThrowerUnification.Content.Other;
 
 namespace ThrowerUnification.Content.StealthStrikes
 {
@@ -53,10 +54,12 @@ namespace ThrowerUnification.Content.StealthStrikes
 
             bool isFromAllowedMod = isModded && allowedMods.Contains(modName) && isMergedRogue;
 
+            bool isUnifiedThrowable = UnifiedThrowableGlobalItem.UnifiedThrowableTypes.Contains(item.type) && ThrowerModConfig.Instance.ConsumableWeaponConversion;
+
             // Vanilla items (no ModItem) that use rogue damage
             bool isVanillaRogue = !isModded && isMergedRogue;
 
-            if (isNotCalamityAndConsumableRogue || isFromAllowedMod || isVanillaRogue)
+            if (isNotCalamityAndConsumableRogue || isFromAllowedMod || isUnifiedThrowable || isVanillaRogue)
             {
                 var CalPlayer = player.GetModPlayer<CalamityPlayer>();
                 if (CalPlayer.StealthStrikeAvailable())
@@ -154,6 +157,8 @@ namespace ThrowerUnification.Content.StealthStrikes
 
             bool isFromAllowedMod = isModded && allowedMods.Contains(modName) && isMergedRogue;
 
+            bool isUnifiedThrowable = UnifiedThrowableGlobalItem.UnifiedThrowableTypes.Contains(item.type) && ThrowerModConfig.Instance.ConsumableWeaponConversion;
+
             // Vanilla items (no ModItem) that use rogue damage
             bool isVanillaRogue = !isModded && isMergedRogue;
 
@@ -166,7 +171,7 @@ namespace ThrowerUnification.Content.StealthStrikes
             if (item.ModItem == null)
                 return;
 
-            if ((isNotCalamityAndConsumableRogue || isFromAllowedMod) && !fullSS.Contains(item.ModItem.Name) && !crumblingSS.Contains(item.ModItem.Name) && !crunchSS.Contains(item.ModItem.Name) && !NASS.Contains(item.ModItem.Name))
+            if ((isNotCalamityAndConsumableRogue || isFromAllowedMod || isUnifiedThrowable) && !fullSS.Contains(item.ModItem.Name) && !crumblingSS.Contains(item.ModItem.Name) && !crunchSS.Contains(item.ModItem.Name) && !NASS.Contains(item.ModItem.Name))
             {
                 AddStealthTooltip(tooltips, Language.GetTextValue("Mods.ThrowerUnification.DefaultStealthStrikeTooltip"));
             }

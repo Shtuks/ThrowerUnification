@@ -68,6 +68,24 @@ ThoriumStealthStrike: {
 		'''
 }
 
+GripsRework: {
+	/* PaddedRework:
+		'''
+		Thrower projectiles have a 10% chance to grant the player 15% thrower attack speed for 1 second upon hitting anything
+		This effect can only trigger once every two seconds
+		''' */
+	/* BoneRework:
+		'''
+		Thrower projectiles have a 20% chance to grant the player 15% thrower attack speed for 1 second upon hitting anything
+		This effect can only trigger once every two seconds
+		''' */
+	/* MagnetoRework:
+		'''
+		Thrower projectiles have a 20% chance to grant the player 15% thrower attack speed for 1 second upon hitting anything
+		This effect can only trigger once every one-and-a-half seconds
+		''' */
+}
+
 DamageClasses: {
 	UnitedModdedThrower: {
 		DisplayName: {
@@ -87,7 +105,7 @@ DamageClasses: {
 	}
 }
 
-CustomName: "ед. {0} урона"
+CustomName: ед. {0} урона
 ClassTag: -{0}-
 
 Configs: {
@@ -98,6 +116,7 @@ Configs: {
 			General: Основные настройки
 			ColoredDamageType: Цвет урона
 			ClassTag: Классовая метка
+			// Experimental: Experimental
 		}
 
 		Vanilla: {
@@ -123,6 +142,21 @@ Configs: {
 		TooltipOverride: {
 			Label: Название общего класса
 			Tooltip: Позволяет вам самостоятельно выбрать заготовленное название общего метательного класса, или вписать собственное название ниже.
+		}
+
+		R: {
+			Label: Красный
+			Tooltip: ""
+		}
+
+		G: {
+			Label: Зеленый
+			Tooltip: ""
+		}
+
+		B: {
+			Label: Синий
+			Tooltip: ""
 		}
 
 		StealthStrikes: {
@@ -163,24 +197,14 @@ Configs: {
 			Tooltip: ""
 		}
 
-		R: {
-			Label: Красный
-			Tooltip: ""
-		}
-
-		G: {
-			Label: Зеленый
-			Tooltip: ""
-		}
-
-		B: {
-			Label: Синий
-			Tooltip: ""
-		}
-
 		LegacyVanillaThrowerWeapons: {
 			Tooltip: Заставляет всё расходуемое стрелковое оружие ваниллы, которое раньше являлось метательным снова стать таковым.
 			Label: Смена класса ванильного расходуемого стрелкового оружия
+		}
+
+		ConsumableWeaponConversion: {
+			// Label: Consumable Weapon Conversion
+			// Tooltip: Toggles whether Thrower weapons outside of Calamity and Vanilla are made non-consumable to match Calamity mod Rogue weapons
 		}
 	}
 
