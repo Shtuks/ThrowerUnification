@@ -68,6 +68,24 @@ ThoriumStealthStrike: {
 		'''
 }
 
+GripsRework: {
+	PaddedRework:
+		'''
+		Thrower projectiles have a 10% chance to grant the player 15% thrower attack speed for 1 second upon hitting anything
+		This effect can only trigger once every two seconds
+		'''
+	BoneRework:
+		'''
+		Thrower projectiles have a 20% chance to grant the player 15% thrower attack speed for 1 second upon hitting anything
+		This effect can only trigger once every two seconds
+		'''
+	MagnetoRework:
+		'''
+		Thrower projectiles have a 20% chance to grant the player 15% thrower attack speed for 1 second upon hitting anything
+		This effect can only trigger once every one-and-a-half seconds
+		'''
+}
+
 DamageClasses: {
 	UnitedModdedThrower: {
 		DisplayName: {

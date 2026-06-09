@@ -3,6 +3,9 @@ using Terraria.ModLoader;
 using ThoriumMod;
 using ThrowerUnification.Core.UnitedModdedThrowerClass;
 using ThoriumMod.Buffs.Thrower;
+using System.Collections.Generic;
+using ThoriumMod.Items.ThrownItems;
+using Terraria.Localization;
 
 namespace ThrowerUnification.Content.Accessories
 {
@@ -12,18 +15,13 @@ namespace ThrowerUnification.Content.Accessories
     {
         public int rogueSpeedCooldown;
 
-        public override bool IsLoadingEnabled(Mod mod) =>
-            ThrowerModConfig.Instance.Calamity &&
-            ThrowerModConfig.Instance.ConsumableWeaponConversion;
+        public override bool IsLoadingEnabled(Mod mod) => ThrowerModConfig.Instance.Calamity && ThrowerModConfig.Instance.ConsumableWeaponConversion;
 
-        public static bool PlayerHasPaddedGrip(Player player) =>
-            player.GetModPlayer<ThoriumPlayer>().paddedGrip;
+        public static bool PlayerHasPaddedGrip(Player player) => player.GetModPlayer<ThoriumPlayer>().paddedGrip;
 
-        public static bool PlayerHasBoneGrip(Player player) =>
-            player.GetModPlayer<ThoriumPlayer>().boneGrip;
+        public static bool PlayerHasBoneGrip(Player player) => player.GetModPlayer<ThoriumPlayer>().boneGrip;
 
-        public static bool PlayerHasMagnetoGrip(Player player) =>
-            player.GetModPlayer<ThoriumPlayer>().magnetoGrip;
+        public static bool PlayerHasMagnetoGrip(Player player) => player.GetModPlayer<ThoriumPlayer>().magnetoGrip;
 
         public override void ResetEffects()
         {
@@ -32,6 +30,8 @@ namespace ThrowerUnification.Content.Accessories
         }
     }
 
+    [ExtendsFromMod(ModCompatibility.Thorium.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
     public class PaddedGripProjectile : GlobalProjectile
     {
         public override bool InstancePerEntity => false;
@@ -99,6 +99,49 @@ namespace ThrowerUnification.Content.Accessories
                 player.AddBuff(ModContent.BuffType<ThrowingSpeed>(), buffTime);
 
                 modPlayer.rogueSpeedCooldown = cooldown;
+            }
+        }
+    }
+
+    [ExtendsFromMod(ModCompatibility.Thorium.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
+    public class PaddedGripLineGlobalItem : GlobalItem
+    {
+        public override bool AppliesToEntity(Item entity, bool lateInstantiation)
+        {
+            return entity.type == ModContent.ItemType<PaddedGrip>()
+                || entity.type == ModContent.ItemType<BoneGrip>()
+                || entity.type == ModContent.ItemType<MagnetoGrip>();
+        }
+
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            if (item.type == ModContent.ItemType<PaddedGrip>())
+                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.GripsRework.PaddedRework"));
+
+            if (item.type == ModContent.ItemType<BoneGrip>())
+                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.GripsRework.BoneRework"));
+
+            if (item.type == ModContent.ItemType<MagnetoGrip>())
+                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.GripsRework.MagnetoRework"));
+        }
+
+        private static void FullTooltipOveride(List<TooltipLine> tooltips, string overrideTooltip)
+        {
+            for (int index = 0; index < tooltips.Count; ++index)
+            {
+                if (tooltips[index].Mod == "Terraria")
+                {
+                    if (tooltips[index].Name == "Tooltip0")
+                    {
+                        TooltipLine tooltip = tooltips[index];
+                        tooltip.Text = $"{overrideTooltip}";
+                    }
+                    else if (tooltips[index].Name.Contains("Tooltip"))
+                    {
+                        tooltips[index].Hide();
+                    }
+                }
             }
         }
     }
