@@ -8,6 +8,8 @@ using Terraria.DataStructures;
 using ThoriumMod.Projectiles.Thrower;
 using System.Reflection;
 using static ThrowerUnification.ModCompatibility;
+using ThoriumMod.Items.NPCItems;
+using ThoriumMod.Items.ThrownItems;
 
 namespace ThrowerUnification.Content.Other
 {
@@ -118,6 +120,18 @@ namespace ThrowerUnification.Content.Other
         public override void OnSpawn(Item item, IEntitySource source)
         {
             ForceSingleStack(item);
+
+            //DROPRATE ADJUSTMENT FUNCTION
+            if (source is not EntitySource_Loot { Entity: NPC })
+                return;
+
+            if (!ReducedDropItems.TryGetValue(item.type, out int denominator))
+                return;
+
+            if (!Main.rand.NextBool(denominator))
+            {
+                item.TurnToAir();
+            }
         }
 
         private static void ForceSingleStack(Item item)
@@ -132,27 +146,19 @@ namespace ThrowerUnification.Content.Other
             }
         }
 
-        //TOOLTIP
-        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        //DROPRATE ADJUSTMENTS
+        private static readonly Dictionary<int, int> ReducedDropItems = new()
         {
-            if (item?.ModItem == null)
-                return;
-
-            string modName = item.ModItem.Mod.Name;
-
-            if (!AllowedMods.Contains(modName))
-              return;
-
-            tooltips.RemoveAll(line =>
-            {
-                if (line?.Text == null)
-                    return false;
-
-                string t = line.Text.ToLowerInvariant();
-
-                return t.Contains("not to consume") && t.Contains("thrown");
-            });
-        }
+            // Item Type -> Chance Denominator
+        
+            { ModContent.ItemType<SeveredHand>(), 3 },
+            { ModContent.ItemType<CaptainsPoniard>(), 3 },
+            { ModContent.ItemType<ShadowTippedJavelin>(), 3 },
+            { ModContent.ItemType<ShadowPurgeCaltrop>(), 5 },
+            { ModContent.ItemType<SpikeBomb>(), 3 },
+            { ModContent.ItemType<SoftServeSunderer>(), 3 },
+            { ModContent.ItemType<ElectroRebounder>(), 3 },
+        };
     }
 
     // RECIPE EDITS
