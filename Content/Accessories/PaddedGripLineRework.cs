@@ -6,6 +6,7 @@ using ThoriumMod.Buffs.Thrower;
 using System.Collections.Generic;
 using ThoriumMod.Items.ThrownItems;
 using Terraria.Localization;
+using ThoriumMod.Items.DD;
 
 namespace ThrowerUnification.Content.Accessories
 {
@@ -34,6 +35,8 @@ namespace ThrowerUnification.Content.Accessories
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
     public class PaddedGripProjectile : GlobalProjectile
     {
+        public override bool IsLoadingEnabled(Mod mod) => ThrowerModConfig.Instance.ConsumableWeaponConversion;
+
         public override bool InstancePerEntity => false;
 
         public override void OnKill(Projectile projectile, int timeLeft)
@@ -107,11 +110,14 @@ namespace ThrowerUnification.Content.Accessories
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
     public class PaddedGripLineGlobalItem : GlobalItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => ThrowerModConfig.Instance.ConsumableWeaponConversion;
+
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
             return entity.type == ModContent.ItemType<PaddedGrip>()
                 || entity.type == ModContent.ItemType<BoneGrip>()
-                || entity.type == ModContent.ItemType<MagnetoGrip>();
+                || entity.type == ModContent.ItemType<MagnetoGrip>()
+                || entity.type == ModContent.ItemType<ArcaneAnelace>();
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
@@ -124,6 +130,9 @@ namespace ThrowerUnification.Content.Accessories
 
             if (item.type == ModContent.ItemType<MagnetoGrip>())
                 FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.GripsRework.MagnetoRework"));
+
+            if (item.type == ModContent.ItemType<ArcaneAnelace>())
+                FullTooltipOveride(tooltips, Language.GetTextValue(""));
         }
 
         private static void FullTooltipOveride(List<TooltipLine> tooltips, string overrideTooltip)

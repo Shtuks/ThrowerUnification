@@ -8,6 +8,8 @@ using Terraria.DataStructures;
 using ThoriumMod.Projectiles.Thrower;
 using System.Reflection;
 using static ThrowerUnification.ModCompatibility;
+using ThoriumMod.Items.NPCItems;
+using ThoriumMod.Items.ThrownItems;
 
 namespace ThrowerUnification.Content.Other
 {
@@ -118,6 +120,18 @@ namespace ThrowerUnification.Content.Other
         public override void OnSpawn(Item item, IEntitySource source)
         {
             ForceSingleStack(item);
+
+            //DROPRATE ADJUSTMENT FUNCTION
+            if (source is not EntitySource_Loot { Entity: NPC })
+                return;
+
+            if (!ReducedDropItems.TryGetValue(item.type, out int denominator))
+                return;
+
+            if (!Main.rand.NextBool(denominator))
+            {
+                item.TurnToAir();
+            }
         }
 
         private static void ForceSingleStack(Item item)
@@ -132,27 +146,19 @@ namespace ThrowerUnification.Content.Other
             }
         }
 
-        //TOOLTIP
-        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        //DROPRATE ADJUSTMENTS
+        private static readonly Dictionary<int, int> ReducedDropItems = new()
         {
-            if (item?.ModItem == null)
-                return;
-
-            string modName = item.ModItem.Mod.Name;
-
-            if (!AllowedMods.Contains(modName))
-              return;
-
-            tooltips.RemoveAll(line =>
-            {
-                if (line?.Text == null)
-                    return false;
-
-                string t = line.Text.ToLowerInvariant();
-
-                return t.Contains("not to consume") && t.Contains("thrown");
-            });
-        }
+            // Item Type -> Chance Denominator
+        
+            { ModContent.ItemType<SeveredHand>(), 3 },
+            { ModContent.ItemType<CaptainsPoniard>(), 3 },
+            { ModContent.ItemType<ShadowTippedJavelin>(), 3 },
+            { ModContent.ItemType<ShadowPurgeCaltrop>(), 5 },
+            { ModContent.ItemType<SpikeBomb>(), 3 },
+            { ModContent.ItemType<SoftServeSunderer>(), 3 },
+            { ModContent.ItemType<ElectroRebounder>(), 3 },
+        };
     }
 
     // RECIPE EDITS
@@ -163,21 +169,22 @@ namespace ThrowerUnification.Content.Other
 
         public override void PostAddRecipes()
         {
-            for (int i = 0; i < Main.recipe.Length; i++)
-            {
-                Recipe recipe = Main.recipe[i];
+            List<Recipe> recipesToReplace = new();
 
+            foreach (Recipe recipe in Main.recipe)
+            {
                 if (recipe == null)
                     continue;
 
-                bool createsUnifiedThrowable = UnifiedThrowableGlobalItem.OriginallyConsumableThrowableTypes.Contains(recipe.createItem.type);
+                bool modifiesRecipe = false;
 
-                if (!createsUnifiedThrowable)
-                    continue;
+                // Crafts a formerly consumable throwable
+                if (UnifiedThrowableGlobalItem.OriginallyConsumableThrowableTypes.Contains(recipe.createItem.type))
+                {
+                    modifiesRecipe = true;
+                }
 
-                // Force output to 1
-                recipe.createItem.stack = 1;
-
+                // Uses a unified throwable ingredient
                 foreach (Item ingredient in recipe.requiredItem)
                 {
                     if (ingredient == null || ingredient.type <= ItemID.None)
@@ -185,13 +192,61 @@ namespace ThrowerUnification.Content.Other
 
                     if (UnifiedThrowableGlobalItem.UnifiedThrowableTypes.Contains(ingredient.type))
                     {
-                        ingredient.stack = 1;
+                        modifiesRecipe = true;
+                        break;
+                    }
+                }
+
+                if (modifiesRecipe)
+                {
+                    recipesToReplace.Add(recipe);
+                }
+            }
+
+            foreach (Recipe oldRecipe in recipesToReplace)
+            {
+                bool createsUnifiedThrowable =
+                    UnifiedThrowableGlobalItem.OriginallyConsumableThrowableTypes.Contains(oldRecipe.createItem.type);
+
+                int resultStack = createsUnifiedThrowable
+                    ? 1
+                    : oldRecipe.createItem.stack;
+
+                Recipe newRecipe = Recipe.Create(oldRecipe.createItem.type, resultStack);
+
+                foreach (Item ingredient in oldRecipe.requiredItem)
+                {
+                    if (ingredient == null || ingredient.type <= ItemID.None)
+                        continue;
+
+                    int stack;
+
+                    if (UnifiedThrowableGlobalItem.UnifiedThrowableTypes.Contains(ingredient.type))
+                    {
+                        // old behavior: unified throwable ingredients cost 1
+                        stack = 1;
+                    }
+                    else if (createsUnifiedThrowable)
+                    {
+                        // old behavior: recipes crafting former consumables cost 4x other mats
+                        stack = ingredient.stack * 4;
                     }
                     else
                     {
-                        ingredient.stack *= 4;
+                        // recipes merely using a unified throwable keep normal costs
+                        stack = ingredient.stack;
                     }
+
+                    newRecipe.AddIngredient(ingredient.type, stack);
                 }
+
+                foreach (int tile in oldRecipe.requiredTile)
+                {
+                    newRecipe.AddTile(tile);
+                }
+
+                newRecipe.Register();
+                oldRecipe.DisableRecipe();
             }
         }
     }

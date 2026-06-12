@@ -71,18 +71,18 @@ ThoriumStealthStrike: {
 GripsRework: {
 	PaddedRework:
 		'''
-		Thrower projectiles have a 10% chance to grant the player 15% thrower attack speed for 1 second upon hitting anything
-		This effect can only trigger once every two seconds
+		Thrower projectiles have a 10% chance to grant the player 15% thrower attack speed for 1 second upon death
+		This effect can only trigger once every 2 seconds
 		'''
 	BoneRework:
 		'''
-		Thrower projectiles have a 20% chance to grant the player 15% thrower attack speed for 1 second upon hitting anything
-		This effect can only trigger once every two seconds
+		Thrower projectiles have a 20% chance to grant the player 15% thrower attack speed for 1 second upon death
+		This effect can only trigger once every 2 seconds
 		'''
 	MagnetoRework:
 		'''
-		Thrower projectiles have a 20% chance to grant the player 15% thrower attack speed for 1 second upon hitting anything
-		This effect can only trigger once every one-and-a-half seconds
+		Thrower projectiles have a 20% chance to grant the player 15% thrower attack speed for 1 second upon death
+		This effect can only trigger once every 1.5 seconds
 		'''
 }
 
