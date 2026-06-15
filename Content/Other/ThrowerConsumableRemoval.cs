@@ -5,9 +5,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using ThrowerUnification.Core.UnitedModdedThrowerClass;
 using Terraria.DataStructures;
-using ThoriumMod.Projectiles.Thrower;
 using System.Reflection;
 using static ThrowerUnification.ModCompatibility;
+using ThoriumMod.Projectiles.Thrower;
 using ThoriumMod.Items.NPCItems;
 using ThoriumMod.Items.ThrownItems;
 
@@ -125,7 +125,10 @@ namespace ThrowerUnification.Content.Other
             if (source is not EntitySource_Loot { Entity: NPC })
                 return;
 
-            if (!ReducedDropItems.TryGetValue(item.type, out int denominator))
+            if (!ModCompatibility.Thorium.Loaded)
+                return;
+
+            if (!ThoriumDropBlockerSystem.ReducedDropItems.TryGetValue(item.type, out int denominator))
                 return;
 
             if (!Main.rand.NextBool(denominator))
@@ -145,20 +148,6 @@ namespace ThrowerUnification.Content.Other
                 item.maxStack = 1;
             }
         }
-
-        //DROPRATE ADJUSTMENTS
-        private static readonly Dictionary<int, int> ReducedDropItems = new()
-        {
-            // Item Type -> Chance Denominator
-        
-            { ModContent.ItemType<SeveredHand>(), 3 },
-            { ModContent.ItemType<CaptainsPoniard>(), 3 },
-            { ModContent.ItemType<ShadowTippedJavelin>(), 3 },
-            { ModContent.ItemType<ShadowPurgeCaltrop>(), 5 },
-            { ModContent.ItemType<SpikeBomb>(), 3 },
-            { ModContent.ItemType<SoftServeSunderer>(), 3 },
-            { ModContent.ItemType<ElectroRebounder>(), 3 },
-        };
     }
 
     // RECIPE EDITS
@@ -376,5 +365,19 @@ namespace ThrowerUnification.Content.Other
                 cache.Remove(proj);
             }
         }
+
+        //DROPRATE ADJUSTMENT DICTIONARY
+        public static readonly Dictionary<int, int> ReducedDropItems = new()
+        {
+            // Item Type -> Chance Denominator
+        
+            { ModContent.ItemType<SeveredHand>(), 3 },
+            { ModContent.ItemType<CaptainsPoniard>(), 3 },
+            { ModContent.ItemType<ShadowTippedJavelin>(), 3 },
+            { ModContent.ItemType<ShadowPurgeCaltrop>(), 5 },
+            { ModContent.ItemType<SpikeBomb>(), 3 },
+            { ModContent.ItemType<SoftServeSunderer>(), 3 },
+            { ModContent.ItemType<ElectroRebounder>(), 3 },
+        };
     }
 }

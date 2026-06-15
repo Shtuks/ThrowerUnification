@@ -43,6 +43,7 @@ namespace ThrowerUnification.Core.Players
             }
         }
 
+        /*
         public override void PostUpdateMiscEffects()
         {
             float currentStealth = ModCompatibility.Calamity.Mod.Call("GetCurrentStealth", Player) is float f ? f : 1f;
@@ -54,6 +55,7 @@ namespace ThrowerUnification.Core.Players
                 Player.GetAttackSpeed(DamageClass.Throwing) = 1f;
             }
         }
+        */
 
         public void AddStealth(int stealth)
         {
