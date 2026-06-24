@@ -71,15 +71,17 @@ namespace ThrowerUnification.Content.Other
 
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return UnifiedThrowableTypes.Contains(entity.type);
+            return OriginallyConsumableThrowableTypes.Contains(entity.type);
         }
 
         public override void SetDefaults(Item item)
         {
+            if (!OriginallyConsumableThrowableTypes.Contains(item.type)) return;
+
             item.consumable = false;
             item.maxStack = 1;
             item.notAmmo = true;
-            item.shopCustomPrice = item.value * 500;
+            item.value = item.value * 500;
             ForceSingleStack(item);
         }
 
@@ -95,7 +97,7 @@ namespace ThrowerUnification.Content.Other
 
         public override bool ConsumeItem(Item item, Player player)
         {
-            if (UnifiedThrowableTypes.Contains(item.type))
+            if (OriginallyConsumableThrowableTypes.Contains(item.type))
                 return false;
 
             return true;
@@ -105,7 +107,7 @@ namespace ThrowerUnification.Content.Other
 
         public override bool CanConsumeAmmo(Item weapon, Item ammo, Player player)
         {
-            if (UnifiedThrowableTypes.Contains(ammo.type))
+            if (OriginallyConsumableThrowableTypes.Contains(ammo.type))
                 return false;
 
             return base.CanConsumeAmmo(weapon, ammo, player);
@@ -142,7 +144,7 @@ namespace ThrowerUnification.Content.Other
             if (item == null)
                 return;
 
-            if (UnifiedThrowableTypes.Contains(item.type))
+            if (OriginallyConsumableThrowableTypes.Contains(item.type))
             {
                 item.stack = 1;
                 item.maxStack = 1;
