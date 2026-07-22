@@ -66,6 +66,11 @@ ThoriumStealthStrike: {
 		扔出一个大型水之手里剑，会释放微型海波
 		潜伏攻击会产生一道可以聚拢附近敌怪的伤害性浪潮
 		'''
+	/* AngelsEnd:
+		'''
+		Stick four cosmic lances into an enemy to cause a large burst of damage
+		Stealth strikes leave a trail of homing bullets
+		''' */
 }
 
 GripsRework: {

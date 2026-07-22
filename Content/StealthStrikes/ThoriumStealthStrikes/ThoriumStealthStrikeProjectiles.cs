@@ -20,6 +20,7 @@ using ThrowerUnification.Core.UnitedModdedThrowerClass;
 using CalamityMod.Balancing;
 using CalamityMod.Projectiles;
 using ThrowerUnification.Content.Projectiles.StealthPro;
+using CalamityMod.Projectiles.Rogue;
 
 namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
 {
@@ -1215,10 +1216,34 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                 Main.dust[dust].velocity *= 0.2f;  // subtle floating effect
                 Main.dust[dust].fadeIn = 1.1f;     // fade-in for that soft spore glow
             }
+
+            if (stealthType == StealthStrikeType.AngelsEnd && projectile.ai[0] != 1f)
+            {
+                projectile.ai[2]++;
+
+                if (projectile.oldPos.Length != 6)
+                    projectile.oldPos = new Vector2[6];
+
+                if ((projectile.ai[2] %= 4f) == 0f)
+                {
+                    if (projectile.owner == Main.myPlayer)
+                    {
+                        for (int i = 0; i < 2; i++)
+                        {
+                            Vector2 perturbedSpeed = new Vector2(-projectile.velocity.X / 3, -projectile.velocity.Y / 3).RotatedBy(MathHelper.Lerp(-MathHelper.ToRadians(15f), MathHelper.ToRadians(15f), i / (2 - 1)));
+                            for (int j = 0; j < 1; j++)
+                            {
+                                Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, perturbedSpeed, ModContent.ProjectileType<ScarletDevilBullet>(), (int)(projectile.damage * 0.07), 0f, projectile.owner, 0f, 0f);
+                                perturbedSpeed *= 1.05f;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         // Helper method to find nearest enemy NPC for Gel Glove
-        private NPC FindNearestEnemy(Vector2 position, float maxDistance)
+        private static NPC FindNearestEnemy(Vector2 position, float maxDistance)
         {
             NPC nearest = null;
             float minDist = maxDistance;
@@ -1240,7 +1265,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
         }
 
         //ON DEATH EFFECT
-        public override void Kill(Projectile projectile, int timeLeft)
+        public override void OnKill(Projectile projectile, int timeLeft)
         {
             if (!isStealthStrike || stealthType != StealthStrikeType.SoulBomb)
                 return;
@@ -1264,7 +1289,7 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
         }
 
         //BURST EFFECT
-        private void ShootBurstProjectile(Projectile projectile, Player player, float speed)
+        private static void ShootBurstProjectile(Projectile projectile, Player player, float speed)
         {
             Vector2 baseVelocity = projectile.velocity.SafeNormalize(Vector2.Zero);
             Vector2 velocity = baseVelocity.RotatedByRandom(MathHelper.ToRadians(5)) * speed * 1.2f;

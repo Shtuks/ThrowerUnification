@@ -66,6 +66,11 @@ ThoriumStealthStrike: {
 		Бросает массивный акватический сюрикен, выпускающий миниатюрные волны
 		При скрытном ударе вызывает сокрушающую приливную волну, следующую за сюрикеном и стягивающую врагов
 		'''
+	/* AngelsEnd:
+		'''
+		Stick four cosmic lances into an enemy to cause a large burst of damage
+		Stealth strikes leave a trail of homing bullets
+		''' */
 }
 
 GripsRework: {
@@ -105,7 +110,7 @@ DamageClasses: {
 	}
 }
 
-CustomName: "ед. {0} урона"
+CustomName: ед. {0} урона
 ClassTag: -{0}-
 
 Configs: {
@@ -142,6 +147,21 @@ Configs: {
 		TooltipOverride: {
 			Label: Название общего класса
 			Tooltip: Позволяет вам самостоятельно выбрать заготовленное название общего метательного класса, или вписать собственное название ниже.
+		}
+
+		R: {
+			Label: Красный
+			Tooltip: ""
+		}
+
+		G: {
+			Label: Зеленый
+			Tooltip: ""
+		}
+
+		B: {
+			Label: Синий
+			Tooltip: ""
 		}
 
 		StealthStrikes: {
@@ -182,24 +202,9 @@ Configs: {
 			Tooltip: ""
 		}
 
-		R: {
-			Label: Красный
-			Tooltip: ""
-		}
-
-		G: {
-			Label: Зеленый
-			Tooltip: ""
-		}
-
-		B: {
-			Label: Синий
-			Tooltip: ""
-		}
-
 		LegacyVanillaThrowerWeapons: {
-			Label: Смена класса ванильного расходуемого стрелкового оружия
 			Tooltip: Заставляет всё расходуемое стрелковое оружие ваниллы, которое раньше являлось метательным снова стать таковым.
+			Label: Смена класса ванильного расходуемого стрелкового оружия
 		}
 
 		ConsumableWeaponConversion: {

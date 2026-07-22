@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using CalamityMod.CalPlayer;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using Terraria;
 using Terraria.ModLoader;
-using ThrowerUnification.Core;
 using Terraria.Localization;
 using ThoriumMod.Items.BossLich;
 using ThoriumMod.Items.Icy;
@@ -24,6 +20,7 @@ using ThoriumMod.Items.Depths;
 using ThoriumMod.Items.Steel;
 using ThrowerUnification.Content.Projectiles.StealthPro;
 using CalamityMod;
+using ThoriumMod.Projectiles.Thrower;
 
 namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
 {
@@ -59,12 +56,13 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
         SteelThrowingAxe,
         DurasteelThrowingSpear,
         ShinobiSlicer,
+        AngelsEnd,
     }
+
     [ExtendsFromMod(ModCompatibility.Thorium.Name, ModCompatibility.Calamity.Name)]
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name, ModCompatibility.Calamity.Name)]
     public class ThoriumStealthStrikeSetup : GlobalItem
     {
-        //Don't load the stealth strikes if Infernal or Hummus' mod is enabled to prevent overlap or duplication.
         public override bool IsLoadingEnabled(Mod mod)
         {
             // Only load if CalamityMod is present AND stealth strikes are enabled in your config
@@ -969,6 +967,34 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
                 }
             }
 
+            // ===================== ANGELS END =====================
+            if (item.type == ModContent.ItemType<AngelsEnd>())
+            {
+                if (calPlayer.StealthStrikeAvailable())
+                {
+                    int projType = ModContent.ProjectileType<AngelsEndPro>();
+
+                    int projID = Projectile.NewProjectile(
+                        source,
+                        position,
+                        velocity,
+                        projType,
+                        damage,
+                        knockback,
+                        player.whoAmI
+                    );
+
+                    Main.projectile[projID].Calamity().stealthStrike = true;
+
+                    if (Main.projectile.IndexInRange(projID) && Main.projectile[projID].TryGetGlobalProjectile(out ThoriumStealthStrikeProjectiles stealthGlobal))
+                    {
+                        stealthGlobal.SetupAsStealthStrike(StealthStrikeType.AngelsEnd);
+                    }
+
+                    return false;
+                }
+            }
+
             return true;
         }
 
@@ -1000,6 +1026,10 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             {
                 TrySetIsThrowerNon(item, false);
             }
+
+            //ANGELS END
+            if (item.type == ModContent.ItemType<AngelsEnd>())
+                TrySetIsThrowerNon(item, false);
         }
 
         private static void TrySetIsThrowerNon(Item item, bool active)
@@ -1224,6 +1254,11 @@ namespace ThrowerUnification.Content.StealthStrikes.ThoriumStealthStrikes
             if (item.type == ModContent.ItemType<ShinobiSlicer>())
             {
                 FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.ShinobiSlicer"));
+            }
+
+            if (item.type == ModContent.ItemType<AngelsEnd>())
+            {
+                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThrowerUnification.ThoriumStealthStrike.AngelsEnd"));
             }
         }
     }

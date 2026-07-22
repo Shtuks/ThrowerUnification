@@ -88,7 +88,11 @@ namespace ThrowerUnification.Content.StealthStrikes
                 "WhiteDwarfKunai",
                 "DraculaFang",
                 "WackWrench",
-                "ShinobiSlicer"
+                "ShinobiSlicer",
+                "AngelsEnd",
+
+                "BaseballBat",
+                "Baseball",
             };
 
             string[] NASS =
