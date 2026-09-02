@@ -1,4 +1,5 @@
 ﻿using CalamityMod;
+using CalamityMod.Items.Weapons.Rogue;
 using Terraria.ModLoader;
 using ThrowerUnification.Core.UnitedModdedThrowerClass;
 
@@ -42,11 +43,14 @@ namespace ThrowerUnification.Core.Players
                 }
             }
         }
-
-        /*
+        
         public override void PostUpdateMiscEffects()
         {
             float currentStealth = ModCompatibility.Calamity.Mod.Call("GetCurrentStealth", Player) is float f ? f : 1f;
+
+            if (!Player.HeldItem.type == ModContent.ItemType<UtensilPoker>())
+                return;
+
             bool stealthStrike = currentStealth > 0f && (Player.HeldItem.CountsAsClass<RogueDamageClass>() || Player.HeldItem.CountsAsClass<ThrowingDamageClass>() || Player.HeldItem.CountsAsClass<UnitedModdedThrower>());
 
             if (stealthStrike)
@@ -55,7 +59,7 @@ namespace ThrowerUnification.Core.Players
                 Player.GetAttackSpeed(DamageClass.Throwing) = 1f;
             }
         }
-        */
+        
 
         public void AddStealth(int stealth)
         {
