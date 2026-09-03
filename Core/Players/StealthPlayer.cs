@@ -48,7 +48,7 @@ namespace ThrowerUnification.Core.Players
         {
             float currentStealth = ModCompatibility.Calamity.Mod.Call("GetCurrentStealth", Player) is float f ? f : 1f;
 
-            if (!Player.HeldItem.type == ModContent.ItemType<UtensilPoker>())
+            if (Player.HeldItem.type != ModContent.ItemType<UtensilPoker>())
                 return;
 
             bool stealthStrike = currentStealth > 0f && (Player.HeldItem.CountsAsClass<RogueDamageClass>() || Player.HeldItem.CountsAsClass<ThrowingDamageClass>() || Player.HeldItem.CountsAsClass<UnitedModdedThrower>());
